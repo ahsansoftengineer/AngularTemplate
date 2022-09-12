@@ -1,0 +1,35 @@
+1. HTTPService
+  A. DEPENDENCIES
+    a. http: HttpClient
+  B. ROLE
+    b. responsible for HTTP Request and providing instance of HttpClient
+    c. all methods expect (param: Partial<HttpServiceParam>)
+  B. DEPENDENT
+
+2. FormService will be injected by
+  A. DEPENDENCIES
+    a. _fb : FormBuilder
+  B. ROLE (Providing instance of below )
+    a. _form : FormGroup
+    b. _formArray : FormArray
+    c. _formGroup : FormGroup
+    d. _control : FormControl
+
+3. ValidatorService
+  A. DEPENDENCIES
+    a. _toastr: ToastrService, _fs: FormService
+  B. ROLE
+    a. Custom Validator
+    b. Display Messages of (FormControl / FormGroup)
+  C. DEPENDENT
+    a FormHelper Service
+    c BaseForm Class
+    d FormModel Classes
+4. Form Helper Service will inject Form Service
+  c BaseForm Class
+5. BaseForm & BaseList Classes will inject
+    (StateService)
+6. BaseForm Class will also inject
+    (Validator, FormService, FormService)
+7. Form State Service
+    (BaseForm)
