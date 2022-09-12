@@ -5,6 +5,8 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "eslint": "eslint --fix -c ./.eslintrc.json 'src/**/*{.ts,.tsx}'",
+    "tslint": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },

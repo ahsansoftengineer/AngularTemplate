@@ -14,7 +14,7 @@ import { Server_Errors } from '../../interface/common/errors';
 // @Injectable()
 export class LB extends BaseJoinAction {
   query = Object.assign({}) // Any Query Parameter that wants to be attached
-  _path: string = '';
+  _path: string;
   // Table Properties
   ds = new MatTableDataSource([]);// Data Source
   tbl: TableSettings = Object.assign({}); // Table
