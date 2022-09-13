@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { NgxMatIntlTelInputComponent,  } from 'ngx-mat-intl-tel-input';
-import { NgxSpinnerModule } from "ngx-spinner";
+// import { NgxMatIntlTelInputComponent,  } from 'ngx-mat-intl-tel-input';
+// import { NgxSpinnerModule } from "ngx-spinner";
 
 // import { NgxCurrencyModule } from "ngx-currency";
 // import { UiSwitchModule } from 'ngx-toggle-switch';

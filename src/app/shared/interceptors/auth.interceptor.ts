@@ -15,7 +15,7 @@ import { environment } from 'src/environments/environment';
 export class AuthInterceptor implements HttpInterceptor {
   public userId;
   constructor(private cookie:CookieService) {
-    if (!environment.LoadData) {
+    if (!environment['LoadData']) {
       this.userId = 'MTEz'
       if(!this.cookie.check('local_user')){
         this.cookie.set('local_user', this.userId);
@@ -41,7 +41,7 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.status === 401) {
           localStorage.clear();
           this.cookie.deleteAll('/');
-          window.location.href = environment.ERP_URL;
+          window.location.href = environment['ERP_URL'];
         }
         return throwError(() => error);
       })
