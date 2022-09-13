@@ -6,12 +6,9 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { ACTION } from '../enums/action.enum';
-import {
-  FlattenSideBarMenus,
-  Permission,
-} from '../interface/common/router-module';
-import { StateService } from '../service/state.service';
+import { ACTION } from 'src/app/core/enums/action.enum';
+import { FlattenSideBarMenus, Permission } from 'src/app/core/interface/common/router-module';
+import { StateService } from 'src/app/core/service/state.service';
 
 
 @Injectable({

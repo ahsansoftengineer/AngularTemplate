@@ -3,7 +3,6 @@ import { FormGroup } from '@angular/forms';
 import { ValidatorService } from '../../service/base.validator.service';
 import { FormService } from '../../service/form.service';
 
-@Injectable()
 export class DonorAddInfoForm {
   _fs: FormService
   _vs: ValidatorService;

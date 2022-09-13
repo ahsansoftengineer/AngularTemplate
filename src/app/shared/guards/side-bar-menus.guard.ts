@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { CanActivateChild, RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { ROUTES } from '../constant/vertical-menu-items';
-import { URLz } from '../enums/url.enum';
-import { SideBarMenus } from '../interface/common/router-module';
-import { HTTPService } from '../service/http.service';
-import { StateService } from '../service/state.service';
-import { Custom } from '../static/custom';
+import { ROUTES } from 'src/app/core/constant/vertical-menu-items';
+import { URLz } from 'src/app/core/enums/url.enum';
+import { SideBarMenus } from 'src/app/core/interface/common/router-module';
+import { HTTPService } from 'src/app/core/service/http.service';
+import { StateService } from 'src/app/core/service/state.service';
+import { Custom } from 'src/app/core/static/custom';
 
 
 @Injectable({
@@ -22,12 +22,12 @@ export class SideBarMenusGuard implements CanActivateChild {
   ) {}
   canActivateChild(): boolean | Observable<any> {
     // # DEV
-    return this.items.pipe(
-      tap(res => {
-        this.setSideBarMenus(res)
-        return this._ss.sideBarMenus = res
-      }
-    ))
+    // return this.items.pipe(
+    //   tap(res => {
+    //     this.setSideBarMenus(res)
+    //     return this._ss.sideBarMenus = res
+    //   }
+    // ))
     // 1.1 Incase Hierarchy of Server already Saved
     const storedData = localStorage.getItem('sideBarMenus');
     let data: SideBarMenus[];
@@ -50,7 +50,7 @@ export class SideBarMenusGuard implements CanActivateChild {
   getAll() {
     const current_module = this.cookie.get('current_module');
     return this._http.gets({
-      endpoint: URLz.MODULE_LIST,
+      endpoint: URLz.NO_SET,
       query: {
         current_module,
       },

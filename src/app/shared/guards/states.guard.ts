@@ -4,14 +4,12 @@ import { CanActivateChild } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { URLz } from '../enums/url.enum';
-import { Hierarchy,TransactionHierarchyState} from '../interface/common/hierarchy';
-import { HTTPService } from '../service/http.service';
-import { StateService } from '../service/state.service';
-import { MonthlyTargetComponent } from '../shared/components/dialogs/monthly-target/monthly-target.component';
-import { Custom } from '../static/custom';
 import { MatDialog } from '@angular/material/dialog';
 import { debounceTime } from "rxjs/operators";
+import { HTTPService } from 'src/app/core/service/http.service';
+import { StateService } from 'src/app/core/service/state.service';
+import { URLz } from 'src/app/core/enums/url.enum';
+import { Custom } from 'src/app/core/static/custom';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,20 +22,20 @@ export class StatesGuard  implements CanActivateChild {
   ) {}
   canActivateChild(): boolean | Observable<any> {
     if (!this.cookieService.check('local_user')) {
-      document.location.href = environment.UserProfile + 'Login/logout';
+      document.location.href = environment.production + 'Login/logout';
     }
     // 1.1 Incase Hierarchy of Server already Saved
     const storedData = localStorage.getItem('permission_data_server');
-    let data: Hierarchy;
+    let data;
     if (Custom.emptyCheck(storedData)) {
       data = JSON.parse(atob(storedData));
       // To Set Cookie
     }
     // 1.2 Incase Hierarchy of Server Not Saved
     if (!storedData && !data?.profile?.username) {
-      return this._http.get({ endpoint: URLz.USER_PERMISSION }).pipe(
+      return this._http.get({ endpoint: URLz.NO_SET }).pipe(
         tap((res) => {
-          const d: Hierarchy = res.data.row;
+          const d = res.data.row;
           localStorage.setItem(
             'permission_data_server',
             btoa(JSON.stringify(d))
@@ -65,7 +63,7 @@ export class StatesGuard  implements CanActivateChild {
   public targetData;
   openTospopup() {
     if (localStorage["tosPopupData"] == undefined) {
-      this._http.get({ endpoint: URLz.MONTHLY_TARGET })
+      this._http.get({ endpoint: URLz.NO_SET })
       .pipe(debounceTime(500))
         .subscribe((res) => {
           this.targetData = res?.data?.row;
@@ -74,9 +72,10 @@ export class StatesGuard  implements CanActivateChild {
               panelClass: "dialog-responsive",
               data: { source: this.targetData }
             }
-            const dialogRef = this._dialog.open(
-              MonthlyTargetComponent, config);
-            dialogRef.afterClosed().subscribe();
+            // const dialogRef = this._dialog.open(
+            //   MonthlyTargetComponent, config
+            // );
+            // dialogRef.afterClosed().subscribe();
           }
           localStorage["tosPopupData"] = false;
         })
@@ -86,7 +85,7 @@ export class StatesGuard  implements CanActivateChild {
   savingHierarchyDefault() {
     // 2.1 Default Selected Hiearachy Set
     const storedData = localStorage.getItem('permission_data_local');
-    let data: TransactionHierarchyState;
+    let data;
     if (Custom.emptyCheck(storedData)) {
       data = JSON.parse(atob(storedData));
       this._ss.permission_data_local = data;

@@ -7,8 +7,8 @@ import {
   RouterStateSnapshot,
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
-import { FormService } from '../service/form.service';
-import { SwalService } from '../service/swal.service';
+import { FormService } from 'src/app/core/service/form.service';
+import { SwalService } from 'src/app/core/service/swal.service';
 
 @Injectable({
   providedIn: 'root',
