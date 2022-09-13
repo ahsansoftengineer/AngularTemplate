@@ -21,7 +21,13 @@
 ```
 ### Dev Dependencies
 ```json
-
+    "@angular-eslint/eslint-plugin": "^14.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.1",
+    "ngx-mat-intl-tel-input": "^5.0.0",
+    "ngx-mat-select-search": "^4.2.1",
+    npm i prettier-eslint
 
 ```
 ### Disabled Linting Errors

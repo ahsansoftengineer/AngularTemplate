@@ -1,0 +1,29 @@
+.card__styling{
+  box-shadow: 0px 0px 10px #0000003d;
+}
+.custom__card__body__styling{
+  padding: 0px;
+  overflow-x: clip;
+}
+.custom__card__body__styling h2{
+  font-size: 22px;
+  background: #039be5;
+  box-shadow: 0px 10px 7px -7px #00000057;
+  margin: 0px 0px 10px 0px;
+  padding: 10px 10px;
+  color: white;
+}
+/* buttons save Cancel */
+.text_align{
+    text-align: right;
+}
+.custon__btns__class{
+  width: 100px;
+  padding: 0px 0px;
+  margin-left: 5px
+}
+@media(max-width: 768px){
+  .text_align{
+      text-align: center;
+  }
+}

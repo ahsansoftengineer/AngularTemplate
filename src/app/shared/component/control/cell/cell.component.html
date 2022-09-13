@@ -1,0 +1,21 @@
+  <mat-form-field appearance="outline" class="col-md-12 my-1"
+  [ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
+    <mat-label>{{ lbl | translate}}</mat-label>
+    <ngx-mat-intl-tel-input
+      autocomplete="off"
+      [disabled]="disabled"
+      cssClass="custom"
+      [preferredCountries]="['pk']"
+      [enablePlaceholder]="true"
+      [enableSearch]="true"
+      format="national"
+      [name]="field"
+      #phone
+      [formControl]="control" [required]='req'>
+    </ngx-mat-intl-tel-input>
+    <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+    <mat-error *ngIf="control?.touched && control?.errors?.validatePhoneNumber">
+      Invalid Number
+    </mat-error>
+  </mat-form-field>
+  <!-- <p class="px-3 py-1 font-twelve">eg : {{phone.selectedCountry.placeHolder}}</p> -->

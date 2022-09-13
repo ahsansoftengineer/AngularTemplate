@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "eslint": "eslint --fix -c ./.eslintrc.json 'src/**/*{.ts,.tsx}'",
+    "eslint": "eslint --fix",
     "tslint": "tslint --fix -c ./tslint.json 'src/**/*{.ts,.tsx}'",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
@@ -23,7 +23,12 @@
     "@angular/platform-browser-dynamic": "^14.1.0",
     "@angular/router": "^14.1.0",
     "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
+    "libphonenumber-js": "^1.10.13",
     "ngx-cookie-service": "^14.0.1",
+    "ngx-mat-intl-tel-input": "^5.0.0",
+    "ngx-mat-select-search": "^4.2.1",
+    "ngx-spinner": "^14.0.0",
     "ngx-toastr": "^15.0.0",
     "rxjs": "~7.5.0",
     "sweetalert2": "^11.4.32",
@@ -32,6 +37,7 @@
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "^14.1.3",
+    "@angular-eslint/eslint-plugin": "^14.0.4",
     "@angular/cli": "~14.1.3",
     "@angular/compiler-cli": "^14.1.0",
     "@types/jasmine": "~4.0.0",
@@ -44,6 +50,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.0.0",
+    "prettier-eslint": "^15.0.1",
     "typescript": "~4.7.2"
   }
 }

@@ -1,0 +1,15 @@
+<input [formControl]="control" [placeholder]="lbl | translate" class="search"
+ [ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }"
+(keydown)="picker.open(); _stop($event)" (click)="picker.open(); _stop($event)"
+[matDatepicker]="picker"
+[min]='min'
+[max]='max'
+[formControl]="control"
+[required]='req'
+readonly
+[disabled]='disabled'
+>
+<mat-datepicker minutes="true" #picker [disabled]="disabled" ></mat-datepicker>
+
+
+
