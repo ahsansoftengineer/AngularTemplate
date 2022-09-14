@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DisregardGuard } from './shared/guards/disregard.guard';
-import { MonthlyTargetGuard } from './shared/guards/monthly-target.guard';
 import { PermissionGuard } from './shared/guards/permission.guard';
 import { SideBarMenusGuard } from './shared/guards/side-bar-menus.guard';
 import { StatesGuard } from './shared/guards/states.guard';
@@ -9,10 +8,15 @@ import { StatesGuard } from './shared/guards/states.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
+    path: 'auth', loadChildren: () =>
+      import('./auth/auth.module').then(
+        (m) => m.AuthModule
+      ),
+  },
+  {
     path: '',
     // component: FullComponent,
     canActivateChild: [
-      MonthlyTargetGuard,
       StatesGuard,
       SideBarMenusGuard,
       DisregardGuard, // USE UNTIL ANGULAR DOESN'T PROVIDE CanDeActivateChild GUARD

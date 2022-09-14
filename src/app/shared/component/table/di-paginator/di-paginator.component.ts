@@ -1,7 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
-import { DI_Table } from 'src/app/interface/common/di-table';
-import { Custom } from 'src/app/static/custom';
+import { DI_Table } from 'src/app/core/interface/common/di-table';
 
 @Component({
   selector: 'di-paginator',
