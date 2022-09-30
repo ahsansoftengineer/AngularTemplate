@@ -1,5 +1,5 @@
-# ANGULAR ARCHETECTURE
-## ANGULAR BEST PRACTICIES
+# [ANGULAR ARCHETECTURE](#)
+## [ANGULAR BEST PRACTICIES](#)
 1. Follows SOLID / OOP
 2. Follows Files and Folder Structure
 3. Use Servicies rather than base Classes (But Both are mendatory)
@@ -17,8 +17,8 @@
 16. Mostly Used Angular Services will be the Part of AngularServiceAbstractClass
 17. Mostly Used Helper Services will be the Part of HelperServiceAbstractClass
 18. Avoid using Third Party Libraries that Cause Update Problem
-## FOLDER AND FILES STRUCTURE
-### CORE MODULE
+## [FOLDER AND FILES STRUCTURE](#)
+### [CORE MODULE](#)
 * * Most Common Files as per Folder those Required at Application Level
 #### Class
 1. Class Builders
@@ -55,7 +55,7 @@
 1. Permission
 2. Action
 3. Endpoints
-### SHARED MODULE
+### [SHARED MODULE](#)
 #### Modules
 1. AngularzModule
 2. MatzModule
@@ -89,24 +89,24 @@
 * * AccessToken
 * * Auth
 * * Loader
-### THEME MODULE
+### [THEME MODULE](#)
 1. Sidebar (Left, Rigth, Top, Bottom)
 2. Headers
 3. Footer
 4. MasterComponent
-### AUTH MODULE
+### [AUTH MODULE](#)
 1. Sign In
 2. Sign Up
 3. Forget Password
 4. Rest Password
 5. etc..
-### FEATURE ROUTING MODULE
+### [FEATURE ROUTING MODULE](#)
 1. Error (401, 404, 500)
 2. Admin
 3. Customer
 4. Product etc...
 
-# EXTERNAL LIBRARIES
+# [EXTERNAL LIBRARIES](#)
 ### For Linting Errors
 #### https://typescript-eslint.io/rules/no-inferrable-types/
 
