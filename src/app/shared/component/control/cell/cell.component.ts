@@ -9,7 +9,7 @@ import { BaseControlComponent, CONTROL_HOST_CSS_CLASS } from '../base-control-z.
 })
 export class CellComponent extends BaseControlComponent implements OnInit {
   @ViewChild('phone') phone
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     this.control?.valueChanges?.subscribe(x => {
       if(!this.emptyCheck(x) && this.control.pristine && this?.phone?.phoneNumber){

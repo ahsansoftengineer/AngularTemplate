@@ -14,7 +14,7 @@ export class BaseControlSubscriptionComponent extends BaseControlCommonComponent
   @Input() parentGrpName: string; // Merge with ParentGrp
   @Input() parentGrp: FormGroup; // Merge with ParentGrpName
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     this.setParentForSubscription();
   }

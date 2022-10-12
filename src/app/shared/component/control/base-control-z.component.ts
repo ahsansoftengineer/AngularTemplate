@@ -7,9 +7,8 @@ import {
 } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs';
-import { BaseJoinAction } from 'src/app/class/base-join-actions';
-import { HttpServiceParam } from 'src/app/interface/common/http-service-param';
-import { Custom } from 'src/app/static/custom';
+import { BaseJoinAction } from 'src/app/core/class/base-join-actions';
+import { HttpServiceParam } from 'src/app/core/interface/common/http-service-param';
 @Component({
   template: '',
 })
@@ -30,7 +29,6 @@ export class BaseControlComponent extends BaseJoinAction  implements OnInit {
   @Input() disabled = false;
   @Input() readonly = false;
   @Input() hide = false;
-  @Input() param: HttpServiceParam = {};
   @Output() valueChanges: EventEmitter<string> = new EventEmitter();
   @Output() Blur: EventEmitter<any> = new EventEmitter();
   ngOnInit(): void {
@@ -77,9 +75,6 @@ export class BaseControlComponent extends BaseJoinAction  implements OnInit {
   _stop(event){
     event.stopPropagation()
   }
-  emptyCheck(val: any){
-    return Custom.emptyCheck(val)
-  }
   statusChangesSubscription(){
     const subs = this.control?.statusChanges?.subscribe(() => {
       this.errMsg = this._vs.handleRequired(this?.control);
@@ -88,7 +83,7 @@ export class BaseControlComponent extends BaseJoinAction  implements OnInit {
   }
 
 
-  mergeParam(providedParameters: HttpServiceParam = this.param) {
+  override mergeParam(providedParameters: HttpServiceParam = this.param) {
     const query = { ...this.defaultParam?.query, ...providedParameters?.query };
     return { ...this.defaultParam, ...providedParameters, query };
   }

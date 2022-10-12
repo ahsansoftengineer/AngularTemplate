@@ -1,8 +1,8 @@
 import { Component , EventEmitter , Input , OnInit , Output } from '@angular/core';
 import { debounceTime, throttleTime } from 'rxjs';
-import { URLz } from 'src/app/enums/url.enum';
-import { ChangeEvent } from 'src/app/interface/common/change-event';
-import { SelectOption } from 'src/app/interface/common/select';
+import { URLz } from 'src/app/core/enums/url.enum';
+import { ChangeEvent } from 'src/app/core/interface/common/change-event';
+import { SelectOption } from 'src/app/core/interface/common/select';
 import { BaseControlComponent } from './base-control-z.component';
 
 @Component({
@@ -35,7 +35,7 @@ export class BaseControlCommonComponent extends BaseControlComponent implements 
   // tslint:disable-next-line: no-output-rename
   @Output('changeEvent') changeEvents = new EventEmitter<ChangeEvent>();
   list: SelectOption[] = [];
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     if (this.url) {
       this.defaultParam.endpoint = this.url;

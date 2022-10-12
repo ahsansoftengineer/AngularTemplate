@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 // import { NgxMatIntlTelInputComponent,  } from 'ngx-mat-intl-tel-input';
 import { NgxSpinnerModule } from "ngx-spinner";
@@ -22,6 +23,7 @@ const nGX_NGB_Other_Module = [
   // ShareButtonsModule,
   // ShareIconsModule,
   // MatSelectInfiniteScrollModule,
+  TranslateModule,
 
 ];
 @NgModule({

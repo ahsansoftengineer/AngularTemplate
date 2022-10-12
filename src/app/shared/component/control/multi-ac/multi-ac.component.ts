@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectOption } from 'src/app/interface/common/select';
+import { SelectOption } from 'src/app/core/interface/common/select';
 import { BaseControlACComponent } from '../base-control-ac.component';
 import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
 
@@ -11,7 +11,7 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
 })
 export class MultiAcComponent extends BaseControlACComponent implements OnInit {
 
-  ngOnInit(): void {
+  override  ngOnInit(): void {
     if(!this.preobj){
       this.param.query = {
         limit: 10,

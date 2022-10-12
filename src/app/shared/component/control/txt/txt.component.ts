@@ -20,7 +20,7 @@ export class TxtComponent extends BaseControlComponent implements OnInit, OnChan
   constructor(injector: Injector) {
     super(injector);
   }
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     if(this.disabled) this.control.disable();
   }
