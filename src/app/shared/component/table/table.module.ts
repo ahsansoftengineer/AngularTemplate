@@ -6,6 +6,7 @@ import { TblTxtComponent } from './tbl-txt/tbl-txt.component';
 import { DiPaginatorComponent } from './di-paginator/di-paginator.component';
 import { TblDateComponent } from './tbl-date/tbl-date.component';
 import { MatzModule } from '../../modules/matz.module';
+import { AngularzModule } from '../../modules/angularz.module';
 
 const control = [
   TblACComponent,
@@ -16,7 +17,7 @@ const control = [
 ];
 @NgModule({
   declarations: [control],
-  imports: [MatzModule, NGX_NGB_Other_Module],
+  imports: [AngularzModule, MatzModule, NGX_NGB_Other_Module],
   exports: [control],
 })
 export class TableModule {}

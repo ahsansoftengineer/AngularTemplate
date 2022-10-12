@@ -13,6 +13,7 @@ import { FormSubmitService } from '../service/form-submit.service';
 import { AngularServiceInjector } from './angular-service-injector';
 import { ValidatorService } from '../service/base.validator.service';
 import { FormHelperService } from '../service/form-helper.service';
+import { AppInjector } from '../static/AppInjector';
 // In Base Class append all the properties / methods with _ (underscore)
 
 // # 1 SOLID PRINCIPLE (Single Responsibility Principle)
@@ -20,36 +21,36 @@ import { FormHelperService } from '../service/form-helper.service';
 // 2. When you only want to Inject a Service
 @Component({template: ''})
 export abstract class BaseServiceInjector extends AngularServiceInjector   {
-  _http: HTTPService;
-  _fs: FormService;
-  _vs: ValidatorService;
-  _fhs: FormHelperService;
-  _fss: FormSubmitService;
-  _ss: StateService;
-  _css: ControlStateService;
-  _swl : SwalService;
+  public _http: HTTPService;
+  public _fs: FormService;
+  public _vs: ValidatorService;
+  public _fhs: FormHelperService;
+  public _fss: FormSubmitService;
+  public _ss: StateService;
+  public _css: ControlStateService;
+  public _swl : SwalService;
 
   // Enum Global Property for HTML Template
-  URLz = URLz; // For Template
-  IMG_URL = IMG_URL; // For Template
-  ACTION = ACTION; // For Template (Route Permission)
-  param: HttpServiceParam = {}; // Override this Property for Default Behaviour of HTTP Request
+  public URLz = URLz; // For Template
+  public IMG_URL = IMG_URL; // For Template
+  public ACTION = ACTION; // For Template (Route Permission)
+  public param: HttpServiceParam = {}; // Override this Property for Default Behaviour of HTTP Request
 
   // Guard Related Properties
-  _activeId: string;
-  _isExist: boolean;
-  _component = 'Override _component property in Component ngOnInit';
-  subscriptionArray: Subscription[] = [];
+  public _activeId: string;
+  public _isExist: boolean;
+  public _component = 'Override _component property in Component ngOnInit';
+  public subscriptionArray: Subscription[] = [];
   constructor(override injector: Injector) {
     super(injector)
-    this._http = injector.get(HTTPService);
-    this._fs = injector.get(FormService);
-    this._vs = injector.get(ValidatorService);
-    this._fhs = injector.get(FormHelperService);
-    this._swl = injector.get(SwalService);
-    this._css = injector.get(ControlStateService);
-    this._ss = injector.get(StateService);
-    this._fss = injector.get(FormSubmitService);
+    this._http = AppInjector.get(HTTPService);
+    this._fs = AppInjector.get(FormService);
+    this._vs = AppInjector.get(ValidatorService);
+    this._fhs = AppInjector.get(FormHelperService);
+    this._swl = AppInjector.get(SwalService);
+    this._css = AppInjector.get(ControlStateService);
+    this._ss = AppInjector.get(StateService);
+    this._fss = AppInjector.get(FormSubmitService);
   }
 
   // Future Reference for using ngOnChanges

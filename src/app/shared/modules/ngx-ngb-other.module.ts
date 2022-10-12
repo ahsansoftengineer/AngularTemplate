@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-import { NgxSpinnerModule } from 'ngx-spinner';
 // import { NgxMatIntlTelInputComponent,  } from 'ngx-mat-intl-tel-input';
-// import { NgxSpinnerModule } from "ngx-spinner";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 // import { NgxCurrencyModule } from "ngx-currency";
 // import { UiSwitchModule } from 'ngx-toggle-switch';
@@ -29,9 +28,7 @@ const nGX_NGB_Other_Module = [
   declarations: [
     // NgxMatIntlTelInputComponent
   ],
-  imports: [nGX_NGB_Other_Module],
-  exports: [
-    nGX_NGB_Other_Module,
-  ],
+  imports: nGX_NGB_Other_Module,
+  exports: nGX_NGB_Other_Module,
 })
 export class NGX_NGB_Other_Module { }

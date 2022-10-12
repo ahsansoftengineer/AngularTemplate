@@ -1,11 +1,12 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AngularzModule } from './shared/modules/angularz.module';
 import { RootzModule } from './shared/modules/rootz.module';
+import { AppInjector } from './core/static/AppInjector';
 
 @NgModule({
   declarations: [
@@ -22,10 +23,13 @@ import { RootzModule } from './shared/modules/rootz.module';
     RootzModule,
     SharedModule,
     AppRoutingModule,
-    BrowserAnimationsModule,
   ],
   providers: [
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(injector: Injector) {
+    AppInjector.injector = injector;
+  }
+}
