@@ -105,7 +105,6 @@
 2. Admin
 3. Customer
 4. Product etc...
-
 # [EXTERNAL LIBRARIES](#)
 ### For Linting Errors
 #### https://typescript-eslint.io/rules/no-inferrable-types/
