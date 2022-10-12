@@ -17,15 +17,9 @@
 16. Mostly Used Angular Services will be the Part of AngularServiceAbstractClass
 17. Mostly Used Helper Services will be the Part of HelperServiceAbstractClass
 18. Avoid using Third Party Libraries that Cause Update Problem
-19. Naming Conventions
-> * Files and Folder must be Kebab Case my-file
-> * Class Members Variable, properties Lower Camel Case myVariableName
-> * Classes Upper Camel Case MyClassName
-> * Global (Constant, Enums) Upper Case MY_CONST, MY_ENUMS
-> * Server Naming Convention Override Local Preference
-## [FILES AND FOLDER STRUCTURE](#)
+## [FOLDER AND FILES STRUCTURE](#)
 ### [CORE MODULE](#)
-> * Most Common Files as per Folder those Required at Application Level
+* * Most Common Files as per Folder those Required at Application Level
 #### Class
 1. Class Builders
 2. Abstract Classes
@@ -46,17 +40,17 @@
 7. State Service
 8. Swal Service
 9. Theme Services
-> * SideBar
-> * Header
+* * SideBar
+* * Header
 #### Interface
 1. ServerMultipleResponse
 2. ServerSingleResponse
 3. ValidatorParamInterface
 4. HttpParamInterface
 #### Constants
-> * Pure Functions
+* Pure Functions
 #### Static Class
-> * Group of Functions
+* Group of Functions
 #### Enums
 1. Permission
 2. Action
@@ -69,32 +63,32 @@
 4. RootModule
 #### Components Module (Controls Component)
 1. Dialog Module (Dialog Boxs)
-> * Confirmation
-> * Success
+* * Confirmation
+* * Success
 2. Controls
-> * Text
-> * Dropdown
-> * AutoComplete
-> * Table
-> * Utils
+* * Text
+* * Dropdown
+* * AutoComplete
+* * Table
+* * Utils
 #### Pipes
-> * DateTime
-> * Currency
+* * DateTime
+* * Currency
 #### Partial
-> * Content Projection 
+* * Content Projection 
 #### Decorator
 #### Directive
-> * Permission
-> * Form Control
-> * Has
+* * Permission
+* * Form Control
+* * Has
 #### Guards / Resolver
-> * DisRegard
-> * IsUser
-> * hasRole
+* * DisRegard
+* * IsUser
+* * hasRole
 #### Interceptors
-> * AccessToken
-> * Auth
-> * Loader
+* * AccessToken
+* * Auth
+* * Loader
 ### [THEME MODULE](#)
 1. Sidebar (Left, Rigth, Top, Bottom)
 2. Headers
@@ -111,3 +105,49 @@
 2. Admin
 3. Customer
 4. Product etc...
+# [EXTERNAL LIBRARIES](#)
+### For Linting Errors
+#### https://typescript-eslint.io/rules/no-inferrable-types/
+
+### tsconfig.json
+```json
+  "compilerOptions": {
+    "strict":false,
+    "noImplicitAny": false,
+    "noPropertyAccessFromIndexSignature": false,
+```
+### Dependencies
+```json
+    "@ngx-translate/core": "^14.0.0",
+    "@ngx-translate/http-loader": "^7.0.0",
+    "libphonenumber-js": "^1.10.13",
+    "ngx-cookie-service": "^14.0.1",
+    "ngx-mat-intl-tel-input": "^5.0.0",
+    "ngx-mat-select-search": "^4.2.1",
+    "ngx-spinner": "^14.0.0",
+    "ngx-toastr": "^15.0.0",
+    "sweetalert2": "^11.4.32",
+```
+### Dev Dependencies
+```json
+    "@angular-eslint/eslint-plugin": "^14.0.4",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "eslint": "^8.23.1",
+    "ngx-mat-intl-tel-input": "^5.0.0",
+    "ngx-mat-select-search": "^4.2.1",
+    npm i prettier-eslint
+
+```
+### Disabled Linting Errors
+```json
+"off" or 0 - turn the rule off
+"warn" or 1 - turn the rule on as a warning (doesn't affect exit code)
+"error" or 2 - turn the rule on as an error (exit code will be 1)
+
+
+.eslintrc.json
+  "rules": {
+    "@typescript-eslint/no-inferrable-types": "warn"
+  },
+```

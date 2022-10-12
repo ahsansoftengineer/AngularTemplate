@@ -1,0 +1,8 @@
+<mat-paginator
+  [length]="tbl?.length"
+  [pageIndex]="tbl?.index"
+  [pageSize]="tbl?.size"
+  [pageSizeOptions]="tbl?.sizes"
+  (page)="_paginate($event)"
+  showFirstLastButtons
+></mat-paginator>

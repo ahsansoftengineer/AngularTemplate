@@ -1,0 +1,7 @@
+<mat-form-field appearance="outline"  class="col-md-12 my-1"
+ [ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
+  <mat-label>{{ lbl | translate }}</mat-label>
+  <input matInput autocomplete="off"  (blur)='FuncBlur($event)'
+  [formControl]="control" [required]='req' [readonly]="readonly"  [type]='type'>
+  <mat-error *ngIf="control?.touched" >{{ errMsg  }}</mat-error>
+</mat-form-field>

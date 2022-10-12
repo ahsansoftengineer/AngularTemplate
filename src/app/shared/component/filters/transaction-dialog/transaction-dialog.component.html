@@ -1,0 +1,78 @@
+<div class="card-header custom__card__body__styling">
+  <h2 mat-dialog-title [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }">
+    <div class="col-md-12 pl-0">
+      {{'Please Select Hierarchy' | translate}}
+    </div>
+  </h2>
+</div>
+<div class="px-3 mt-2">
+  <form [formGroup]="_fs._form" autocomplete="off">
+    <div class="row" formGroupName="hierarchy">
+      <ng-container
+        *ngIf="_fhs._hasGroup('hierarchy','from_date') && _fhs._hasGroup('hierarchy','to_date')">
+        <di-date
+          field='from_date' lbl="From Date"
+          groupName='hierarchy'
+          toDate="to_date"
+          [ngClass]="applyDate"
+        ></di-date>
+        <di-date
+          field='to_date' lbl="To Date"
+          groupName='hierarchy'
+          [ngClass]="applyDate"
+          fromDate="from_date"
+        ></di-date>
+      </ng-container>
+      <!-- <di-ddd field='organisation_id' lbl="Organization" groupName='hierarchy'
+        [url]="URLz.ORG" [oneTimeLoad]='true' [load]='false' [child]="sys"
+        [ngClass]="applyClass"
+      ></di-ddd> -->
+      <di-dd field='organisation_id' lbl="Organization" groupName='hierarchy'
+      [url]="URLz.ORG" [child]="sys"
+      [ngClass]="applyClass">
+    </di-dd>
+      <di-dd field='system_id' lbl="System" groupName='hierarchy'
+        [url]="URLz.ORG_SYSTEM" [load]="false" [child]="bg"
+        [ngClass]="applyClass" #sys>
+      </di-dd>
+      <di-dd field='bg' lbl="Business Group" groupName='hierarchy'
+        [url]="URLz.BG" [load]="false" [child]="le"
+        [ngClass]="applyClass" #bg>
+      </di-dd>
+      <di-dd field='le' lbl="Legal Entity" groupName='hierarchy'
+        [url]="URLz.LE" [load]="false" [child]='ou'
+        [ngClass]="applyClass"#le>
+      </di-dd>
+      <di-dd field='ou' lbl="Operating Unit" groupName='hierarchy'
+        [url]="URLz.OU" [load]="false" [child]='su'
+        [ngClass]="applyClass" #ou>
+      </di-dd>
+      <di-dd field='su' lbl="Sub Unit" groupName='hierarchy'
+        [url]="URLz.SU" [load]="false"
+        [ngClass]="applyClass"  (valueChanges)="_storePlacement($event)"
+        #su>
+      </di-dd>
+        <!-- *has -->
+      <di-dd field='dco'
+        *ngIf="_fhs._hasGroup('hierarchy','dco')"
+        lbl="Donation Cell Office" groupName='hierarchy' parentFCName='su'
+        [url]="URLz.DCO"
+        [ngClass]="applyClass"
+        [load]='false'
+      ></di-dd>
+    </div>
+  </form>
+</div>
+<div mat-dialog-actions>
+  <div class="col-md-6 pl-1">
+    <mat-checkbox *ngIf="!data?.hideCheckBox" color="primary" [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }" [(ngModel)]='this._ss.permission_data_local_status'>
+    {{"Don't show popup" | translate}}
+  </mat-checkbox>
+  </div>
+  <div class="col-md-6 text-right pr-2">
+    <button mat-raised-button class="btn btn-success" mat-button (click)="_close()"
+    [disabled]="_disabledButton() || btnDisable " [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }">
+      {{"Process" | translate}}
+    </button>
+  </div>
+</div>

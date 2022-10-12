@@ -1,0 +1,6 @@
+b .asterik_required{
+  color: gray
+}
+b .asterik_required:hover{
+  color: red
+}

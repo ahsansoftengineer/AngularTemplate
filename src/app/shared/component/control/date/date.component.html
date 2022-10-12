@@ -1,0 +1,19 @@
+<mat-form-field appearance="outline" class="col-md-12 my-1"
+[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
+  <mat-label>{{ lbl | translate}}</mat-label>
+  <input
+    matInput
+    [matDatepicker]="picker"
+    [min]='min'
+    [max]='max'
+    readonly
+    [formControl]="control"
+    [required]='req'
+    [disabled]='disabled'
+    (click)='picker.open()'
+  >
+  <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+  <mat-datepicker-toggle [disabled]="disabled" matSuffix [for]="picker">
+  </mat-datepicker-toggle>
+  <mat-datepicker minutes="true" #picker [disabled]="disabled"></mat-datepicker>
+</mat-form-field>

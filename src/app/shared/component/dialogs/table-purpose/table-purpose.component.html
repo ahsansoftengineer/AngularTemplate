@@ -1,0 +1,32 @@
+<h2 mat-dialog-title> {{ data.title }}</h2>
+<h3 mat-dialog-title></h3>
+<!-- <mat-dialog-content class="mat-typography"> -->
+<div class="col-md-12">
+  <div class="mat_table">
+    <table mat-table matSort [dataSource]="_dataSource">
+      <ng-container matColumnDef="id">
+        <th  style="width: 40px" mat-header-cell *matHeaderCellDef>{{ 'S No' | translate }}</th>
+        <td mat-cell *matCellDef="let item; let i = index"> {{i +1}} </td>
+      </ng-container>
+      <ng-container matColumnDef="donation_type">
+        <th class="px-3" mat-header-cell *matHeaderCellDef>Donation Type</th>
+        <td class="px-3" mat-cell *matCellDef="let item">
+          {{item.donation_type.title}} </td>
+      </ng-container>
+      <ng-container matColumnDef="donation_category">
+        <th class="px-3" mat-header-cell *matHeaderCellDef>Donation Category</th>
+        <td class="px-3" mat-cell *matCellDef="let item"> {{item.donation_category}} </td>
+      </ng-container>
+      <ng-container matColumnDef="fund_category">
+        <th class="px-3" mat-header-cell *matHeaderCellDef>Fund Category</th>
+        <td class="px-3" mat-cell *matCellDef="let item"> {{item.fund_category.title}} </td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="_columns; sticky:true"></tr>
+      <tr mat-row *matRowDef="let row; columns: _columns;"></tr>
+    </table>
+  </div>
+</div>
+<mat-dialog-actions align="end">
+  <button mat-raised-button  mat-raised-button class="btn btn-info waves-effect waves-light custon__btns__class"  mat-dialog-close>Close</button>
+</mat-dialog-actions>
+<!-- </mat-dialog-content> -->

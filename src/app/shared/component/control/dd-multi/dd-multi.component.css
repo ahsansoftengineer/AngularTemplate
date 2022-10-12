@@ -1,0 +1,8 @@
+:host /deep/ .mat-primary .mat-pseudo-checkbox-checked,
+:host /deep/ .mat-primary .mat-pseudo-checkbox-indeterminate {
+  background: #039be5 !important;
+}
+
+:host /deep/ .mat-primary .mat-option.mat-selected:not(.mat-option-disabled) {
+  color: #039be5 !important;
+}

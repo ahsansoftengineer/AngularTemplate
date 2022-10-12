@@ -1,0 +1,34 @@
+<mat-form-field appearance="outline" *ngIf="control && !hide" class="col-md-12 my-1"
+[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
+  <mat-label>{{ lbl | translate}}</mat-label>
+  <mat-select [formControl]="control" [required]='req' [disabled]="disabled">
+    <mat-option
+      *ngIf="!req"
+      [value]="null"
+      (onSelectionChange)='changeEvent(null, $event)'
+      [disabled]="control.value == null"
+    >Please Select {{ lbl }}</mat-option>
+    <mat-option
+      *ngIf="!list?.length && control?.value == preobj?.id"
+      [disabled]="control.value == preobj?.id"
+      [value]="preobj?.id"
+    >{{ renderRow(preobj) }}</mat-option>
+    <ng-container *ngIf="!this._css._ddOneTimeLoad[this.field]">
+      <mat-option
+        *ngFor="let item of list"
+        [value]="item.id"
+        (onSelectionChange)='changeEvent(item, $event)'
+        [disabled]="control.value == item.id"
+      >{{ renderRow(item) }}</mat-option>
+    </ng-container>
+    <ng-container *ngIf="this._css._ddOneTimeLoad[this.field]">
+      <mat-option
+        *ngFor="let item of this._css._ddOneTimeLoad[this.field]"
+        [value]="item.id"
+        (onSelectionChange)='changeEvent(item, $event)'
+        [disabled]="control.value == item.id"
+     > {{ renderRow(item) }}</mat-option>
+    </ng-container>
+  </mat-select>
+  <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+</mat-form-field>

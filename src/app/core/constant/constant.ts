@@ -1,0 +1,1 @@
+export const MAX_VALIDATOR = 99999999999999.99
