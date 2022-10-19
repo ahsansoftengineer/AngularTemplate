@@ -111,27 +111,27 @@
 - All Reusable Components CSS Should Resides in SASS
 - Following is the Archetecture
 1. abstracts/
-> * *  _variables.scss
-> * *  _functions.scss
-> * *  _mixins.scss
-> * *  _placeholders.scss
+> *  _variables.scss
+> *  _functions.scss
+> *  _mixins.scss
+> *  _placeholders.scss
 2. base/
-> * *  _reset.scss        # Reset/normalize
-> * *  _typography.scss   # Typography rules
+> *  _reset.scss        # Reset/normalize
+> *  _typography.scss   # Typography rules
 3. components/
-> * *  _buttons.scss      # Buttons
-> * *  _carousel.scss     # Carousel
-> * *  _dropdown.scss     # Dropdown
+> *  _buttons.scss      # Buttons
+> *  _carousel.scss     # Carousel
+> *  _dropdown.scss     # Dropdown
 4. layout/
-> * * _navigation.scss 
-> * * _grid.scss
-> * * _header.scss
+> * _navigation.scss 
+> * _grid.scss
+> * _header.scss
 5. themes/
-> * * _theme.scss        # Default theme
-> * * _admin.scss        # Admin theme
+> * _theme.scss        # Default theme
+> * _admin.scss        # Admin theme
 6. vendors/
-> * * _bootstrap.scss    # Bootstrap
-> * * _jquery-ui.scss    # jQuery UI
+> * _bootstrap.scss    # Bootstrap
+> * _jquery-ui.scss    # jQuery UI
 
 # [EXTERNAL LIBRARIES](#)
 ### For Linting Errors
