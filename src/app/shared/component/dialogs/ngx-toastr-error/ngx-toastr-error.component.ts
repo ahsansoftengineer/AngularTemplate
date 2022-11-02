@@ -56,8 +56,8 @@ export class NgxToastrErrorComponent  extends Toast {
 
   // constructor is only necessary when not using AoT
   constructor(
-    protected toastrService: ToastrService,
-    public toastPackage: ToastPackage,
+    protected override toastrService: ToastrService,
+    public override toastPackage: ToastPackage,
   ) {
     super(toastrService, toastPackage);
   }

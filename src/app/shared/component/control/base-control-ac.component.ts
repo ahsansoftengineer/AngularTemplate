@@ -13,6 +13,7 @@ import { BaseControlBridgeComponent } from './base-control-w-temp-ref-var.compon
 export class BaseControlACComponent extends BaseControlBridgeComponent implements OnInit {
   @Input() length = 3
   @Input() oneTimeLoad: boolean;
+  searching: boolean;
   searchControl: FormControl = new FormControl()
   temp: SelectOption[];
   listForTemp = []

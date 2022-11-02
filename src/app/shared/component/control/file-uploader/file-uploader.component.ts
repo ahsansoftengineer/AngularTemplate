@@ -67,7 +67,7 @@ export class FileUploaderComponent extends BaseControlComponent implements OnIni
     this._submitted = true;
   }
 
-  _error_file(file: DIFiles) {
+  _error_file(file: DIFiles): string {
     if (file.error === 'type') return file.fileExtensMsg;
     else if (file.error === 'size')   {
       if(this._translate.currentLang === 'en'){
@@ -79,7 +79,6 @@ export class FileUploaderComponent extends BaseControlComponent implements OnIni
 
       }
       return 'File Size is Greater than 2MB';
-      return
     }
     else if (file.error === 'req') {
       return this.getMessage(file.lbl)
@@ -88,13 +87,14 @@ export class FileUploaderComponent extends BaseControlComponent implements OnIni
     else if ((!file.link || file.link == '') && this._submitted) {
       return this.getMessage(file.lbl)
     }
-    else return '';
+    return '';
   }
-  getMessage(lbl){
+  getMessage(lbl) : string{
     if(this._translate.currentLang === 'en'){
       return 'Please select ' + lbl;
     }else if(this._translate.currentLang === 'ur'){
       return  ' براہ کرم'.concat(' ', this._translate?.instant(lbl), ' ', 'منتخب کریں۔')
     }
+    return ''
   }
 }

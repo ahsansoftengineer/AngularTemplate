@@ -1,7 +1,7 @@
   <mat-form-field appearance="outline" class="col-md-12 my-1"
   [ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
     <mat-label>{{ lbl | translate}}</mat-label>
-    <ngx-mat-intl-tel-input
+    <!-- <ngx-mat-intl-tel-input
       autocomplete="off"
       [disabled]="disabled"
       cssClass="custom"
@@ -12,7 +12,7 @@
       [name]="field"
       #phone
       [formControl]="control" [required]='req'>
-    </ngx-mat-intl-tel-input>
+    </ngx-mat-intl-tel-input> -->
     <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
     <mat-error *ngIf="control?.touched && control?.errors?.validatePhoneNumber">
       Invalid Number

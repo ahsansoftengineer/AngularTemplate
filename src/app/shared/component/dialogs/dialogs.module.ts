@@ -7,6 +7,7 @@ import { TablePurposeComponent } from './table-purpose/table-purpose.component';
 import { TransactionDetailComponent } from './transaction-detail/transaction-detail.component';
 import { TableModule } from '../table/table.module';
 import { MatzModule } from '../../modules/matz.module';
+import { AngularzModule } from '../../modules/angularz.module';
 
 const Dialogs = [
   ImgViewComponent,
@@ -19,6 +20,7 @@ const Dialogs = [
     Dialogs,
   ],
   imports: [
+    AngularzModule,
     MatzModule,
     NGX_NGB_Other_Module,
     ControlModule,

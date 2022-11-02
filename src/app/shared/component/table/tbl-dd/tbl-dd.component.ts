@@ -1,4 +1,4 @@
-import { Component, Injector, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { BaseControlDDComponent } from '../../control/base-control-dd.component';
 
 @Component({

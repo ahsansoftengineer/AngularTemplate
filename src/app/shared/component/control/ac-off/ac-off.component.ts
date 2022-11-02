@@ -12,6 +12,7 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
   host: { class: CONTROL_HOST_CSS_CLASS },
 })
 export class AcOffComponent extends BaseControlSubscriptionComponent implements OnInit {
+  searching= true;
   searchControl: FormControl = new FormControl();
   temp: SelectOption[] = []
   @Input() oneTimeLoad: boolean;

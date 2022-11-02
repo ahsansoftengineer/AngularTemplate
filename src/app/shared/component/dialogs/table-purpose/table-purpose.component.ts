@@ -1,8 +1,7 @@
-import { Component, Inject, Injector, OnInit } from '@angular/core';
-import { inject } from '@angular/core/testing';
+import { Component, Inject, Injector } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
-import { BaseDialog } from 'src/app/class/base-dialog';
+import { BaseDialog } from 'src/app/core/class/base-dialog';
 
 @Component({
   selector: 'di-component-name-here',

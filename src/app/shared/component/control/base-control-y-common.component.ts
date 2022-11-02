@@ -69,7 +69,7 @@ export class BaseControlCommonComponent extends BaseControlComponent implements 
       })
     }
   }
-  changeEvent(itm, event) {
+  public changeEvent(itm, event) {
     const changeEvnt: ChangeEvent = {
       ...this.nullObject,
       event
