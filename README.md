@@ -189,7 +189,8 @@
     "eslint": "^8.23.1",
     "ngx-mat-intl-tel-input": "^5.0.0",
     "ngx-mat-select-search": "^4.2.1",
-    npm i prettier-eslint
+    npm i prettier -D
+    npx prettier --write .
 
 ```
 
