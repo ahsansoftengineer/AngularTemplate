@@ -29,7 +29,7 @@ export class PermissionGuard implements CanActivateChild {
       this._ss.permission = []
       return false
     }
-    this.setPermissionToRoute(this._ss.flattenSideBarMenus);
+    this.setPermissionToRoute(this._ss['flattenSideBarMenus']);
     // console.log(this._ss?.permission)
     // PREPARE AUTH CONDITIONS
     const intersection: Permission[] = this._ss?.permission.filter((element) =>

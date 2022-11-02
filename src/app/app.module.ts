@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { AngularzModule } from './shared/modules/angularz.module';
 import { RootzModule } from './shared/modules/rootz.module';
+import { UtilsModule } from './shared/component/utils/utils.module';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import { RootzModule } from './shared/modules/rootz.module';
     SharedModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    UtilsModule
   ],
   providers: [
   ],

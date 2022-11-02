@@ -1,6 +1,6 @@
 import { Injector, Pipe, PipeTransform } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { ValidatorService } from 'src/app/service/base.validator.service';
+import { ValidatorService } from 'src/app/core/service/base.validator.service';
 
 @Pipe({
   name: 'errorMsg'

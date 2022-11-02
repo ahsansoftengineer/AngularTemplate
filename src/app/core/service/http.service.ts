@@ -1,14 +1,14 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, Injector } from '@angular/core';
-import { Observable, of, throwError } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
-import { environment } from '../../environments/environment';
 import { URLz } from '../enums/url.enum';
 import { ServerMultipleResponseDropDown } from '../interface/common/select';
 import { ServerMultipleResponse } from '../interface/common/server-multiple-response';
 import { ServerSingleResponse } from '../interface/common/server-single-response';
 import { HttpServiceParam } from '../interface/common/http-service-param';
 import { AngularServiceInjector } from '../class/angular-service-injector';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root',
