@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable, of, catchError } from 'rxjs';
+import { catchError } from 'rxjs';
 import { debounceTime, distinctUntilChanged, filter, map, switchMap, throttleTime } from 'rxjs/operators';
-import { SelectOption } from 'src/app/interface/common/select';
+import { SelectOption } from 'src/app/core/interface/common/select';
 import { BaseControlBridgeComponent } from './base-control-w-temp-ref-var.component';
 
 @Component({
@@ -18,7 +18,7 @@ export class BaseControlACComponent extends BaseControlBridgeComponent implement
   listForTemp = []
   totalRecords: number;
   // ACDepcurrentValue = '';
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     if(this.parentFC) this.loadByParentFormControl()
     else if (this.load) this._AutoCompleteSubscription()

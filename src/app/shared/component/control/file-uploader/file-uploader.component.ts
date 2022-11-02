@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
-import { DIFiles } from 'src/app/interface/common/di-files';
+import { DIFiles } from 'src/app/core/interface/common/di-files';
 import { BaseControlComponent } from '../base-control-z.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class FileUploaderComponent extends BaseControlComponent implements OnIni
     super(injector);
   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
   }
 

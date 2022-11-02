@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormArray, FormControl } from '@angular/forms';
-import { ChangeEvent } from 'src/app/interface/common/change-event';
 import { BaseControlDDComponent } from '../base-control-dd.component';
 import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
 
@@ -11,7 +10,7 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
   host: { class: CONTROL_HOST_CSS_CLASS },
 })
 export class DdMultiIiComponent extends BaseControlDDComponent implements OnInit {
-  changeEvent(itm, event) {
+  override changeEvent(itm, event) {
     super.changeEvent(itm, event)
     if (event?.event?.isUserInput) {
       if(this.control instanceof FormArray){

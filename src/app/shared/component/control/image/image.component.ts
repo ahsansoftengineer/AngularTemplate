@@ -1,5 +1,5 @@
 import { Component, Injector, Input, OnInit } from '@angular/core';
-import { ImgType } from 'src/app/interface/common/img-type';
+import { ImgType } from 'src/app/core/interface/common/img-type';
 import { BaseControlComponent } from '../base-control-z.component';
 
 @Component({
@@ -17,7 +17,7 @@ export class ImageComponent extends BaseControlComponent implements OnInit{
     super(injector);
   }
 
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
 
     if(this.lbl != undefined && this.lbl != ''){

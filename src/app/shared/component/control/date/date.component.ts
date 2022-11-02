@@ -25,7 +25,7 @@ export class DateComponent extends BaseControlComponent  implements OnInit, OnCh
   // constructor(injector: Injector) {
   //   super(injector);
   // }
-  ngOnInit(): void {
+  override ngOnInit(): void {
     this.datePipe = this.injector.get(DatePipe)
     super.ngOnInit();
     if (this.disabled) this.control.disable();

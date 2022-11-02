@@ -6,6 +6,7 @@ import { NGX_NGB_Other_Module } from './modules/ngx-ngb-other.module';
 import { PipesModule } from './pipes/pipes.module';
 import { MatzModule } from './modules/matz.module';
 import { DirectiveModule } from './directives/directive.module';
+import { ComponentModule } from './component/component.module';
 
 
 const CommonModules = [
@@ -14,7 +15,8 @@ const CommonModules = [
   MatzModule,
   NGX_NGB_Other_Module,
   PipesModule,
-  DirectiveModule
+  DirectiveModule,
+  ComponentModule
 ]
 @NgModule({
   imports: [ CommonModules],

@@ -6,15 +6,7 @@ import { BaseControlComponent } from '../../control/base-control-z.component';
   templateUrl: './tbl-txt.component.html',
   styleUrls: ['./tbl-txt.component.css'],
 })
-export class TblTxtComponent
-  extends BaseControlComponent
-  implements OnInit
+export class TblTxtComponent extends BaseControlComponent implements OnInit
 {
   @Input('type') type: string = 'text';
-  constructor(injector: Injector) {
-    super(injector);
-  }
-  ngOnInit(): void {
-    super.ngOnInit();
-  }
 }

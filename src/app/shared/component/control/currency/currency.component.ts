@@ -15,12 +15,9 @@ import { BaseControlComponent, CONTROL_HOST_CSS_CLASS } from '../base-control-z.
   styleUrls: ['./currency.component.css'],
   host: {class: CONTROL_HOST_CSS_CLASS}
 })
-export class CurrencyComponent extends BaseControlComponent
-
-  implements OnInit, OnChanges {
-  control: FormControl;
+export class CurrencyComponent extends BaseControlComponent  implements OnInit, OnChanges {
   @Input() options: Partial<CurrencyMaskConfig>;
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     if (this.disabled) this.control.disable();
   }

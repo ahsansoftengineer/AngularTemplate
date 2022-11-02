@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { debounceTime, throttleTime } from 'rxjs';
-import { URLz } from 'src/app/enums/url.enum';
+import { URLz } from 'src/app/core/enums/url.enum';
 import { BaseControlBridgeComponent } from './base-control-w-temp-ref-var.component';
 
 @Component({
@@ -9,7 +9,7 @@ import { BaseControlBridgeComponent } from './base-control-w-temp-ref-var.compon
 })
 //Dropdown
 export class BaseControlDDComponent extends BaseControlBridgeComponent implements OnInit {
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     if (this.child) this.controlSubscription('DD');
     if (this.load && !this.prelist?.length && !this.preobj) {
@@ -25,11 +25,11 @@ export class BaseControlDDComponent extends BaseControlBridgeComponent implement
       throttleTime(450) // For Edit Case
       )
       .subscribe((val) => {
-        if (this.url === URLz.ORG) {
-          this._http.org_id = val;
-        } else if (this.url === URLz.ORG_SYSTEM) {
-          this._http.sys_id = val;
-        }
+        // if (this.url === URLz.ORG) {
+        //   this._http.org_id = val;
+        // } else if (this.url === URLz.ORG_SYSTEM) {
+        //   this._http.sys_id = val;
+        // }
         if (childType === 'DD') this.loadChildDD(val);
       });
       this.subscriptionArray.push(subs)

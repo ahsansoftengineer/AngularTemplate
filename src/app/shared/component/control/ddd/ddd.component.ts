@@ -12,8 +12,8 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
 export class DddComponent extends BaseControlDDComponent implements OnInit {
   @Input() parent: DddComponent;
   @Input() oneTimeLoad: boolean;
-  @Input() retainState = true;
-  ngOnInit(): void {
+  @Input() override retainState = true;
+  override ngOnInit(): void {
     super.ngOnInit();
     if(this.parent) this.childLoadingDataByParent();
     if (this.oneTimeLoad) {

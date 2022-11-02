@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs';
-import { SelectOption } from 'src/app/interface/common/select';
+import { SelectOption } from 'src/app/core/interface/common/select';
 import { BaseControlSubscriptionComponent } from '../base-control-x-subscription.component';
 import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
 
@@ -18,7 +18,7 @@ export class AcOffComponent extends BaseControlSubscriptionComponent implements 
   search  = '';
   offset = 0;
   limit = 10;
-  ngOnInit() {
+  override ngOnInit() {
     super.ngOnInit();
     if(this.load) this.getDataFirstTime();
     else if (!this.load && this.parentFC) {
