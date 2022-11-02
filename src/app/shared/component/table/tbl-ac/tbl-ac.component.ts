@@ -1,5 +1,5 @@
 import { Component, Injector, OnInit } from '@angular/core';
-import { Custom } from 'src/app/static/custom';
+import { Custom } from 'src/app/core/static/custom';
 import { BaseControlACComponent } from '../../control/base-control-ac.component';
 
 @Component({
@@ -8,7 +8,7 @@ import { BaseControlACComponent } from '../../control/base-control-ac.component'
   styleUrls: ['./tbl-ac.component.css']
 })
 export class TblACComponent extends BaseControlACComponent implements OnInit {
-  ngOnInit(): void {
+  override ngOnInit(): void {
     super.ngOnInit();
     this.searchControl.valueChanges.subscribe(x => {
       if(!Custom.emptyCheck(x)){

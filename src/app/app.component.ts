@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseJoinAction } from './class/base-join-actions';
-import { ProviderService } from './service/provider.service';
+import { BaseJoinAction } from './core/class/base-join-actions';
+import { ProviderService } from './core/service/provider.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

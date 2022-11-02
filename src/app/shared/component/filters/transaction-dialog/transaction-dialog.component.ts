@@ -1,8 +1,8 @@
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, Injector } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BaseForm } from 'src/app/class/base.form';
-import { URLz } from 'src/app/enums/url.enum';
+import { BaseForm } from 'src/app/core/class/base.form';
+import { URLz } from 'src/app/core/enums/url.enum';
 
 @Component({
   selector: 'app-transaction-dialog',
@@ -29,7 +29,7 @@ export class TransactionDialogComponent extends BaseForm{
       this.dialogRef.close();
     }else {
       this._http.get({
-        endpoint: URLz.OU_PREFIX,
+        endpoint: URLz.DEFAULT,
         query: hierarchy
       }).subscribe({
         next: (res) => {
@@ -45,27 +45,26 @@ export class TransactionDialogComponent extends BaseForm{
     }
   }
   savingPermissionDataLocally(data: OU_PREFIX){
-    this._ss.permission_data_local = {
-      ...this._fs._form.get('hierarchy').value,
-      days_limit: data.days_limit,
-      display_receipt_date: data.display_receipt_date,
-      transaction_receipt_date: data.transaction_receipt_date,
-      ou_prefix_status: data.status,
-      currency_id: data?.currency_id,
-      currency: data?.currency
-
-    }
-    if(this._ss.permission_data_local_status){
-      // Saving the Current State in local Storage
-      localStorage.setItem(
-        'permission_data_local',
-        btoa(JSON.stringify(this._ss.permission_data_local))
-      );
-    }else {
-      localStorage.removeItem('permission_data_local')
-    }
+    // this._ss.permission_data_local = {
+    //   ...this._fs._form.get('hierarchy').value,
+    //   days_limit: data.days_limit,
+    //   display_receipt_date: data.display_receipt_date,
+    //   transaction_receipt_date: data.transaction_receipt_date,
+    //   ou_prefix_status: data.status,
+    //   currency_id: data?.currency_id,
+    //   currency: data?.currency
+    // }
+    // if(this._ss.permission_data_local_status){
+    //   // Saving the Current State in local Storage
+    //   localStorage.setItem(
+    //     'permission_data_local',
+    //     btoa(JSON.stringify(this._ss.permission_data_local))
+    //   );
+    // }else {
+    //   localStorage.removeItem('permission_data_local')
+    // }
   }
-  _disabledButton() {
+  _disabledButton() : boolean | void {
     if(this._fs._form.get('hierarchy')) return this._fs._form.get('hierarchy').invalid;
   }
 
@@ -73,7 +72,7 @@ export class TransactionDialogComponent extends BaseForm{
     if (this.url.indexOf('material') != -1){
       if(su){
         this._http.get({
-          endpoint:URLz.CHECK_DEFAULT_LOC,
+          endpoint:URLz.DEFAULT,
           query: {su}
         }).subscribe({
           next: () => {

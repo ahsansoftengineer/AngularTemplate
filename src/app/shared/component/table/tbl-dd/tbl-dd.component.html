@@ -3,7 +3,8 @@
     {{ lbl | translate}}
   </option>
   <option class="search" style="padding: 5px;" [disabled]="control.value == item.id"
-    (onSelectionChange)='changeEvent({ who:field, id: item.id, code: item[key_id], obj: item, event: $event})' *ngFor="let item of list" [value]="item.id">
+    (onSelectionChange)='changeEvent(item, $event)' 
+    *ngFor="let item of list" [value]="item.id">
     {{item.title}}
   </option>
 </select>

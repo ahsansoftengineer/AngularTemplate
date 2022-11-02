@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { DirectiveModule } from '../../directives/directive.module';
+import { AngularzModule } from '../../modules/angularz.module';
 import { MatzModule } from '../../modules/matz.module';
 import { NGX_NGB_Other_Module } from '../../modules/ngx-ngb-other.module';
 import { ControlModule } from '../control/control.module';
@@ -14,7 +15,9 @@ const CommonComponents = [
     CommonComponents,
   ],
   imports: [
+    AngularzModule,
     MatzModule,
+    ControlModule,
     NGX_NGB_Other_Module,
     ControlModule,
     DirectiveModule

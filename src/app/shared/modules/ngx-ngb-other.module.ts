@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { TranslateModule } from '@ngx-translate/core';
+import { NgxCurrencyModule } from 'ngx-currency';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
-// import { NgxMatIntlTelInputComponent,  } from 'ngx-mat-intl-tel-input';
+// import { NgxMatIntlTelInputComponent  } from 'ngx-mat-intl-tel-input';
 import { NgxSpinnerModule } from "ngx-spinner";
 
-// import { NgxCurrencyModule } from "ngx-currency";
 // import { UiSwitchModule } from 'ngx-toggle-switch';
 // import { MatPasswordStrengthModule } from '@angular-material-extensions/password-strength';
 // import { ShareButtonsModule } from 'ngx-sharebuttons/buttons';
@@ -16,7 +16,7 @@ import { NgxSpinnerModule } from "ngx-spinner";
 const nGX_NGB_Other_Module = [
   // NgxMatIntlTelInputModule,
   NgxMatSelectSearchModule,
-  // NgxCurrencyModule,
+  NgxCurrencyModule,
   NgxSpinnerModule,
   // NgxViewerModule,
   // UiSwitchModule,

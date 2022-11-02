@@ -58,7 +58,7 @@ export class SideBarMenusGuard implements CanActivateChild {
   }
   setSideBarMenus(arr: SideBarMenus[]) {
     this._ss.sideBarMenus = arr;
-    if (!this._ss.flattenSideBarMenus) {
+    if (!this._ss['flattenSideBarMenus']) {
       this.transformedArray = [];
       this.flatten(arr);
       this.transformedArray
@@ -70,7 +70,7 @@ export class SideBarMenusGuard implements CanActivateChild {
           return 0;
         })
         .reverse();
-      this._ss.flattenSideBarMenus = this.transformedArray;
+      this._ss['flattenSideBarMenus'] = this.transformedArray;
       // console.log(this._ss.flattenSideBarMenus)
     }
   }

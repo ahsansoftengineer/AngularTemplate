@@ -6,8 +6,6 @@ import { HttpServiceParam } from '../interface/common/http-service-param';
 import { FormService } from './form.service';
 import { HTTPService } from './http.service';
 import { TranslateService } from '@ngx-translate/core';
-import { Cash } from '../model/transaction/cash.form';
-import { RECEIPT_TYPE } from '../model/transaction/enum';
 import { environment } from 'src/environments/environment';
 import { URLz } from '../enums/url.enum';
 import { AngularServiceInjector } from '../class/angular-service-injector';
@@ -112,73 +110,6 @@ export class SwalService extends AngularServiceInjector {
         });
       } else {
         handleCondition(false);
-      }
-    });
-  }
-  public cashDepositBankWajiba(type: any, amount: any) {
-    this.swal(
-      'Error',
-      this._translate.instant('DEPOSIT_BANK_WAJIBA', {amount, type}),
-      'error'
-    );
-  }
-  // REPLACE THIS WITH swl.swal();
-  public genericSwal(text: any = '', icon: any = '', title: any = '') {
-    this.swal(title, text, icon)
-  }
-  public transCancel(
-    item: Cash,
-    receipt_type: RECEIPT_TYPE
-  ) {
-    return this.prompts({
-      title:  'Are you sure?',
-      text: 'Record will be cancel!'
-    }).then((result) => {
-      if (result.isConfirmed) {
-        return this._http
-          .modify({
-            query: {
-              code: item.code,
-              row_id: item.row_id,
-              receipt_type,
-            },
-            url: environment.TRANSACTION,
-            endpoint: URLz.TRANSACTION,
-          })
-          .subscribe(() => {
-            this.swal(
-              'Entry Cancel!',
-              'Record cancelled successfully',
-            )
-            return true;
-          });
-      } else {
-        return false;
-      }
-    });
-  }
-  public transBatch(
-    batchNumber,
-    profileName,
-    callBack
-  ) {
-    if(!batchNumber) ++batchNumber
-    this.swal(
-      'Warning?',
-      this._translate.instant('TRANSACTION_BATCH', {batchNumber, profileName}),
-      'warning'
-    ).then((result) => {
-      if (result.isConfirmed) {
-        this._http
-          .create({ endpoint: URLz.BATCH_NUM })
-          .subscribe(() => {
-            this.swal(
-              'Success',
-              'Batch generated successfully!'
-            ).then( ()=> {
-              callBack();
-            })
-          });
       }
     });
   }

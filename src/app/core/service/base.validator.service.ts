@@ -56,7 +56,7 @@ export class ValidatorService extends AngularServiceInjector {
     if(control! && control.touched) return this.handleRequired(control)
     return ''
   }
-  _error_control(control: FormControl): Validation {
+  _error_control(control: FormControl): UnionValidation {
     if (control?.errors) return control?.errors;
   }
   handleRequired(control: FormControl) {
@@ -95,7 +95,7 @@ export class ValidatorService extends AngularServiceInjector {
   _val(fn: Partial<string> = '', param: Partial<ValidatorParam>) {
     if(param?.maxChar == undefined) param.maxChar = 100
     if(param?.specialChar == undefined) param.specialChar = 1
-    return (control: AbstractControl): Validation | null => {
+    return (control: AbstractControl): UnionValidation => {
       if (!fn) fn = param?.fn
       const a = control?.value;
       if (fn && (!a || a == 0)) {
@@ -126,7 +126,7 @@ export class ValidatorService extends AngularServiceInjector {
   }
   // FOR SELECTBOX / AUTOCOMPLETE / RADIOBUTTONS / CHECKBOX
   _vals(fn: string) {
-    return (control: AbstractControl): Validation | null => {
+    return (control: AbstractControl): UnionValidation => {
       const a = control?.value;
       if (!a || a == 0) {
         return VAL.SELECT(fn)
@@ -134,7 +134,7 @@ export class ValidatorService extends AngularServiceInjector {
     }
   }
   _val_Date(dat: Partial<ValidatorDate>) {
-    return (control: AbstractControl): Validation | null => {
+    return (control: AbstractControl): UnionValidation => {
       const b: Date = new Date(control?.value);
       let a;
       if (Custom.emptyCheck(b) && b instanceof Date) {
@@ -163,7 +163,7 @@ export class ValidatorService extends AngularServiceInjector {
     };
   }
   repeatOneField(field1: string) {
-    return (array: FormArray): Validation | null => {
+    return (array: FormArray): UnionValidation => {
       let repeat = 0;
       array?.controls?.forEach((group) => {
         const fieldA = group?.get(field1);
@@ -175,7 +175,7 @@ export class ValidatorService extends AngularServiceInjector {
           }
           if (repeat > 1) {
             fieldA?.setErrors(VAL.DUPLICATE);
-            return VAL.DUPLICATE;
+            // return VAL.DUPLICATE; // maybe it required
           } else {
             if (fieldA?.errors?.key == 'DUPLICATE'){
               fieldA?.setErrors(null);
@@ -225,7 +225,7 @@ export class ValidatorService extends AngularServiceInjector {
     };
   }
   _matchValidator(firstControl, secondControl, groupone, grouptwo) {
-    return (group: FormGroup): Validation | null => {
+    return (group: FormGroup): UnionValidation => {
       if(group.get(groupone) && group.get(grouptwo)){
         let repeat = 0;
         const fieldA = group.get([groupone, firstControl])
@@ -260,7 +260,7 @@ export class ValidatorService extends AngularServiceInjector {
     }
   }
   _passwordMatchValidator(field1: string, field2: string) {
-    return (group: FormGroup): Validation | null => {
+    return (group: FormGroup): UnionValidation => {
       const fieldA = group?.get(field1);
       const fieldB = group?.get(field2);
       if (fieldA !== null && fieldB !== null) {
@@ -317,7 +317,7 @@ export class ValidatorService extends AngularServiceInjector {
 
   }
 }
-
+type UnionValidation = Validation | null | void
 // SERVER SIDE VALIDATION ERROR HANDLING PATTERN
 export interface ServerValidationMessage {
   key: VALIDATION_KEY;

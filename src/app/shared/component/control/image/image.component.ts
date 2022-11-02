@@ -79,6 +79,7 @@ export class ImageComponent extends BaseControlComponent implements OnInit{
       }else if(this._translate.currentLang === 'ur'){
         return  ' براہ کرم'.concat(' ', this._translate?.instant(img?.display), ' ', 'منتخب کریں۔')
       }
-    } else return '';
+    }
+    return '';
   }
 }

@@ -43,7 +43,7 @@ export class StatesGuard  implements CanActivateChild {
           // this.openTospopup();
           // 1.3 Incase Hierarchy data Found in Server
           if (d?.profile?.username) {
-            this._ss.hierarchy = d;
+            // this._ss.hierarchy = d;
             // 2.0
             this.savingHierarchyDefault();
             return d;
@@ -57,7 +57,8 @@ export class StatesGuard  implements CanActivateChild {
       // 2.0
       this.savingHierarchyDefault();
       // 1.1 Incase Hierarchy of Server already Saved
-      return of((this._ss.hierarchy = data));
+      // return of((this._ss.hierarchy = data));
+      return of(true)
     }
   }
   public targetData;
@@ -88,34 +89,23 @@ export class StatesGuard  implements CanActivateChild {
     let data;
     if (Custom.emptyCheck(storedData)) {
       data = JSON.parse(atob(storedData));
-      this._ss.permission_data_local = data;
+      // this._ss.permission_data_local = data;
     }
 
     // 1.5 If Only Hierarchy && OU PREFIX STATUS OK
-    if (!this._ss?.hierarchy?.status && this._ss.hierarchy?.ou_prefix_status) {
-      const h = this._ss.hierarchy;
-      this._ss.permission_data_local = {
-        organisation_id: h.organisation_id,
-        system_id: h.system_id,
-        bg: h.bg,
-        le: h.le,
-        ou: h.ou,
-        su: h.su,
-        days_limit: h.days_limit,
-        display_receipt_date: h.display_receipt_date,
-        transaction_receipt_date: h.transaction_receipt_date,
-        // Watch it later
-        ou_prefix_status: h.ou_prefix_status,
-        currency_id: h.currency_id,
-        currency: h.currency,
-      };
-      if (h?.dco) {
-        this._ss.permission_data_local.dco = h.dco;
-      }
+    if (!this._ss['hierarchy']) {
+      const h = {};
+      // this._ss.permission_data_local = {
+      //   organisation_id: h.organisation_id,
+      //   system_id: h.system_id,
+      // };
+      // if (h?.dco) {
+      //   this._ss.permission_data_local.dco = h.dco;
+      // }
       localStorage.setItem(
         'permission_data_local',
         // Buffer.from(JSON.stringify(this._ss.permission_data_local), 'base64')
-        btoa(JSON.stringify(this._ss.permission_data_local))
+        btoa(JSON.stringify(this._ss['permission_data_local']))
       );
     }
   }

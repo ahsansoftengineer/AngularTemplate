@@ -9,6 +9,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 import { debounceTime } from 'rxjs';
 import { BaseJoinAction } from 'src/app/core/class/base-join-actions';
 import { HttpServiceParam } from 'src/app/core/interface/common/http-service-param';
+import { Custom } from 'src/app/core/static/custom';
 @Component({
   template: '',
 })
@@ -74,6 +75,9 @@ export class BaseControlComponent extends BaseJoinAction  implements OnInit {
   }
   _stop(event){
     event.stopPropagation()
+  }
+  override emptyCheck(val: any){
+    return Custom.emptyCheck(val)
   }
   statusChangesSubscription(){
     const subs = this.control?.statusChanges?.subscribe(() => {

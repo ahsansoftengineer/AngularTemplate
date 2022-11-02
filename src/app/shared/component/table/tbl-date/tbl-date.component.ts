@@ -10,9 +10,4 @@ export class TblDateComponent extends DateComponent implements OnInit {
   constructor(injector: Injector) {
     super(injector);
   }
-  ngOnInit(): void {
-    super.ngOnInit();
-  }
-
-
 }
