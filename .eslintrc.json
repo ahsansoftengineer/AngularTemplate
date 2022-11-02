@@ -3,27 +3,18 @@
     "browser": true,
     "ESNext": true
   },
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended"
-  ],
+  "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended"],
   "overrides": [
     {
-      "files": [
-        "*.js"
-      ],
+      "files": ["*.js"],
       "parserOptions": {
         "ecmaVersion": 2018
       }
     },
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
-        "project": [
-          "tsconfig.*?.json"
-        ],
+        "project": ["tsconfig.*?.json"],
         "createDefaultProgram": true
       },
       "extends": [
@@ -35,10 +26,7 @@
         "@angular-eslint/component-class-suffix": [
           "error",
           {
-            "suffixes": [
-              "Component",
-              "Page"
-            ]
+            "suffixes": ["Component", "Page"]
           }
         ],
         "@angular-eslint/directive-selector": [
@@ -60,20 +48,12 @@
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/recommended"
-      ]
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"]
     },
     {
-      "files": [
-        "*.component.ts"
-      ],
-      "extends": [
-        "plugin:@angular-eslint/template/process-inline-templates"
-      ]
+      "files": ["*.component.ts"],
+      "extends": ["plugin:@angular-eslint/template/process-inline-templates"]
     }
   ],
   "parser": "@typescript-eslint/parser",
@@ -81,9 +61,7 @@
     "ecmaVersion": "latest",
     "sourceType": "module"
   },
-  "plugins": [
-    "@typescript-eslint"
-  ],
+  "plugins": ["@typescript-eslint"],
   "rules": {
     "@typescript-eslint/no-inferrable-types": "warn"
   },

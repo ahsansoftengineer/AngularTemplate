@@ -17,7 +17,6 @@ import { DdMultiIiComponent } from './dd-multi-ii/dd-multi-ii.component';
 import { MatzModule } from '../../modules/matz.module';
 import { AngularzModule } from '../../modules/angularz.module';
 
-
 const CommonFields = [
   TxtComponent,
   DdComponent,
@@ -32,19 +31,10 @@ const CommonFields = [
   AcOffComponent,
   DdMultiComponent,
   DdMultiIiComponent,
-]
+];
 @NgModule({
-  declarations: [
-    CommonFields,
-  ],
-  imports: [
-    AngularzModule,
-    MatzModule,
-    NGX_NGB_Other_Module,
-    PipesModule
-  ],
-  exports:[
-    CommonFields,
-  ]
+  declarations: [CommonFields],
+  imports: [AngularzModule, MatzModule, NGX_NGB_Other_Module, PipesModule],
+  exports: [CommonFields],
 })
-export class ControlModule { }
+export class ControlModule {}

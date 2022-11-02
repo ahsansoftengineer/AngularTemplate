@@ -8,7 +8,6 @@ import { MatzModule } from './modules/matz.module';
 import { DirectiveModule } from './directives/directive.module';
 import { ComponentModule } from './component/component.module';
 
-
 const CommonModules = [
   CommonModule,
   AngularzModule,
@@ -16,12 +15,11 @@ const CommonModules = [
   NGX_NGB_Other_Module,
   PipesModule,
   DirectiveModule,
-  ComponentModule
-]
+  ComponentModule,
+];
 @NgModule({
-  imports: [ CommonModules],
-  exports: [ CommonModules],
-  declarations: [
-  ],
+  imports: [CommonModules],
+  exports: [CommonModules],
+  declarations: [],
 })
-export class SharedModule { }
+export class SharedModule {}

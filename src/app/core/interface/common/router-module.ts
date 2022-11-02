@@ -1,10 +1,10 @@
-import { ACTION } from "../../enums/action.enum";
+import { ACTION } from '../../enums/action.enum';
 
 // Interface Segregation Principle
 export interface SideBarMenus extends FlattenSideBarMenus {
   submenu?: SideBarMenus[];
 }
-export interface FlattenSideBarMenus extends SubPermission{
+export interface FlattenSideBarMenus extends SubPermission {
   id?: number;
   title?: string;
   sort_order?: number;
@@ -18,7 +18,7 @@ export interface FlattenSideBarMenus extends SubPermission{
   extralink?: boolean;
   has_external?: boolean;
 }
-export interface SubPermission{
+export interface SubPermission {
   path?: string;
   permission?: Permission[];
 }
@@ -26,5 +26,5 @@ export interface Permission {
   id?: number;
   module_list_id?: number;
   name?: ACTION;
-  subPermission?:SubPermission[];
+  subPermission?: SubPermission[];
 }

@@ -12,18 +12,18 @@ import { AppInjector } from '../static/AppInjector';
 // # 1 SOLID PRINCIPLE (Single Responsibility Principle)
 // 1. Single responsibility principle: a class should have one, and only one, reason to change;
 // 2. When you only want to Inject a Service
-export abstract class AngularServiceInjector   {
+export abstract class AngularServiceInjector {
   // Angular Services
   public _activeRoute: ActivatedRoute;
   public _router: Router;
   public _dialog: MatDialog;
   public _fb: FormBuilder;
-  public _location: Location
-  public _cookie: CookieService
-  public _translate: TranslateService
+  public _location: Location;
+  public _cookie: CookieService;
+  public _translate: TranslateService;
   public _toastr: ToastrService;
-  public _datePipe: DatePipe
-  public _snackBar: MatSnackBar
+  public _datePipe: DatePipe;
+  public _snackBar: MatSnackBar;
   constructor(public injector: Injector) {
     this._router = AppInjector.get(Router);
     this._activeRoute = AppInjector.get(ActivatedRoute);

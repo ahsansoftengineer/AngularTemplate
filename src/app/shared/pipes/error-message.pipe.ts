@@ -3,17 +3,16 @@ import { FormControl } from '@angular/forms';
 import { ValidatorService } from 'src/app/core/service/base.validator.service';
 
 @Pipe({
-  name: 'errorMsg'
+  name: 'errorMsg',
 })
 // Not in Use
 export class ErrorMessagePipe implements PipeTransform {
-  _vs: ValidatorService
+  _vs: ValidatorService;
   constructor(injector: Injector) {
-    this._vs = injector.get(ValidatorService)
+    this._vs = injector.get(ValidatorService);
   }
   transform(control: FormControl, ...args: unknown[]): string {
-    return ''
+    return '';
     // return this._vs._error_control(control)?.message;
   }
-
 }

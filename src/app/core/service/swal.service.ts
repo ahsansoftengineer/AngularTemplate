@@ -16,7 +16,7 @@ export class SwalService extends AngularServiceInjector {
   _http: HTTPService;
   _fs: FormService;
   constructor(injector: Injector) {
-    super(injector)
+    super(injector);
     this._fs = injector.get(FormService);
     this._http = injector.get(HTTPService);
     this._translate = injector.get(TranslateService);
@@ -29,8 +29,8 @@ export class SwalService extends AngularServiceInjector {
     text: string,
     icon: 'success' | 'error' | 'warning' = 'success'
   ) {
-    title = title ? this._translate.instant(title) : title
-    text = text ?  this._translate.instant(text)  : text
+    title = title ? this._translate.instant(title) : title;
+    text = text ? this._translate.instant(text) : text;
     return Swal.fire({
       title,
       text,
@@ -41,15 +41,11 @@ export class SwalService extends AngularServiceInjector {
     });
   }
   public noDataFound() {
-    this.swal(
-      'Warning',
-      'No Data Available',
-      'warning'
-    );
+    this.swal('Warning', 'No Data Available', 'warning');
   }
   public prompts(options: SweetAlertOptions): Promise<SweetAlertResult<any>> {
-    const title = this._translate.instant(options.title.toString())
-    const text = this._translate.instant(options.text)
+    const title = this._translate.instant(options.title.toString());
+    const text = this._translate.instant(options.text);
     return Swal.fire({
       icon: 'warning',
       showCancelButton: true,
@@ -60,14 +56,14 @@ export class SwalService extends AngularServiceInjector {
       reverseButtons: true,
       ...options,
       title,
-      text
-    })
+      text,
+    });
   }
   public get formLeave() {
     return this.prompts({
       title: 'Are you sure?',
       text: 'The Changes will be disregard',
-    })
+    });
   }
   public statusChange(
     status: boolean,
@@ -76,14 +72,12 @@ export class SwalService extends AngularServiceInjector {
   ) {
     // let statuss = status.activate == 0 ? false : true;
     this.prompts({
-        title: 'Are you sure?',
-        text: 'Record will be ' + (status ? 'Activated' : 'De-Activated'),
+      title: 'Are you sure?',
+      text: 'Record will be ' + (status ? 'Activated' : 'De-Activated'),
     }).then((result) => {
       if (result.isConfirmed) {
         this._http.status(param).subscribe((res: any) => {
-          this.swal(
-            status ? 'Activated' : 'De-Activated',
-            res.message)
+          this.swal(status ? 'Activated' : 'De-Activated', res.message);
           handleCondition(true);
         });
       } else {
@@ -98,7 +92,9 @@ export class SwalService extends AngularServiceInjector {
   ) {
     this.prompts({
       title: 'Are you sure?',
-      text: 'Record will be ' + (param?.body?.activate ? 'Activated' : 'De-Activated'),
+      text:
+        'Record will be ' +
+        (param?.body?.activate ? 'Activated' : 'De-Activated'),
     }).then((result) => {
       if (result.isConfirmed) {
         this._http.status(param).subscribe((res: any) => {

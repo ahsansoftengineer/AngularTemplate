@@ -12,7 +12,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
 }
 
-
 @NgModule({
   declarations: [],
   imports: [
@@ -29,9 +28,9 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
+        deps: [HttpClient],
       },
-      isolate: false
+      isolate: false,
     }),
     ToastrModule.forRoot({
       enableHtml: true,
@@ -48,14 +47,14 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoaderInterceptor,
       multi: true,
     },
-    DatePipe
-  ]
+    DatePipe,
+  ],
 })
-export class RootzModule { }
+export class RootzModule {}

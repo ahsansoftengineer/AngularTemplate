@@ -16,32 +16,32 @@ const routes: Routes = [
           {
             path: 'feature-list',
             component: FeatureListComponent,
-            data: { },
+            data: {},
           },
           {
             path: 'feature-add',
             component: FeatureAddComponent,
-            data: { },
+            data: {},
           },
           {
             path: 'feature-edit',
             component: FeatureEditComponent,
-            data: { },
+            data: {},
           },
           {
             path: 'feature-detail',
             component: FeatureDetailComponent,
-            data: { },
+            data: {},
           },
-        ]
+        ],
       },
       { path: '**', redirectTo: 'feature-list', pathMatch: 'full' },
-    ]
-  }
-]
+    ],
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class Feature1RoutingModule { }
+export class Feature1RoutingModule {}

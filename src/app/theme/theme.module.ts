@@ -7,19 +7,14 @@ import { FullTemplateComponent } from './full-template/full-template.component';
 import { MatzModule } from '../shared/modules/matz.module';
 import { AngularzModule } from '../shared/modules/angularz.module';
 
-
-
 @NgModule({
   declarations: [
     LeftSideNavComponent,
     RightSideNavComponent,
     HeadersComponent,
     FootersComponent,
-    FullTemplateComponent
+    FullTemplateComponent,
   ],
-  imports: [
-    AngularzModule,
-    MatzModule
-  ]
+  imports: [AngularzModule, MatzModule],
 })
-export class ThemeModule { }
+export class ThemeModule {}

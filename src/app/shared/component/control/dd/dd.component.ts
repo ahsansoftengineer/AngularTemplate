@@ -9,6 +9,4 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
   host: { class: CONTROL_HOST_CSS_CLASS },
 })
 //Dropdown
-export class DdComponent extends BaseControlDDComponent implements OnInit {
-
-}
+export class DdComponent extends BaseControlDDComponent implements OnInit {}

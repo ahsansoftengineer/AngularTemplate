@@ -1,48 +1,61 @@
-<mat-form-field appearance="outline" *ngIf="control" class="col-md-12 my-1"
-[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
-  <mat-label>{{ lbl | translate}}</mat-label>
+<mat-form-field
+  appearance="outline"
+  *ngIf="control"
+  class="col-md-12 my-1"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+>
+  <mat-label>{{ lbl | translate }}</mat-label>
   <mat-select
     [formControl]="control"
     [disabled]="disabled"
-    [required]='req' multiple>
+    [required]="req"
+    multiple
+  >
     <mat-option>
       <ngx-mat-select-search
-        [noEntriesFoundLabel]="'No ' + lbl +' Found'"
+        [noEntriesFoundLabel]="'No ' + lbl + ' Found'"
         [placeholderLabel]="'Find ' + lbl"
         [formControl]="searchControl"
-        [searching]='searching'
-        [disableScrollToActiveOnOptionsChanged]='true'>
+        [searching]="searching"
+        [disableScrollToActiveOnOptionsChanged]="true"
+      >
         <mat-icon ngxMatSelectSearchClear>cancel</mat-icon>
       </ngx-mat-select-search>
     </mat-option>
     <!-- Not Required Case -->
     <mat-option
-      (onSelectionChange)='changeEvent(null, $event)'
+      (onSelectionChange)="changeEvent(null, $event)"
       *ngIf="!req && control?.value"
       [value]="null"
       [disabled]="control.value == null"
-    >Please select</mat-option>
+      >Please select</mat-option
+    >
     <!-- Edit / Copy Case / Pre Object -->
     <mat-option
       [value]="preobj?.id"
       *ngIf="!itemInList && preobj?.id && control?.value == preobj?.id"
-    >{{ renderRow(preobj) }}</mat-option>
+      >{{ renderRow(preobj) }}</mat-option
+    >
 
     <!-- Load First Ten Only Once -->
-    <ng-container *ngIf="this._css._ddOneTimeLoad[this.field] && !listForTemp?.length">
+    <ng-container
+      *ngIf="this._css._ddOneTimeLoad[this.field] && !listForTemp?.length"
+    >
       <mat-option
-        (onSelectionChange)='changeEvent(item, $event)'
+        (onSelectionChange)="changeEvent(item, $event)"
         *ngFor="let item of this._css._ddOneTimeLoad[this.field]"
         [value]="item.id"
-      >{{ renderRow(item) }}</mat-option>
+        >{{ renderRow(item) }}</mat-option
+      >
     </ng-container>
 
     <!-- Auto Complete Searching -->
     <mat-option
-      (onSelectionChange)='changeEvent(item, $event)'
+      (onSelectionChange)="changeEvent(item, $event)"
       [value]="item.id"
       *ngFor="let item of temp"
-    >{{ renderRow(item) }}</mat-option>
+      >{{ renderRow(item) }}</mat-option
+    >
   </mat-select>
-  <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+  <mat-error *ngIf="control?.touched">{{ errMsg }}</mat-error>
 </mat-form-field>

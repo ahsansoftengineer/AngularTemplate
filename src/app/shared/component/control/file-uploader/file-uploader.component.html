@@ -1,15 +1,45 @@
-<div class="custom__img__div" (click)='markTouched(); fileup.click()' [ngStyle]="{'border-color': _error_file(fileObj) ? '#f44336': 'grey'}"
-[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
-  <p style="font-weight: 600; margin-top: -15px; margin-left:5px; background-color: white; padding: 3px; font-size:small;" [ngStyle]="{'width': fileObj.lbl.length * 10 + 'px','color': _error_file(fileObj) ? '#f44336': 'black'}">
-    {{ fileObj.lbl  | translate}} {{ req ? ' *' : ''}}
+<div
+  class="custom__img__div"
+  (click)="markTouched(); fileup.click()"
+  [ngStyle]="{ 'border-color': _error_file(fileObj) ? '#f44336' : 'grey' }"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+>
+  <p
+    style="
+      font-weight: 600;
+      margin-top: -15px;
+      margin-left: 5px;
+      background-color: white;
+      padding: 3px;
+      font-size: small;
+    "
+    [ngStyle]="{
+      width: fileObj.lbl.length * 10 + 'px',
+      color: _error_file(fileObj) ? '#f44336' : 'black'
+    }"
+  >
+    {{ fileObj.lbl | translate }} {{ req ? " *" : "" }}
   </p>
-  <img [attr.alt]="fileObj.lbl" style="margin-top: -20px;" class="img-fluid custom__img" [src]="ImageLink()">
+  <img
+    [attr.alt]="fileObj.lbl"
+    style="margin-top: -20px"
+    class="img-fluid custom__img"
+    [src]="ImageLink()"
+  />
 </div>
-<p style="font-size: 10px; color: #047ae9;" *ngIf="fileObj?.uploadedFileName && fileObj.error == ''">
-    {{ fileObj?.uploadedFileName }}
+<p
+  style="font-size: 10px; color: #047ae9"
+  *ngIf="fileObj?.uploadedFileName && fileObj.error == ''"
+>
+  {{ fileObj?.uploadedFileName }}
 </p>
-<p style="font-size: 10px; color: #f44336;">
+<p style="font-size: 10px; color: #f44336">
   {{ _error_file(fileObj) | translate }}
-  <input  type="file" (change)="readUrl($event)" #fileup class='p-0 m-0' style="width:0px; height: 0px;">
+  <input
+    type="file"
+    (change)="readUrl($event)"
+    #fileup
+    class="p-0 m-0"
+    style="width: 0px; height: 0px"
+  />
 </p>
-

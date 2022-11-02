@@ -1,5 +1,5 @@
-export interface ServerSingleResponse{
-  data: { row: any}
-  code: number
-  message: string
+export interface ServerSingleResponse {
+  data: { row: any };
+  code: number;
+  message: string;
 }

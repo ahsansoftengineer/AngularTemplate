@@ -1,14 +1,19 @@
-<input type="text" [placeholder]="lbl | translate"
- [ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }"
-(click)="_stop($event)" (keydown)="_stop($event)"
-  class="search" [formControl]="searchControl"
-  [matAutocomplete]="listAC">
-<mat-autocomplete autoActiveFirstOption
-#listAC="matAutocomplete">
+<input
+  type="text"
+  [placeholder]="lbl | translate"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+  (click)="_stop($event)"
+  (keydown)="_stop($event)"
+  class="search"
+  [formControl]="searchControl"
+  [matAutocomplete]="listAC"
+/>
+<mat-autocomplete autoActiveFirstOption #listAC="matAutocomplete">
   <mat-option
     [value]="item.title"
-    (click)='setFormValue(item)'
-    *ngFor="let item of temp">
-    {{item.title}}
+    (click)="setFormValue(item)"
+    *ngFor="let item of temp"
+  >
+    {{ item.title }}
   </mat-option>
 </mat-autocomplete>

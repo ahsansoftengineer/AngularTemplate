@@ -7,9 +7,11 @@ import {
 } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { ACTION } from 'src/app/core/enums/action.enum';
-import { FlattenSideBarMenus, Permission } from 'src/app/core/interface/common/router-module';
+import {
+  FlattenSideBarMenus,
+  Permission,
+} from 'src/app/core/interface/common/router-module';
 import { StateService } from 'src/app/core/service/state.service';
-
 
 @Injectable({
   providedIn: 'root',
@@ -17,17 +19,23 @@ import { StateService } from 'src/app/core/service/state.service';
 export class PermissionGuard implements CanActivateChild {
   constructor(private _ss: StateService, private _router: Router) {}
   private path: string;
-  canActivateChild( childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean | Observable<boolean> | Promise<boolean> {
-    const pd: ACTION[] = childRoute.data?.permission
+  canActivateChild(
+    childRoute: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot
+  ): boolean | Observable<boolean> | Promise<boolean> {
+    const pd: ACTION[] = childRoute.data?.permission;
     this.path = state.url;
     // No Check Conditions
-    if(!pd || state.url.indexOf('error') != -1 || pd?.findIndex(x => x == ACTION.EVERY) != -1) {
-      this._ss.permission = []
-      return true
-    }
-    else if (pd && pd?.findIndex(x => x == ACTION.NO_ACTION) != -1) {
-      this._ss.permission = []
-      return false
+    if (
+      !pd ||
+      state.url.indexOf('error') != -1 ||
+      pd?.findIndex((x) => x == ACTION.EVERY) != -1
+    ) {
+      this._ss.permission = [];
+      return true;
+    } else if (pd && pd?.findIndex((x) => x == ACTION.NO_ACTION) != -1) {
+      this._ss.permission = [];
+      return false;
     }
     this.setPermissionToRoute(this._ss['flattenSideBarMenus']);
     // console.log(this._ss?.permission)
@@ -37,8 +45,8 @@ export class PermissionGuard implements CanActivateChild {
     );
     const editCase = state.url.toLowerCase().indexOf('id=') != -1;
     const checkCase = (action: ACTION) => {
-      return intersection?.find((x) => x.name == action)
-    }
+      return intersection?.find((x) => x.name == action);
+    };
     // REDIRECT BASE ON CONDITIONS
     if (checkCase(ACTION.VIEW)) return of(true);
     if (editCase && checkCase(ACTION.EDIT)) return of(true);

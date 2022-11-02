@@ -7,17 +7,11 @@ import { PermissionDirective } from './permission.directive';
 const CommonComponents = [
   HasDirective,
   RouterLinkCustomDirective,
-  PermissionDirective
-]
+  PermissionDirective,
+];
 @NgModule({
-  declarations: [
-    ...CommonComponents,
-  ],
-  imports: [
-    CommonModule
-  ],
-  exports:[
-    CommonComponents,
-  ]
+  declarations: [...CommonComponents],
+  imports: [CommonModule],
+  exports: [CommonComponents],
 })
-export class DirectiveModule { }
+export class DirectiveModule {}

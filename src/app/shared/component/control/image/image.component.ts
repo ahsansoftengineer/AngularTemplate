@@ -8,8 +8,8 @@ import { BaseControlComponent } from '../base-control-z.component';
   styleUrls: ['./image.component.css'],
   host: { class: 'col-lg-3 col-md-4 py-0 px-3' },
 })
-export class ImageComponent extends BaseControlComponent implements OnInit{
-  @Input() imgType : ImgType;
+export class ImageComponent extends BaseControlComponent implements OnInit {
+  @Input() imgType: ImgType;
   @Input() imgURL;
   @Input('submitted') _submitted;
 
@@ -20,10 +20,9 @@ export class ImageComponent extends BaseControlComponent implements OnInit{
   override ngOnInit(): void {
     super.ngOnInit();
 
-    if(this.lbl != undefined && this.lbl != ''){
+    if (this.lbl != undefined && this.lbl != '') {
       this.imgType.display = this.lbl;
-    }
-    else{
+    } else {
       this.imgType.display = this.imgType.display;
     }
   }
@@ -31,7 +30,7 @@ export class ImageComponent extends BaseControlComponent implements OnInit{
   readUrl(event: any) {
     if (event.target.files.length === 0) {
       this.imgType.link = '';
-      this.imgType.error = 'req'
+      this.imgType.error = 'req';
       return;
     }
     const file: File = event.target.files[0];
@@ -58,13 +57,13 @@ export class ImageComponent extends BaseControlComponent implements OnInit{
     }
   }
 
-  ImageLink(){
-    if(this.imgType?.link?.length > 200) return this.imgType.link
-    else if(this?.imgType?.link) return this.imgURL + this.imgType.link
-    else return 'assets/images/gif/upload.gif'
+  ImageLink() {
+    if (this.imgType?.link?.length > 200) return this.imgType.link;
+    else if (this?.imgType?.link) return this.imgURL + this.imgType.link;
+    else return 'assets/images/gif/upload.gif';
   }
 
-  markTouched(){
+  markTouched() {
     this._submitted = true;
   }
 
@@ -74,10 +73,15 @@ export class ImageComponent extends BaseControlComponent implements OnInit{
     } else if (img?.error === 'size') {
       return 'Image Size is Greater than 2MB';
     } else if ((!img?.link || img?.link == '') && this._submitted) {
-      if(this._translate.currentLang === 'en'){
+      if (this._translate.currentLang === 'en') {
         return 'Please select ' + img?.display;
-      }else if(this._translate.currentLang === 'ur'){
-        return  ' براہ کرم'.concat(' ', this._translate?.instant(img?.display), ' ', 'منتخب کریں۔')
+      } else if (this._translate.currentLang === 'ur') {
+        return ' براہ کرم'.concat(
+          ' ',
+          this._translate?.instant(img?.display),
+          ' ',
+          'منتخب کریں۔'
+        );
       }
     }
     return '';

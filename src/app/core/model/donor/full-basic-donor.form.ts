@@ -6,11 +6,11 @@ import { DonorInfo, DonorInfoForm } from './donor-info.form';
 
 @Injectable()
 export class FullBasicDonorForm {
-  _fs: FormService
+  _fs: FormService;
   _vs: ValidatorService;
   constructor(public injector: Injector) {
-  this._fs = injector.get(FormService)
-  this._vs = injector.get(ValidatorService);
+    this._fs = injector.get(FormService);
+    this._vs = injector.get(ValidatorService);
   }
   initForm() {
     const donorInfoForm = new DonorInfoForm(this.injector);

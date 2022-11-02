@@ -1,4 +1,4 @@
-.upload-large{
+.upload-large {
   position: absolute;
   width: 100% !important;
   height: 100% !important;
@@ -6,20 +6,20 @@
   right: 0;
   opacity: 0;
 }
-.img-fluid{
+.img-fluid {
   height: 150px;
   text-align: auto;
 }
 
 /* img */
-.custom__img__div{
+.custom__img__div {
   width: 100%;
   padding: 3px, 5px;
   margin-top: 15px;
   border: 1px solid #8e8e8e;
   border-radius: 3px;
 }
-.custom__img{
+.custom__img {
   display: block;
   width: auto;
   height: 150px;
@@ -29,12 +29,12 @@
 .zoom {
   transition: transform 1s, opacity 1s, border-radius 1s;
   /* opacity: 0.7; */
-  z-index:200;
-  border-radius:5px;
+  z-index: 200;
+  border-radius: 5px;
 }
 
 .zoom:hover {
   transform: scale(1.2);
   opacity: 1;
-  border-radius:7px;
+  border-radius: 7px;
 }

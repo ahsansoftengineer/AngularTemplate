@@ -8,9 +8,9 @@ import { URLz } from 'src/app/core/enums/url.enum';
   selector: 'app-transaction-dialog',
   templateUrl: './transaction-dialog.component.html',
   styleUrls: ['./transaction-dialog.component.css'],
-  host: { class: 'col-lg-6 col-sm-12 p-0' }
+  host: { class: 'col-lg-6 col-sm-12 p-0' },
 })
-export class TransactionDialogComponent extends BaseForm{
+export class TransactionDialogComponent extends BaseForm {
   systemSubscription: any;
   btnDisable = false;
   url = window.location.href;
@@ -24,27 +24,32 @@ export class TransactionDialogComponent extends BaseForm{
     dialogRef.disableClose = true;
   }
   _close(): void {
-    const hierarchy = this._fs._form.get('hierarchy').value
-    if(isList){
+    const hierarchy = this._fs._form.get('hierarchy').value;
+    if (isList) {
       this.dialogRef.close();
-    }else {
-      this._http.get({
-        endpoint: URLz.DEFAULT,
-        query: hierarchy
-      }).subscribe({
-        next: (res) => {
-          const data: OU_PREFIX = res?.data?.row
-          if(data){
-            this.savingPermissionDataLocally(data);
-            this.dialogRef.close();
-          } else{
-            this._vs._toastr_error('Operating Unit', 'Please create prefix for selected OU')
-          }
-        }
-      });
+    } else {
+      this._http
+        .get({
+          endpoint: URLz.DEFAULT,
+          query: hierarchy,
+        })
+        .subscribe({
+          next: (res) => {
+            const data: OU_PREFIX = res?.data?.row;
+            if (data) {
+              this.savingPermissionDataLocally(data);
+              this.dialogRef.close();
+            } else {
+              this._vs._toastr_error(
+                'Operating Unit',
+                'Please create prefix for selected OU'
+              );
+            }
+          },
+        });
     }
   }
-  savingPermissionDataLocally(data: OU_PREFIX){
+  savingPermissionDataLocally(data: OU_PREFIX) {
     // this._ss.permission_data_local = {
     //   ...this._fs._form.get('hierarchy').value,
     //   days_limit: data.days_limit,
@@ -64,39 +69,41 @@ export class TransactionDialogComponent extends BaseForm{
     //   localStorage.removeItem('permission_data_local')
     // }
   }
-  _disabledButton() : boolean | void {
-    if(this._fs._form.get('hierarchy')) return this._fs._form.get('hierarchy').invalid;
+  _disabledButton(): boolean | void {
+    if (this._fs._form.get('hierarchy'))
+      return this._fs._form.get('hierarchy').invalid;
   }
 
-  _storePlacement(su){
-    if (this.url.indexOf('material') != -1){
-      if(su){
-        this._http.get({
-          endpoint:URLz.DEFAULT,
-          query: {su}
-        }).subscribe({
-          next: () => {
-            this.btnDisable = false;
-          },
-          error: (err: HttpErrorResponse) => {
-            this._vs._error_server(err);
-            this.btnDisable = true;
-          }
-         })
+  _storePlacement(su) {
+    if (this.url.indexOf('material') != -1) {
+      if (su) {
+        this._http
+          .get({
+            endpoint: URLz.DEFAULT,
+            query: { su },
+          })
+          .subscribe({
+            next: () => {
+              this.btnDisable = false;
+            },
+            error: (err: HttpErrorResponse) => {
+              this._vs._error_server(err);
+              this.btnDisable = true;
+            },
+          });
       }
     }
   }
-
 
   applyClass = { 'col-lg-3': false, 'col-md-4': false, 'col-md-12': true };
   applyDate = { 'col-lg-3': false, 'col-md-4': false, 'col-md-6': true };
 }
 const isList = window.location.href.indexOf('add') == -1;
-interface OU_PREFIX{
-  days_limit: number,
-  currency_id: string
-  currency: {id: string, title: string, symbol: string}
-  display_receipt_date: boolean
-  status: true
-  transaction_receipt_date: Date
+interface OU_PREFIX {
+  days_limit: number;
+  currency_id: string;
+  currency: { id: string; title: string; symbol: string };
+  display_receipt_date: boolean;
+  status: true;
+  transaction_receipt_date: Date;
 }

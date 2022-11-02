@@ -15,16 +15,11 @@ export class TablePurposeComponent extends BaseDialog {
     public dialogRef: MatDialogRef<TablePurposeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { source; title }
   ) {
-    super(injector)
+    super(injector);
     this._dataSource.data = data.source;
   }
   // onNoClick(): void {
   //   this.dialogRef.close();
   // }
-  _columns = [
-    'id',
-    'donation_category',
-    'donation_type',
-    'fund_category'
-  ];
+  _columns = ['id', 'donation_category', 'donation_type', 'fund_category'];
 }

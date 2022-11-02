@@ -10,21 +10,23 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
   host: { class: CONTROL_HOST_CSS_CLASS },
 })
 export class MultiAcComponent extends BaseControlACComponent implements OnInit {
-  override  ngOnInit(): void {
-    if(!this.preobj){
+  override ngOnInit(): void {
+    if (!this.preobj) {
       this.param.query = {
         limit: 10,
         page: 1,
         organisation_id: this._http.org_id,
         system_id: this._http.sys_id,
-      }
+      };
       this.param.query[this.key_parent_id] = this.parent_id;
     }
     super.ngOnInit();
-    if (this.oneTimeLoad &&
-        this.load &&
-        this.prelist?.length < 1 &&
-        !this.preobj) {
+    if (
+      this.oneTimeLoad &&
+      this.load &&
+      this.prelist?.length < 1 &&
+      !this.preobj
+    ) {
       this.onceLoad();
     } else if (!this.load && this.parentFC) {
       // this.loadByParentFormControl()
@@ -33,18 +35,17 @@ export class MultiAcComponent extends BaseControlACComponent implements OnInit {
     }
   }
 
-  get itemInList(){
-    if(this.preobj?.id){
+  get itemInList() {
+    if (this.preobj?.id) {
       const check = (list: SelectOption[]) => {
-        return list.findIndex(x => x.id == this.preobj.id) != -1
-      }
-      if(this.temp){
-        return check(this.temp)
-      }else if(this._css._ddOneTimeLoad[this.field]){
-        return check(this._css._ddOneTimeLoad[this.field])
+        return list.findIndex((x) => x.id == this.preobj.id) != -1;
+      };
+      if (this.temp) {
+        return check(this.temp);
+      } else if (this._css._ddOneTimeLoad[this.field]) {
+        return check(this._css._ddOneTimeLoad[this.field]);
       }
     }
     return false;
   }
-
 }

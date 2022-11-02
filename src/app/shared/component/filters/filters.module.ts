@@ -6,24 +6,18 @@ import { NGX_NGB_Other_Module } from '../../modules/ngx-ngb-other.module';
 import { ControlModule } from '../control/control.module';
 import { TransactionDialogComponent } from './transaction-dialog/transaction-dialog.component';
 
-const CommonComponents = [
-  TransactionDialogComponent,
-]
+const CommonComponents = [TransactionDialogComponent];
 
 @NgModule({
-  declarations: [
-    CommonComponents,
-  ],
+  declarations: [CommonComponents],
   imports: [
     AngularzModule,
     MatzModule,
     ControlModule,
     NGX_NGB_Other_Module,
     ControlModule,
-    DirectiveModule
+    DirectiveModule,
   ],
-  exports:[
-    CommonComponents,
-  ]
+  exports: [CommonComponents],
 })
-export class FiltersModule { }
+export class FiltersModule {}

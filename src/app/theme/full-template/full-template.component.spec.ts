@@ -8,9 +8,8 @@ describe('FullTemplateComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ FullTemplateComponent ]
-    })
-    .compileComponents();
+      declarations: [FullTemplateComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(FullTemplateComponent);
     component = fixture.componentInstance;

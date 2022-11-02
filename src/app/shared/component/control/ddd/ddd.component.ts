@@ -15,22 +15,21 @@ export class DddComponent extends BaseControlDDComponent implements OnInit {
   @Input() override retainState = true;
   override ngOnInit(): void {
     super.ngOnInit();
-    if(this.parent) this.childLoadingDataByParent();
+    if (this.parent) this.childLoadingDataByParent();
     if (this.oneTimeLoad) {
       this.onceLoad(() => {
-      if(!this.retainState){
-        this._css.looseControlState.push(this.field)
-      }
-      // if(!this.disabled)
-        this.control.patchValue(this.control.value)
-    })
+        if (!this.retainState) {
+          this._css.looseControlState.push(this.field);
+        }
+        // if(!this.disabled)
+        this.control.patchValue(this.control.value);
+      });
     }
   }
-  childLoadingDataByParent(){
+  childLoadingDataByParent() {
     // For DD Parent
     if (this.emptyCheck(this.parent?.control?.value) && !this.preobj) {
-          this.loadData(this.parent.control.value);
+      this.loadData(this.parent.control.value);
     }
   }
-
 }

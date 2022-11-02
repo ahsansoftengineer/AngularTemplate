@@ -5,14 +5,13 @@ import { ProviderService } from './core/service/provider.service';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
-  providers: [ProviderService]
+  providers: [ProviderService],
 })
 export class AppComponent extends BaseJoinAction implements OnInit {
   ngOnInit(): void {
-    this._translate.use('en')
-    this._translate.onLangChange.subscribe(x => {
-      this._ss.lng = x.lang
-    })
+    this._translate.use('en');
+    this._translate.onLangChange.subscribe((x) => {
+      this._ss.lng = x.lang;
+    });
   }
-
 }

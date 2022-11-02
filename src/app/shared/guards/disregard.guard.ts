@@ -26,12 +26,12 @@ export class DisregardGuard implements CanActivateChild {
     // this._ss?.permission?.find(x => x == ACTION.ADD || x == ACTION.EDIT)
     if (this._fs?._form?.dirty && this._fs?._form?.touched) {
       return this._swl.formLeave.then((x) => {
-          if (x.isConfirmed) {
-            this._fs._form.reset();
-            this._dialog.closeAll();
-          }
-          return x.isConfirmed;
-        });
+        if (x.isConfirmed) {
+          this._fs._form.reset();
+          this._dialog.closeAll();
+        }
+        return x.isConfirmed;
+      });
     } else {
       this._fs._form.reset();
       this._dialog.closeAll();

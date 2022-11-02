@@ -8,10 +8,8 @@ import { StatesGuard } from './shared/guards/states.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   {
-    path: 'auth', loadChildren: () =>
-      import('./auth/auth.module').then(
-        (m) => m.AuthModule
-      ),
+    path: 'auth',
+    loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
     path: '',
@@ -32,22 +30,18 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./feature/feature.module')
-            .then((m) => m.FeatureModule),
+          import('./feature/feature.module').then((m) => m.FeatureModule),
       },
-
     ],
   },
   {
     path: '**',
     redirectTo: '/error/404',
-    pathMatch: 'full'
+    pathMatch: 'full',
   },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule],
 })
-export class AppRoutingModule {
-
-}
+export class AppRoutingModule {}

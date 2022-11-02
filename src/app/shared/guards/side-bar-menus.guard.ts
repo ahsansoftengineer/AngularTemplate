@@ -9,7 +9,6 @@ import { HTTPService } from 'src/app/core/service/http.service';
 import { StateService } from 'src/app/core/service/state.service';
 import { Custom } from 'src/app/core/static/custom';
 
-
 @Injectable({
   providedIn: 'root',
 })
@@ -82,7 +81,7 @@ export class SideBarMenusGuard implements CanActivateChild {
       itm?.permission?.forEach((tm) => {
         if (tm?.subPermission) this.flatten(tm?.subPermission);
       });
-      if(itm.path){
+      if (itm.path) {
         this.transformedArray.push({
           title: itm.title,
           path: itm.path,

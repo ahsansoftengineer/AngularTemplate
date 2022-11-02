@@ -19,8 +19,8 @@ import { AppInjector } from '../static/AppInjector';
 // # 1 SOLID PRINCIPLE (Single Responsibility Principle)
 // 1. Single responsibility principle: a class should have one, and only one, reason to change;
 // 2. When you only want to Inject a Service
-@Component({template: ''})
-export abstract class BaseServiceInjector extends AngularServiceInjector   {
+@Component({ template: '' })
+export abstract class BaseServiceInjector extends AngularServiceInjector {
   public _http: HTTPService;
   public _fs: FormService;
   public _vs: ValidatorService;
@@ -28,7 +28,7 @@ export abstract class BaseServiceInjector extends AngularServiceInjector   {
   public _fss: FormSubmitService;
   public _ss: StateService;
   public _css: ControlStateService;
-  public _swl : SwalService;
+  public _swl: SwalService;
 
   // Enum Global Property for HTML Template
   public URLz = URLz; // For Template
@@ -42,7 +42,7 @@ export abstract class BaseServiceInjector extends AngularServiceInjector   {
   public _component = 'Override _component property in Component ngOnInit';
   public subscriptionArray: Subscription[] = [];
   constructor(override injector: Injector) {
-    super(injector)
+    super(injector);
     this._http = AppInjector.get(HTTPService);
     this._fs = AppInjector.get(FormService);
     this._vs = AppInjector.get(ValidatorService);
@@ -65,5 +65,4 @@ export abstract class BaseServiceInjector extends AngularServiceInjector   {
   //     }
   //   }
   // }
-
 }

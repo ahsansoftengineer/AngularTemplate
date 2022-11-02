@@ -1,5 +1,10 @@
 import { Injectable, Injector } from '@angular/core';
-import { AbstractControl, FormArray, FormControl, FormGroup } from '@angular/forms';
+import {
+  AbstractControl,
+  FormArray,
+  FormControl,
+  FormGroup,
+} from '@angular/forms';
 import { RegExps } from '../static/regex';
 import { FormService } from './form.service';
 import { Custom } from '../static/custom';
@@ -16,11 +21,11 @@ import { AngularServiceInjector } from '../class/angular-service-injector';
 export class ValidatorService extends AngularServiceInjector {
   _submitted = false;
   _fs: FormService;
-  showWarning = false
+  showWarning = false;
   constructor(injector: Injector) {
-    super(injector)
+    super(injector);
     this._fs = injector.get(FormService);
-    VAL._translate = this._translate
+    VAL._translate = this._translate;
   }
   // BELOW METHODS IS TO DISPLAY ERROR MESSAGES
   toTitleCase(str: string) {
@@ -33,28 +38,28 @@ export class ValidatorService extends AngularServiceInjector {
   }
 
   /**
-     * Retrieves a child control given the control's name or path.
-     *
-     * @param path A dot-delimited string or array of string/number values that define the path to the
-     * control.
-     * @param group An instance of a FormGroup default this._fs._form is set
-     * @usageNotes
-     * ### Retrieve a nested control
-     * * `this.form.get('person.name');`
-     * * `this.form.get(['person', 'name']);`
-     * * `this.form.get('items.0.price');`
-     * * `this.form.get(['items', 0, 'price']);`
-     */
+   * Retrieves a child control given the control's name or path.
+   *
+   * @param path A dot-delimited string or array of string/number values that define the path to the
+   * control.
+   * @param group An instance of a FormGroup default this._fs._form is set
+   * @usageNotes
+   * ### Retrieve a nested control
+   * * `this.form.get('person.name');`
+   * * `this.form.get(['person', 'name']);`
+   * * `this.form.get('items.0.price');`
+   * * `this.form.get(['items', 0, 'price']);`
+   */
   errMsg(
     path: string | string[] | FormControl,
-    group: FormGroup = this._fs._form){
-
-    let control: FormControl
-    if(!(path instanceof FormControl)) {
-      control = group?.get(path) as FormControl
+    group: FormGroup = this._fs._form
+  ) {
+    let control: FormControl;
+    if (!(path instanceof FormControl)) {
+      control = group?.get(path) as FormControl;
     }
-    if(control! && control.touched) return this.handleRequired(control)
-    return ''
+    if (control! && control.touched) return this.handleRequired(control);
+    return '';
   }
   _error_control(control: FormControl): UnionValidation {
     if (control?.errors) return control?.errors;
@@ -64,10 +69,20 @@ export class ValidatorService extends AngularServiceInjector {
     if (errObj && errObj[this._translate.currentLang]) {
       if (errObj.key == 'ENTER') {
         errObj.en = 'Please enter ' + errObj.lbl;
-        errObj.ur = ' براہ کرم'.concat(' ', this._translate.instant(errObj.lbl), ' ', 'درج کریں۔');
+        errObj.ur = ' براہ کرم'.concat(
+          ' ',
+          this._translate.instant(errObj.lbl),
+          ' ',
+          'درج کریں۔'
+        );
       } else if (errObj.key == 'SELECT') {
-        errObj.en = 'Please select ' + errObj.lbl,
-        errObj.ur = ' براہ کرم'.concat(' ', this._translate?.instant(errObj.lbl), ' ', 'منتخب کریں۔');
+        (errObj.en = 'Please select ' + errObj.lbl),
+          (errObj.ur = ' براہ کرم'.concat(
+            ' ',
+            this._translate?.instant(errObj.lbl),
+            ' ',
+            'منتخب کریں۔'
+          ));
       }
       return errObj[this._translate.currentLang];
     }
@@ -93,33 +108,40 @@ export class ValidatorService extends AngularServiceInjector {
   }
   // BELOW METHODS IS TO ADD VALIDATION TO CONTROLS
   _val(fn: Partial<string> = '', param: Partial<ValidatorParam>) {
-    if(param?.maxChar == undefined) param.maxChar = 100
-    if(param?.specialChar == undefined) param.specialChar = 1
+    if (param?.maxChar == undefined) param.maxChar = 100;
+    if (param?.specialChar == undefined) param.specialChar = 1;
     return (control: AbstractControl): UnionValidation => {
-      if (!fn) fn = param?.fn
+      if (!fn) fn = param?.fn;
       const a = control?.value;
       if (fn && (!a || a == 0)) {
-        if (param.authorized != undefined && a == param.authorized) return null
-        if (param.isField == undefined) return VAL.ENTER(fn)
-        else return VAL.SELECT(fn)
+        if (param.authorized != undefined && a == param.authorized) return null;
+        if (param.isField == undefined) return VAL.ENTER(fn);
+        else return VAL.SELECT(fn);
       } else if (Custom.emptyCheck(a) && a != '0') {
-        if (param.maxChar && a.length > param.maxChar) return VAL.MAX_CHAR(param.maxChar)
-        else if (param.minChar && a.length < param.minChar) return VAL.MIN_CHAR(param.minChar)
-        else if (!RegExps.WHITE_SPACE.test(a)) return VAL.WHITE_SPACE
+        if (param.maxChar && a.length > param.maxChar)
+          return VAL.MAX_CHAR(param.maxChar);
+        else if (param.minChar && a.length < param.minChar)
+          return VAL.MIN_CHAR(param.minChar);
+        else if (!RegExps.WHITE_SPACE.test(a)) return VAL.WHITE_SPACE;
         else if (param.num || param.max || param.min) {
-          if (!RegExps.NUM.test(a)) return VAL.NUM
-          else if (a % 1 != 0 && !param.decimal) return VAL.DECIMAL
-          else if (param.min && Number(a) < param.min) return VAL.MIN(param.min)
-          else if (param.max && Number(a) > param.max) return VAL.MAX(param.min)
-          else if (!RegExps.POSITIVENUM.test(a)) return VAL.NUM_POS
-          else return null
-        }
-        else if (param.alpha && !RegExps.ALPHA.test(a)) return VAL.ALPHA
-        else if (param.alphaNum && !RegExps.ALPHANUM.test(a)) return VAL.ALPHANUM
-        else if (param.hypenreg && !RegExps.HYPHEN_REG.test(a)) return VAL.HYPHEN
-        else if (param.specialChar && RegExps.SPECIALCHARS.test(a)) return VAL.PATTERN
-        else if (param.email && !RegExps.EMAIL.test(a)) return VAL.EMAIL
-        else if (param.password && !RegExps.PASSWORD.test(a)) return VAL.PASSWORD
+          if (!RegExps.NUM.test(a)) return VAL.NUM;
+          else if (a % 1 != 0 && !param.decimal) return VAL.DECIMAL;
+          else if (param.min && Number(a) < param.min)
+            return VAL.MIN(param.min);
+          else if (param.max && Number(a) > param.max)
+            return VAL.MAX(param.min);
+          else if (!RegExps.POSITIVENUM.test(a)) return VAL.NUM_POS;
+          else return null;
+        } else if (param.alpha && !RegExps.ALPHA.test(a)) return VAL.ALPHA;
+        else if (param.alphaNum && !RegExps.ALPHANUM.test(a))
+          return VAL.ALPHANUM;
+        else if (param.hypenreg && !RegExps.HYPHEN_REG.test(a))
+          return VAL.HYPHEN;
+        else if (param.specialChar && RegExps.SPECIALCHARS.test(a))
+          return VAL.PATTERN;
+        else if (param.email && !RegExps.EMAIL.test(a)) return VAL.EMAIL;
+        else if (param.password && !RegExps.PASSWORD.test(a))
+          return VAL.PASSWORD;
         else return null;
       }
     };
@@ -129,9 +151,9 @@ export class ValidatorService extends AngularServiceInjector {
     return (control: AbstractControl): UnionValidation => {
       const a = control?.value;
       if (!a || a == 0) {
-        return VAL.SELECT(fn)
+        return VAL.SELECT(fn);
       }
-    }
+    };
   }
   _val_Date(dat: Partial<ValidatorDate>) {
     return (control: AbstractControl): UnionValidation => {
@@ -141,24 +163,18 @@ export class ValidatorService extends AngularServiceInjector {
         a = b?.getTime() ?? '';
       }
       if (Custom.emptyCheck(b)) {
-        if (
-          dat?.currentDate != undefined &&
-          a != dat?.currentDate?.getTime()
-        ) {
-          return VAL.DATE_EQUAL
-        }
-        else if (
+        if (dat?.currentDate != undefined && a != dat?.currentDate?.getTime()) {
+          return VAL.DATE_EQUAL;
+        } else if (
           b?.toDateString() == dat?.minDate?.toDateString() ||
           b?.toDateString() == dat?.maxDate?.toDateString()
-
-        ) return null; // when case is >= | <=
+        )
+          return null; // when case is >= | <=
         else if (dat?.minDate != undefined && dat?.minDate?.getTime() > a) {
-          return VAL.MIN_DATE
-        }
-        else if (dat?.maxDate != undefined && dat?.maxDate?.getTime() < a) {
-          return VAL.MAX_DATE
-        }
-        else return null;
+          return VAL.MIN_DATE;
+        } else if (dat?.maxDate != undefined && dat?.maxDate?.getTime() < a) {
+          return VAL.MAX_DATE;
+        } else return null;
       }
     };
   }
@@ -169,15 +185,17 @@ export class ValidatorService extends AngularServiceInjector {
         const fieldA = group?.get(field1);
         array?.controls?.forEach((groups) => {
           const fielda = groups?.get(field1);
-          if (fieldA?.value == fielda?.value &&
-            (fieldA?.valid || fieldA?.errors?.key == 'DUPLICATE')) {
+          if (
+            fieldA?.value == fielda?.value &&
+            (fieldA?.valid || fieldA?.errors?.key == 'DUPLICATE')
+          ) {
             repeat++;
           }
           if (repeat > 1) {
             fieldA?.setErrors(VAL.DUPLICATE);
             // return VAL.DUPLICATE; // maybe it required
           } else {
-            if (fieldA?.errors?.key == 'DUPLICATE'){
+            if (fieldA?.errors?.key == 'DUPLICATE') {
               fieldA?.setErrors(null);
             }
           }
@@ -188,7 +206,7 @@ export class ValidatorService extends AngularServiceInjector {
     };
   }
   repeatTwoFields(field1: string, field2: string) {
-    return (array: FormArray): Validation | null =>{
+    return (array: FormArray): Validation | null => {
       let repeat = 0;
       array?.controls?.forEach((group) => {
         const fieldA = group?.get(field1);
@@ -210,10 +228,10 @@ export class ValidatorService extends AngularServiceInjector {
             fieldB?.setErrors(VAL.DUPLICATE);
             return VAL.DUPLICATE;
           } else {
-            if (fieldA?.errors?.key == 'DUPLICATE'){
+            if (fieldA?.errors?.key == 'DUPLICATE') {
               fieldA?.setErrors(null);
             }
-            if (fieldB?.errors?.key == 'DUPLICATE'){
+            if (fieldB?.errors?.key == 'DUPLICATE') {
               fieldB?.setErrors(null);
             }
           }
@@ -226,12 +244,12 @@ export class ValidatorService extends AngularServiceInjector {
   }
   _matchValidator(firstControl, secondControl, groupone, grouptwo) {
     return (group: FormGroup): UnionValidation => {
-      if(group.get(groupone) && group.get(grouptwo)){
+      if (group.get(groupone) && group.get(grouptwo)) {
         let repeat = 0;
-        const fieldA = group.get([groupone, firstControl])
-        const fieldB = group.get([groupone,secondControl]);
-        const fielda = group.get([grouptwo,firstControl]);
-        const fieldb = group.get([grouptwo,secondControl]);
+        const fieldA = group.get([groupone, firstControl]);
+        const fieldB = group.get([groupone, secondControl]);
+        const fielda = group.get([grouptwo, firstControl]);
+        const fieldb = group.get([grouptwo, secondControl]);
         if (fieldA?.value && fieldB?.value && fielda?.value && fieldb?.value) {
           if (
             fieldA?.value == fielda?.value &&
@@ -247,8 +265,10 @@ export class ValidatorService extends AngularServiceInjector {
             fielda?.setErrors(VAL.DUPLICATE);
             fieldb?.setErrors(VAL.DUPLICATE);
             return VAL.DUPLICATE;
-          }
-          else if (fieldA?.errors?.key == 'DUPLICATE' || fieldB?.errors?.key == 'DUPLICATE') {
+          } else if (
+            fieldA?.errors?.key == 'DUPLICATE' ||
+            fieldB?.errors?.key == 'DUPLICATE'
+          ) {
             fieldA?.setErrors(null);
             fieldB?.setErrors(null);
             fielda?.setErrors(null);
@@ -257,7 +277,7 @@ export class ValidatorService extends AngularServiceInjector {
           }
         }
       }
-    }
+    };
   }
   _passwordMatchValidator(field1: string, field2: string) {
     return (group: FormGroup): UnionValidation => {
@@ -280,44 +300,40 @@ export class ValidatorService extends AngularServiceInjector {
   // FOR LOGGING FORM ERRORS AND WARNINGS
   logForm(
     group: FormGroup | FormArray = this._fs._form,
-    groupName = '_fs._form{}') {
+    groupName = '_fs._form{}'
+  ) {
     if (group.invalid) {
-      console.group(groupName)
+      console.group(groupName);
       Object.keys(group.controls).forEach((key: string) => {
         const acc = group.get(key); // Abstract Control
-        if (acc instanceof FormGroup ||
-          acc instanceof FormArray) {
-          const suffix = acc instanceof FormGroup ? '{}' : '[]'
+        if (acc instanceof FormGroup || acc instanceof FormArray) {
+          const suffix = acc instanceof FormGroup ? '{}' : '[]';
           this.logForm(acc, key + suffix);
         } else if (acc instanceof FormControl) {
-         if (
-            acc.status == 'INVALID' ||
-            acc.status == 'PENDING'
-          ) {
-            if(this.showWarning) {
+          if (acc.status == 'INVALID' || acc.status == 'PENDING') {
+            if (this.showWarning) {
               this._toastr.warning(
                 this.handleRequired(acc),
                 'Validation Error'
-              )
+              );
             }
             console.error({
               field: key,
-              errors: {...this._error_control(acc)}
+              errors: { ...this._error_control(acc) },
             });
-          } else if(acc.status == 'VALID'){
+          } else if (acc.status == 'VALID') {
             console.warn({
               field: key,
-              message: 'No Validator Error'
+              message: 'No Validator Error',
             });
           }
         }
       });
       console.groupEnd();
     }
-
   }
 }
-type UnionValidation = Validation | null | void
+type UnionValidation = Validation | null | void;
 // SERVER SIDE VALIDATION ERROR HANDLING PATTERN
 export interface ServerValidationMessage {
   key: VALIDATION_KEY;
@@ -344,5 +360,5 @@ export enum VALIDATION_KEY {
   MAX_DATE = 'MAX_DATE',
   DUPLICATE = 'DUPLICATE',
   CONFIRM = 'CONFIRM',
-  MATCH = 'MATCH'
+  MATCH = 'MATCH',
 }

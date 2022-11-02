@@ -24,11 +24,10 @@ import { AppInjector } from './core/static/AppInjector';
     RootzModule,
     SharedModule,
     AppRoutingModule,
-    UtilsModule
+    UtilsModule,
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(injector: Injector) {

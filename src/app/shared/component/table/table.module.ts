@@ -13,7 +13,7 @@ const control = [
   TblDDComponent,
   TblTxtComponent,
   DiPaginatorComponent,
-  TblDateComponent
+  TblDateComponent,
 ];
 @NgModule({
   declarations: [control],

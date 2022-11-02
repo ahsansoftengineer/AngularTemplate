@@ -6,17 +6,13 @@ import { FeatureDetailComponent } from './feature-detail/feature-detail.componen
 import { FeatureListComponent } from './feature-list/feature-list.component';
 import { FeatureEditComponent } from './feature-edit/feature-edit.component';
 
-
 @NgModule({
   declarations: [
     FeatureAddComponent,
     FeatureDetailComponent,
     FeatureListComponent,
-    FeatureEditComponent
+    FeatureEditComponent,
   ],
-  imports: [
-    CommonModule,
-    Feature1RoutingModule
-  ]
+  imports: [CommonModule, Feature1RoutingModule],
 })
-export class Feature1Module { }
+export class Feature1Module {}

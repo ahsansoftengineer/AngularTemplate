@@ -10,16 +10,11 @@ const CommonModulez = [
   DialogsModule,
   FiltersModule,
   UtilsModule,
-  TableModule
-]
+  TableModule,
+];
 @NgModule({
-  declarations: [
-  ],
-  imports: [
-    CommonModulez
-  ],
-  exports:[
-    CommonModulez
-  ]
+  declarations: [],
+  imports: [CommonModulez],
+  exports: [CommonModulez],
 })
-export class ComponentModule { }
+export class ComponentModule {}

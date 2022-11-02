@@ -6,11 +6,7 @@ import { DiFormActionsComponent } from './di-form-actions/di-form-actions.compon
 import { AngularzModule } from '../../modules/angularz.module';
 import { MatzModule } from '../../modules/matz.module';
 
-const Utils = [
-  LoaderComponent,
-  DiBtnComponent,
-  DiFormActionsComponent,
-]
+const Utils = [LoaderComponent, DiBtnComponent, DiFormActionsComponent];
 
 @NgModule({
   declarations: Utils,
@@ -20,8 +16,6 @@ const Utils = [
     // RootzModule,
     NGX_NGB_Other_Module,
   ],
-  exports:[
-    Utils,
-  ]
+  exports: [Utils],
 })
-export class UtilsModule { }
+export class UtilsModule {}

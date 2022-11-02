@@ -1,144 +1,158 @@
-
 <div class="card-header custom__card__body__styling">
-  <h2 mat-dialog-title [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }">
+  <h2
+    mat-dialog-title
+    [ngClass]="{ eng__font: _ss.lng === 'en', urdu__font: _ss.lng === 'ur' }"
+  >
     <div class="col-md-12">
-      {{'Receipt Details' | translate}}
+      {{ "Receipt Details" | translate }}
     </div>
   </h2>
 </div>
 <div mat-dialog-content>
- <table class="mat-table" [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }">
+  <table
+    class="mat-table"
+    [ngClass]="{ eng__font: _ss.lng === 'en', urdu__font: _ss.lng === 'ur' }"
+  >
     <tr class="mat-header-row">
-      <th class='mat-header-cell' colspan="2">
-        {{'Donor Details' | translate}}
+      <th class="mat-header-cell" colspan="2">
+        {{ "Donor Details" | translate }}
       </th>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Mobile No' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.donor?.mobile  }}</td>
+      <td class="mat-cell">{{ "Mobile No" | translate }}</td>
+      <td class="mat-cell">{{ trans?.donor?.mobile }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Donor Name' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.donor?.name }}</td>
+      <td class="mat-cell">{{ "Donor Name" | translate }}</td>
+      <td class="mat-cell">{{ trans?.donor?.name }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Email' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.additional_info?.email }}</td>
+      <td class="mat-cell">{{ "Email" | translate }}</td>
+      <td class="mat-cell">{{ trans?.additional_info?.email }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Address' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.additional_info?.address }}</td>
+      <td class="mat-cell">{{ "Address" | translate }}</td>
+      <td class="mat-cell">{{ trans?.additional_info?.address }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Country' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.donor?.country?.title }}</td>
+      <td class="mat-cell">{{ "Country" | translate }}</td>
+      <td class="mat-cell">{{ trans?.donor?.country?.title }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'City' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.donor?.city?.title }}</td>
+      <td class="mat-cell">{{ "City" | translate }}</td>
+      <td class="mat-cell">{{ trans?.donor?.city?.title }}</td>
     </tr>
     <tr class="mat-row" *ngIf="trans?.additional_info?.careOfName">
-      <td class='mat-cell'>{{'Care Of' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.additional_info?.careOfName }}</td>
+      <td class="mat-cell">{{ "Care Of" | translate }}</td>
+      <td class="mat-cell">{{ trans?.additional_info?.careOfName }}</td>
     </tr>
   </table>
- <table class="mat-table" [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }">
+  <table
+    class="mat-table"
+    [ngClass]="{ eng__font: _ss.lng === 'en', urdu__font: _ss.lng === 'ur' }"
+  >
     <tr class="mat-header-row">
-      <th class='mat-header-cell' colspan="2">
-        {{"Receipt Information" | translate}}
+      <th class="mat-header-cell" colspan="2">
+        {{ "Receipt Information" | translate }}
       </th>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Currency' | translate}}</td>
-      <td class='mat-cell'>{{ trans?.currency?.title }}
-      </td>
+      <td class="mat-cell">{{ "Currency" | translate }}</td>
+      <td class="mat-cell">{{ trans?.currency?.title }}</td>
     </tr>
   </table>
- <table class="mat-table"  *ngFor="let item of trans?.receipt_details; let i = index"
- [ngClass]="{'eng__font': _ss.lng === 'en', 'urdu__font' : _ss.lng === 'ur' }">
+  <table
+    class="mat-table"
+    *ngFor="let item of trans?.receipt_details; let i = index"
+    [ngClass]="{ eng__font: _ss.lng === 'en', urdu__font: _ss.lng === 'ur' }"
+  >
     <tr class="mat-header-row">
-      <th class='mat-header-cell' colspan="2">
-        {{ i + 1 }} - {{'Donation Details' | translate}}
+      <th class="mat-header-cell" colspan="2">
+        {{ i + 1 }} - {{ "Donation Details" | translate }}
       </th>
     </tr>
     <tr class="mat-row" *ngIf="trans?.receipt_type == 1">
-      <td class='mat-cell'>{{"Donation Mode" | translate}}</td>
-      <td class='mat-cell'>{{ getReceiptType(item?.donationMode) }}
-    </td>
+      <td class="mat-cell">{{ "Donation Mode" | translate }}</td>
+      <td class="mat-cell">{{ getReceiptType(item?.donationMode) }}</td>
+    </tr>
+
     <tr class="mat-row">
-      <td class='mat-cell'>{{'Amount' | translate}}</td>
-      <td class='mat-cell'>{{ item?.amount }}</td>
+      <td class="mat-cell">{{ "Amount" | translate }}</td>
+      <td class="mat-cell">{{ item?.amount }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.bank?.id">
-      <td class='mat-cell'>{{"Bank" | translate}}</td>
-      <td class='mat-cell'>{{ item?.bank?.title }}</td>
+      <td class="mat-cell">{{ "Bank" | translate }}</td>
+      <td class="mat-cell">{{ item?.bank?.title }}</td>
     </tr>
     <!-- Material -->
     <tr class="mat-row" *ngIf="item?.material_item?.id">
-      <td class='mat-cell'>{{"Material Item" | translate}}</td>
-      <td class='mat-cell'>{{ item?.material_item?.title }}</td>
+      <td class="mat-cell">{{ "Material Item" | translate }}</td>
+      <td class="mat-cell">{{ item?.material_item?.title }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.weight?.id">
-      <td class='mat-cell'>{{"Weight" | translate}}</td>
-      <td class='mat-cell'>{{ item?.weight?.title }}</td>
+      <td class="mat-cell">{{ "Weight" | translate }}</td>
+      <td class="mat-cell">{{ item?.weight?.title }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.material?.id">
-      <td class='mat-cell'>{{"Material" | translate}}</td>
-      <td class='mat-cell'>{{ item?.material?.title }}</td>
+      <td class="mat-cell">{{ "Material" | translate }}</td>
+      <td class="mat-cell">{{ item?.material?.title }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.unit?.id">
-      <td class='mat-cell'>{{"Units" | translate}}</td>
-      <td class='mat-cell'>{{ item?.unit?.title }}</td>
+      <td class="mat-cell">{{ "Units" | translate }}</td>
+      <td class="mat-cell">{{ item?.unit?.title }}</td>
     </tr>
     <!-- Cheque -->
     <tr class="mat-row" *ngIf="item?.branchCode">
-      <td class='mat-cell'>{{"Branch Code" | translate}}</td>
-      <td class='mat-cell'>{{ item?.branchCode }}</td>
+      <td class="mat-cell">{{ "Branch Code" | translate }}</td>
+      <td class="mat-cell">{{ item?.branchCode }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.chequeNumber">
-      <td class='mat-cell'>{{"Cheque No" | translate}}</td>
-      <td class='mat-cell'>{{ item?.chequeNumber }}</td>
+      <td class="mat-cell">{{ "Cheque No" | translate }}</td>
+      <td class="mat-cell">{{ item?.chequeNumber }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.chequeDate">
-      <td class='mat-cell'>{{"Cheque Date" | translate}}</td>
-      <td class='mat-cell'>{{ item?.chequeDate | date:'mediumDate' }}</td>
+      <td class="mat-cell">{{ "Cheque Date" | translate }}</td>
+      <td class="mat-cell">{{ item?.chequeDate | date: "mediumDate" }}</td>
     </tr>
     <!-- Deposit -->
     <tr class="mat-row" *ngIf="item?.depositSlipNumber">
-      <td class='mat-cell'>{{"Deposit Slip No" | translate}}</td>
-      <td class='mat-cell'>{{ item?.depositSlipNumber }}</td>
+      <td class="mat-cell">{{ "Deposit Slip No" | translate }}</td>
+      <td class="mat-cell">{{ item?.depositSlipNumber }}</td>
     </tr>
     <tr class="mat-row" *ngIf="item?.depositDate">
-      <td class='mat-cell'>{{"Deposit Date" | translate}}</td>
-      <td class='mat-cell'>{{ item?.depositDate | date:'mediumDate' }}</td>
+      <td class="mat-cell">{{ "Deposit Date" | translate }}</td>
+      <td class="mat-cell">{{ item?.depositDate | date: "mediumDate" }}</td>
     </tr>
     <!-- Common Properties -->
     <tr class="mat-row">
-      <td class='mat-cell'>{{"Sub Type" | translate}}</td>
-      <td class='mat-cell'>{{ item?.donation_sub_type?.title }}</td>
+      <td class="mat-cell">{{ "Sub Type" | translate }}</td>
+      <td class="mat-cell">{{ item?.donation_sub_type?.title }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{"Purpose" | translate}}</td>
-      <td class='mat-cell'>{{ item?.purpose?.title }}</td>
+      <td class="mat-cell">{{ "Purpose" | translate }}</td>
+      <td class="mat-cell">{{ item?.purpose?.title }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{"Majlis" | translate}}</td>
-      <td class='mat-cell'>{{ item?.majlis?.title }}</td>
+      <td class="mat-cell">{{ "Majlis" | translate }}</td>
+      <td class="mat-cell">{{ item?.majlis?.title }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{"Branch" | translate}}</td>
-      <td class='mat-cell'>{{ item?.branch?.title }}</td>
+      <td class="mat-cell">{{ "Branch" | translate }}</td>
+      <td class="mat-cell">{{ item?.branch?.title }}</td>
     </tr>
     <tr class="mat-row">
-      <td class='mat-cell'>{{"Additional Info" | translate}}</td>
-      <td class='mat-cell'>{{ item?.additionalInfo }}</td>
+      <td class="mat-cell">{{ "Additional Info" | translate }}</td>
+      <td class="mat-cell">{{ item?.additionalInfo }}</td>
     </tr>
   </table>
 </div>
 <div mat-dialog-actions>
   <div class="col-md-12 text-right">
-    <button mat-raised-button mat-button  (click)="_close()">
-      <i class="fas fas fa-times" style="color: #3085d6 !important;font-size: 20px; "></i>
+    <button mat-raised-button mat-button (click)="_close()">
+      <i
+        class="fas fas fa-times"
+        style="color: #3085d6 !important; font-size: 20px"
+      ></i>
     </button>
     <!-- <button mat-raised-button mat-button class="my-1 mx-3" (click)="_close()"
     style="box-shadow: 0px 0px 0px transparent;">

@@ -1,8 +1,8 @@
-export interface ServerMultipleResponse{
-  code: number
+export interface ServerMultipleResponse {
+  code: number;
   data: {
-    records: any[]
-    totalRecords: number
-  }
-  message: string
+    records: any[];
+    totalRecords: number;
+  };
+  message: string;
 }

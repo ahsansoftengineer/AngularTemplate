@@ -3,10 +3,9 @@ import { Component, OnChanges, Input, SimpleChange } from '@angular/core';
 @Component({
   selector: 'app-password-strength-bar',
   templateUrl: './password-strength-bar.component.html',
-  styleUrls: ['./password-strength-bar.component.css']
+  styleUrls: ['./password-strength-bar.component.css'],
 })
 export class PasswordStrengthBarComponent implements OnChanges {
-
   @Input() passwordToCheck: string;
   @Input() barLabel: string;
 
@@ -18,7 +17,6 @@ export class PasswordStrengthBarComponent implements OnChanges {
 
   private colors = ['#F00', '#F90', '#FF0', '#9F0', '#0F0'];
   private static measureStrength(pass: string) {
-
     let score = 0;
     // award every unique letter until 5 repetitions
     let letters = {};
@@ -36,11 +34,10 @@ export class PasswordStrengthBarComponent implements OnChanges {
       nonWords: /\W/.test(pass),
     };
 
-
     let variationCount = 0;
 
     for (let check in variations) {
-      variationCount += (variations[check]) ? 1 : 0;
+      variationCount += variations[check] ? 1 : 0;
     }
 
     score += (variationCount - 1) * 10;
@@ -60,7 +57,7 @@ export class PasswordStrengthBarComponent implements OnChanges {
     }
     return {
       idx: idx + 1,
-      col: this.colors[idx]
+      col: this.colors[idx],
     };
   }
 
@@ -68,7 +65,9 @@ export class PasswordStrengthBarComponent implements OnChanges {
     var password = changes['passwordToCheck']?.currentValue;
     this.setBarColors(5, '#DDD');
     if (password) {
-      let c = this.getColor(PasswordStrengthBarComponent.measureStrength(password));
+      let c = this.getColor(
+        PasswordStrengthBarComponent.measureStrength(password)
+      );
       this.setBarColors(c.idx, c.col);
     }
   }
@@ -78,6 +77,4 @@ export class PasswordStrengthBarComponent implements OnChanges {
       this['bar' + _n] = col;
     }
   }
-
-
 }

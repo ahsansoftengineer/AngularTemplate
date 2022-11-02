@@ -7,15 +7,21 @@ import {
 } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { CurrencyMaskConfig, CurrencyMaskInputMode } from 'ngx-currency';
-import { BaseControlComponent, CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
+import {
+  BaseControlComponent,
+  CONTROL_HOST_CSS_CLASS,
+} from '../base-control-z.component';
 
 @Component({
   selector: 'di-currency',
   templateUrl: './currency.component.html',
   styleUrls: ['./currency.component.css'],
-  host: {class: CONTROL_HOST_CSS_CLASS}
+  host: { class: CONTROL_HOST_CSS_CLASS },
 })
-export class CurrencyComponent extends BaseControlComponent  implements OnInit, OnChanges {
+export class CurrencyComponent
+  extends BaseControlComponent
+  implements OnInit, OnChanges
+{
   @Input() public options: Partial<CurrencyMaskConfig>;
   override ngOnInit(): void {
     super.ngOnInit();
@@ -33,10 +39,10 @@ export class CurrencyComponent extends BaseControlComponent  implements OnInit, 
       }
     }
   }
-  mergeOptions(options:  Partial<CurrencyMaskConfig>){
-    return {...this.defaultOptions, ...options}
+  mergeOptions(options: Partial<CurrencyMaskConfig>) {
+    return { ...this.defaultOptions, ...options };
   }
-  defaultOptions:  Partial<CurrencyMaskConfig> = {
+  defaultOptions: Partial<CurrencyMaskConfig> = {
     // suffix: ' PKR',
     prefix: 'Rs',
     thousands: ',',
@@ -45,8 +51,8 @@ export class CurrencyComponent extends BaseControlComponent  implements OnInit, 
     allowNegative: false,
     min: undefined,
     max: undefined,
-    align: 'right'
-  }
+    align: 'right',
+  };
 }
 // export interface CurrencyMaskConfig {
 //   align: string;

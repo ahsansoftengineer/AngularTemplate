@@ -1,10 +1,20 @@
-<select (click)="_stop($event)" [formControl]="control" class="search" [ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
+<select
+  (click)="_stop($event)"
+  [formControl]="control"
+  class="search"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+>
   <option [value]="!control?.value ? control?.value : ''" disabled>
-    {{ lbl | translate}}
+    {{ lbl | translate }}
   </option>
-  <option class="search" style="padding: 5px;" [disabled]="control.value == item.id"
-    (onSelectionChange)='changeEvent(item, $event)' 
-    *ngFor="let item of list" [value]="item.id">
-    {{item.title}}
+  <option
+    class="search"
+    style="padding: 5px"
+    [disabled]="control.value == item.id"
+    (onSelectionChange)="changeEvent(item, $event)"
+    *ngFor="let item of list"
+    [value]="item.id"
+  >
+    {{ item.title }}
   </option>
 </select>

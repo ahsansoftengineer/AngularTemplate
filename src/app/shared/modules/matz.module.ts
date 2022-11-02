@@ -70,12 +70,9 @@ const modulez = [
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
-]
+];
 @NgModule({
-  imports: [
-    AngularzModule,
-    ...modulez
-  ],
-  exports: modulez
+  imports: [AngularzModule, ...modulez],
+  exports: modulez,
 })
-export class MatzModule { }
+export class MatzModule {}

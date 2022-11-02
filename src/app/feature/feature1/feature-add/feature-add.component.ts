@@ -4,7 +4,7 @@ import { BaseForm } from 'src/app/core/class/base.form';
 @Component({
   selector: 'aam-feature-add',
   templateUrl: './feature-add.component.html',
-  styleUrls: ['./feature-add.component.scss']
+  styleUrls: ['./feature-add.component.scss'],
 })
 export class FeatureAddComponent extends BaseForm implements OnInit {
   constructor(injector: Injector) {
@@ -29,15 +29,15 @@ export class FeatureAddComponent extends BaseForm implements OnInit {
     });
   }
   patchData() {
-    if (this._activeId != null && Number(this._activeId) > 0){
-    this._http
-      .get({ ...this.param, resource: this._activeId })
-      .subscribe((res: any) => {
-        const data = res.data.row;
-        this._fs._form.patchValue({
-          title: data.title,
+    if (this._activeId != null && Number(this._activeId) > 0) {
+      this._http
+        .get({ ...this.param, resource: this._activeId })
+        .subscribe((res: any) => {
+          const data = res.data.row;
+          this._fs._form.patchValue({
+            title: data.title,
+          });
         });
-      });
     }
   }
 }
