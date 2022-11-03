@@ -9,6 +9,7 @@ import { ServerSingleResponse } from '../interface/common/server-single-response
 import { HttpServiceParam } from '../interface/common/http-service-param';
 import { AngularServiceInjector } from '../class/angular-service-injector';
 import { environment } from 'src/environments/environment';
+import { AppInjector } from '../static/AppInjector';
 
 @Injectable({
   providedIn: 'root',
@@ -38,8 +39,8 @@ export class HTTPService extends AngularServiceInjector {
   // Marking Private Because Typescript does not support
   // sealed and final key word
   private constructor(injector: Injector) {
-    super(injector);
-    this.http = injector.get(HttpClient);
+    super();
+    this.http = AppInjector.get(HttpClient);
   }
   get(param: Partial<HttpServiceParam>): Observable<ServerSingleResponse> {
     return this.http.get<ServerSingleResponse>(this.finalResult(param)).pipe(

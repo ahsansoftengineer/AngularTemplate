@@ -41,8 +41,8 @@ export abstract class BaseServiceInjector extends AngularServiceInjector {
   public _isExist: boolean;
   public _component = 'Override _component property in Component ngOnInit';
   public subscriptionArray: Subscription[] = [];
-  constructor(override injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
     this._http = AppInjector.get(HTTPService);
     this._fs = AppInjector.get(FormService);
     this._vs = AppInjector.get(ValidatorService);

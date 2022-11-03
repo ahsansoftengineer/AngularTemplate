@@ -14,6 +14,7 @@ import { ValidatorParam } from '../interface/validators/param';
 import { HttpErrorResponse } from '@angular/common/http';
 import { VAL } from '../static/validation-message';
 import { AngularServiceInjector } from '../class/angular-service-injector';
+import { AppInjector } from '../static/AppInjector';
 
 @Injectable({
   providedIn: 'root',
@@ -22,9 +23,9 @@ export class ValidatorService extends AngularServiceInjector {
   _submitted = false;
   _fs: FormService;
   showWarning = false;
-  constructor(injector: Injector) {
-    super(injector);
-    this._fs = injector.get(FormService);
+  constructor() {
+    super();
+    this._fs = AppInjector.get(FormService);
     VAL._translate = this._translate;
   }
   // BELOW METHODS IS TO DISPLAY ERROR MESSAGES

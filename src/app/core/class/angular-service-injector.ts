@@ -24,7 +24,7 @@ export abstract class AngularServiceInjector {
   public _toastr: ToastrService;
   public _datePipe: DatePipe;
   public _snackBar: MatSnackBar;
-  constructor(public injector: Injector) {
+  constructor() {
     this._router = AppInjector.get(Router);
     this._activeRoute = AppInjector.get(ActivatedRoute);
     this._fb = AppInjector.get(FormBuilder);

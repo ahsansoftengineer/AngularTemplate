@@ -27,8 +27,8 @@ export class FileUploaderComponent
   }>();
   @Input('submitted') _submitted;
 
-  constructor(injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
   }
 
   override ngOnInit(): void {

@@ -11,11 +11,10 @@ import { BaseDialog } from 'src/app/core/class/base-dialog';
 export class TablePurposeComponent extends BaseDialog {
   _dataSource = new MatTableDataSource([]);
   constructor(
-    injector: Injector,
     public dialogRef: MatDialogRef<TablePurposeComponent>,
     @Inject(MAT_DIALOG_DATA) public data: { source; title }
   ) {
-    super(injector);
+    super();
     this._dataSource.data = data.source;
   }
   // onNoClick(): void {

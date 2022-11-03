@@ -7,8 +7,8 @@ import { BaseForm } from 'src/app/core/class/base.form';
   styleUrls: ['./feature-add.component.scss'],
 })
 export class FeatureAddComponent extends BaseForm implements OnInit {
-  constructor(injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
     // this.param.endpoint = URLz.DEFAULT;
   }
   ngOnInit() {

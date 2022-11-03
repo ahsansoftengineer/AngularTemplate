@@ -8,6 +8,7 @@ import {
 } from '@angular/core';
 import { StateService } from 'src/app/core/service/state.service';
 import { SwalService } from 'src/app/core/service/swal.service';
+import { AppInjector } from 'src/app/core/static/AppInjector';
 
 @Component({
   selector: 'di-btn',
@@ -21,8 +22,8 @@ export class DiBtnComponent implements OnInit {
   @Input() text = 'Save';
   @Output() handleAction: EventEmitter<any> = new EventEmitter<any>();
   constructor(public injector: Injector) {
-    this._swl = injector.get(SwalService);
-    this._ss = injector.get(StateService);
+    this._swl = AppInjector.get(SwalService);
+    this._ss = AppInjector.get(StateService);
   }
   ngOnInit(): void {}
   hndlAction(event) {

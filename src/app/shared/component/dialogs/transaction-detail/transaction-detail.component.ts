@@ -12,9 +12,8 @@ export class TransactionDetailComponent extends BaseForm implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<TransactionDetailComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public override injector: Injector
   ) {
-    super(injector);
+    super();
     this.trans = data;
     this.trans.receipt_details = data?.receipt_details;
     dialogRef.disableClose = true;

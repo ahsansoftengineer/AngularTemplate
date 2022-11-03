@@ -23,8 +23,8 @@ export class TxtComponent
   implements OnInit, OnChanges
 {
   @Input() type = 'text';
-  constructor(injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
   }
   override ngOnInit(): void {
     super.ngOnInit();

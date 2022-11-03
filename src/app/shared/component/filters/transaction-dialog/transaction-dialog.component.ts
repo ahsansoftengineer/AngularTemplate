@@ -20,7 +20,7 @@ export class TransactionDialogComponent extends BaseForm {
     public data: any,
     injector: Injector
   ) {
-    super(injector);
+    super();
     dialogRef.disableClose = true;
   }
   _close(): void {

@@ -6,6 +6,7 @@ import {
   OnInit,
   SimpleChanges,
 } from '@angular/core';
+import { AppInjector } from 'src/app/core/static/AppInjector';
 import {
   BaseControlComponent,
   CONTROL_HOST_CSS_CLASS,
@@ -32,7 +33,7 @@ export class DateComponent
   //   super(injector);
   // }
   override ngOnInit(): void {
-    this.datePipe = this.injector.get(DatePipe);
+    this.datePipe = AppInjector.get(DatePipe);
     super.ngOnInit();
     if (this.disabled) this.control.disable();
     this.setDateInForm();

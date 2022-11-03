@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { AngularServiceInjector } from '../class/angular-service-injector';
 import { HttpServiceParam } from '../interface/common/http-service-param';
 import { PartialSubmit } from '../interface/common/partial-submit';
+import { AppInjector } from '../static/AppInjector';
 import { ValidatorService } from './base.validator.service';
 import { FormHelperService } from './form-helper.service';
 import { FormService } from './form.service';
@@ -26,13 +27,13 @@ export class FormSubmitService extends AngularServiceInjector {
   _vs: ValidatorService;
   _fhs: FormHelperService;
   _swl: SwalService;
-  constructor(injector: Injector) {
-    super(injector);
-    this._http = injector.get(HTTPService);
-    this._fs = injector.get(FormService);
-    this._vs = injector.get(ValidatorService);
-    this._fhs = injector.get(FormHelperService);
-    this._swl = injector.get(SwalService);
+  constructor() {
+    super();
+    this._http = AppInjector.get(HTTPService);
+    this._fs = AppInjector.get(FormService);
+    this._vs = AppInjector.get(ValidatorService);
+    this._fhs = AppInjector.get(FormHelperService);
+    this._swl = AppInjector.get(SwalService);
   }
   _onSubmity(ps: PartialSubmit = this.defaultBehaviour): boolean | void {
     ps = this.mergeSubmitParam(ps);

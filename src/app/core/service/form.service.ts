@@ -7,8 +7,8 @@ import { AngularServiceInjector } from '../class/angular-service-injector';
 })
 export class FormService extends AngularServiceInjector {
   _form: FormGroup;
-  constructor(injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
     this._form = this._fb.group({});
   }
 }

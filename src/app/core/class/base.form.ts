@@ -4,8 +4,8 @@ import { BaseJoinAction } from './base-join-actions';
 @Component({ template: '' })
 export abstract class BaseForm extends BaseJoinAction implements OnDestroy {
   // Services Injection
-  constructor(override injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
     this.resetProperties();
   }
   /**

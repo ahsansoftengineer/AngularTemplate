@@ -6,20 +6,19 @@ import { HttpServiceParam } from '../interface/common/http-service-param';
 import { FormService } from './form.service';
 import { HTTPService } from './http.service';
 import { TranslateService } from '@ngx-translate/core';
-import { environment } from 'src/environments/environment';
-import { URLz } from '../enums/url.enum';
 import { AngularServiceInjector } from '../class/angular-service-injector';
+import { AppInjector } from '../static/AppInjector';
 @Injectable({
   providedIn: 'root',
 })
 export class SwalService extends AngularServiceInjector {
   _http: HTTPService;
   _fs: FormService;
-  constructor(injector: Injector) {
-    super(injector);
-    this._fs = injector.get(FormService);
-    this._http = injector.get(HTTPService);
-    this._translate = injector.get(TranslateService);
+  constructor() {
+    super();
+    this._fs = AppInjector.get(FormService);
+    this._http = AppInjector.get(HTTPService);
+    this._translate = AppInjector.get(TranslateService);
   }
   public handleError(error: HttpErrorResponse): Observable<never> {
     return throwError(() => error);

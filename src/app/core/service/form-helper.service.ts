@@ -8,6 +8,7 @@ import {
 } from '@angular/material/snack-bar';
 import { Custom } from '../static/custom';
 import { AngularServiceInjector } from '../class/angular-service-injector';
+import { AppInjector } from '../static/AppInjector';
 @Injectable({
   providedIn: 'root',
 })
@@ -18,11 +19,11 @@ export class FormHelperService extends AngularServiceInjector {
   _prepath: string;
 
   date: Date;
-  constructor(public override injector: Injector) {
+  constructor() {
     // Service Injection
-    super(injector);
-    this._fs = injector.get(FormService);
-    this._vs = injector.get(ValidatorService);
+    super();
+    this._fs = AppInjector.get(FormService);
+    this._vs = AppInjector.get(ValidatorService);
   }
 
   // GET CURRENT DATE AND TIME
