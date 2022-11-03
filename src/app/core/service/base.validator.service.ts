@@ -35,7 +35,8 @@ export class ValidatorService extends AngularServiceInjector {
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
       return field.replaceAll('_', ' ').replace('id', '');
-    } else return 'No Property Provided';
+    }
+    return 'No Property Provided';
   }
 
   /**

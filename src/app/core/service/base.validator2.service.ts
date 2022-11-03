@@ -109,6 +109,7 @@ export class ValidatorService2 {
         },
       ];
     }
+    return '';
   }
   public errTEXT(
     item: FormGroup,
@@ -152,6 +153,7 @@ export class ValidatorService2 {
         },
       ];
     }
+    return '';
   }
   public errNUM(
     item: FormGroup,
@@ -187,6 +189,7 @@ export class ValidatorService2 {
         },
       ];
     }
+    return '';
   }
   emptyCheck(val) {
     return val === '' || val === undefined || val === null;
