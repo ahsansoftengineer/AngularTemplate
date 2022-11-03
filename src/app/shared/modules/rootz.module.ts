@@ -42,19 +42,19 @@ export function HttpLoaderFactory(http: HttpClient) {
       positionClass: 'toast-top-right',
     }),
   ],
-  providers: [
-    CookieService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: AuthInterceptor,
-      multi: true,
-    },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: LoaderInterceptor,
-      multi: true,
-    },
-    DatePipe,
-  ],
+  // providers: [
+  //   CookieService,
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: AuthInterceptor,
+  //     multi: true,
+  //   },
+  //   {
+  //     provide: HTTP_INTERCEPTORS,
+  //     useClass: LoaderInterceptor,
+  //     multi: true,
+  //   },
+  //   DatePipe,
+  // ],
 })
 export class RootzModule {}

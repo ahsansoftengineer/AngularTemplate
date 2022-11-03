@@ -15,10 +15,10 @@ const routes: Routes = [
     path: '',
     // component: FullComponent,
     canActivateChild: [
-      StatesGuard,
-      SideBarMenusGuard,
-      DisregardGuard, // USE UNTIL ANGULAR DOESN'T PROVIDE CanDeActivateChild GUARD
-      PermissionGuard,
+      // StatesGuard,
+      // SideBarMenusGuard,
+      // DisregardGuard, // USE UNTIL ANGULAR DOESN'T PROVIDE CanDeActivateChild GUARD
+      // PermissionGuard,
     ],
     children: [
       // {

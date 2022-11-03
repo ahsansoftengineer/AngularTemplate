@@ -1,5 +1,5 @@
 import { OverlayModule } from '@angular/cdk/overlay';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,8 @@ const modulez = [
   OverlayModule,
 ];
 @NgModule({
-  imports: [...modulez],
-  exports: [...modulez],
+  imports: modulez,
+  exports: modulez,
+  providers: [DatePipe]
 })
 export class AngularzModule {}
