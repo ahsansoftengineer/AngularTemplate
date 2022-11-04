@@ -1,8 +1,7 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <button mat-icon-button>
-      <!-- (click)="sidenav.toggle()" -->
-      <mat-icon>menu</mat-icon>
+  <mat-toolbar-row> 
+    <button mat-icon-button type="button">
+      <mat-icon (click)="sideNav.Left.opened = !sideNav?.Left?.opened">menu</mat-icon>
     </button>
     <h1>SimpleCRM</h1>
     <span class="menu-spacer"></span>
@@ -14,6 +13,12 @@
       <a mat-button [routerLink]="'/activities'"> Activities </a>
       <a mat-button [routerLink]="'/create-activity'"> Create Activity </a>
     </div>
+    <span class="example-spacer"></span>
+    <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/ -->
+    <button mat-icon-button (click)="sideNav.Right.opened = !sideNav?.Right?.opened" type='button'>
+      <mat-icon>chrome_reader_mode</mat-icon> 
+      <!-- keyboard_backspace -->
+    </button>
   </mat-toolbar-row>
   <!-- <mat-toolbar-row>
       <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>

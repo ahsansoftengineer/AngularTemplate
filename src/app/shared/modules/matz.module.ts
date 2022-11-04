@@ -50,7 +50,7 @@ const modulez = [
   MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatIconModule,
+  MatIconModule, // https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
   MatInputModule,
   MatListModule,
   MatMenuModule,

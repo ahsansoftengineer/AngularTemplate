@@ -1,5 +1,7 @@
+import { Directionality } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { SideNavService } from './side-nav.service';
 
 @Component({
@@ -7,10 +9,19 @@ import { SideNavService } from './side-nav.service';
   templateUrl: './full-template.component.html',
   styleUrls: ['./full-template.component.scss'],
 })
-export class FullTemplateComponent implements OnInit {
-  constructor(public bpo: BreakpointObserver, public sideNav: SideNavService) {
+export class FullTemplateComponent implements OnInit, OnDestroy {
+  constructor(
+    public bpo: BreakpointObserver, 
+    public sideNav: SideNavService,
+    public dir: Directionality
+    ) {
 
-  }
+      // this.isRtl = dir.value === 'rtl';
+    }
+  private isRtl: boolean;
+  private _dirChangeSubscription = Subscription.EMPTY;
+
+
   ngOnInit(): void {
     this.leftSideBarScreenSettings() 
   }
@@ -26,5 +37,13 @@ export class FullTemplateComponent implements OnInit {
         this.sideNav.Left.disableClose = true
       }
     });
+  }
+  languageChangeSubs(){
+    this._dirChangeSubscription = this.dir.change.subscribe(() => {
+      // this.flipDirection();
+    });
+  }
+  ngOnDestroy() {
+    this._dirChangeSubscription.unsubscribe();
   }
 }
