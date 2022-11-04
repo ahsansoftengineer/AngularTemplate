@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { DisregardGuard } from './shared/guards/disregard.guard';
-import { PermissionGuard } from './shared/guards/permission.guard';
-import { SideBarMenusGuard } from './shared/guards/side-bar-menus.guard';
-import { StatesGuard } from './shared/guards/states.guard';
+// import { DisregardGuard } from './shared/guards/disregard.guard';
+// import { PermissionGuard } from './shared/guards/permission.guard';
+// import { SideBarMenusGuard } from './shared/guards/side-bar-menus.guard';
+// import { StatesGuard } from './shared/guards/states.guard';
+import { FullTemplateComponent } from './theme/full-template/full-template.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -13,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    // component: FullComponent,
+    component: FullTemplateComponent,
     canActivateChild: [
       // StatesGuard,
       // SideBarMenusGuard,
