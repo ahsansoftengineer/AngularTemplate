@@ -11,30 +11,32 @@ export const permission = [
 ];
 export const defaultChild: SideBarMenus = {
   // icon: 'dashboard',
-  class: '',
+  // class: '',
   permission: JSON.stringify(permission),
   submenu: [],
 };
 export const defaultParent: SideBarMenus = {
   ...defaultChild,
   permission: undefined,
-  path: '',
-  icon: 'icon-list',
-  class: 'has-arrow',
+  // path: '',
+  // icon: 'icon-list',
+  // class: 'has-arrow',
 };
 // PARENT LIST
 export function P(title: string, icon: string, submenu: SideBarMenus[]) {
   return {
     title,
+    icon,
     ...defaultParent,
     submenu,
   };
 }
 // CHILD LIST
-export function C(title: string, path: string) {
+export function C(title: string, icon: string, link: string) {
   return {
-    path,
+    link,
     title,
+    icon,
     ...defaultChild,
   };
 }

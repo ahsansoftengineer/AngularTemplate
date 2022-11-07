@@ -1,12 +1,20 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FeatureComponent } from './feature.component';
 
 const routes: Routes = [
   {
-    path: 'feature1',
-    loadChildren: () =>
-      import('./feature1/feature1.module').then((m) => m.Feature1Module),
+    path: '',
+    component: FeatureComponent,
+    children: [
+      {
+        path: 'feature1',
+        loadChildren: () =>
+          import('./feature1/feature1.module').then((m) => m.Feature1Module),
+      },
+    ],
   },
+ 
 ];
 
 @NgModule({

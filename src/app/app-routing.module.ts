@@ -22,12 +22,7 @@ const routes: Routes = [
       // PermissionGuard,
     ],
     children: [
-      // {
-      //   path: 'dm_dashboard',
-      //   loadChildren: () =>
-      //     import('./dm-dashboard/dm-dashboard.module')
-      //       .then((m) => m.DmDashboardModule),
-      // },
+    
       {
         path: 'dashboard',
         loadChildren: () =>
@@ -38,7 +33,7 @@ const routes: Routes = [
         loadChildren: () =>
           import('./feature/feature.module').then((m) => m.FeatureModule),
       },
-      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
+      { path: '**', redirectTo: '/dashboard', pathMatch: 'full' },
     ],
   },
 ];

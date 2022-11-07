@@ -21,6 +21,7 @@ const routes: Routes = [
     component: FeatureDetailComponent,
     data: {},
   },
+
 ];
 
 @NgModule({

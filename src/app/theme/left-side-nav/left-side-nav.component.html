@@ -5,29 +5,11 @@
     [position]="sideNav?.Left?.position"  -->
   <mat-drawer mode="side" disableClose="true" opened="true">
     <mat-nav-list>
-      <mat-list-item routerLink="/dashboard">
-        <mat-icon mat-list-icon>dashboard</mat-icon>
+      <mat-list-item *ngFor="let item of list" [routerLink]="item.link">
+        <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
         <span [@openClose]="sideNav.Left.opened ? 'open' : 'closed'">
-          <h4 mat-line class="pt-2">Dashbord</h4>
+          <h4 mat-line class="pt-2">{{item.title}}</h4>
         </span>
-      </mat-list-item>
-      <mat-list-item routerLink="/feature1">
-        <mat-icon mat-list-icon>person</mat-icon>
-        <span [@openClose]="sideNav.Left.opened ? 'open' : 'closed'">
-          <h4 mat-line class="pt-2">Feature 1</h4>
-        </span>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>assignment</mat-icon>
-        <h4 mat-line [@openClose]="sideNav.Left.opened ? 'open' : 'closed'">Management A</h4>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>domain</mat-icon>
-        <h4 mat-line [@openClose]="sideNav.Left.opened ? 'open' : 'closed'">Management A</h4>
-      </mat-list-item>
-      <mat-list-item>
-        <mat-icon mat-list-icon>folder_shared</mat-icon>
-        <h4 mat-line [@openClose]="sideNav.Left.opened ? 'open' : 'closed'">Management A</h4>
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
