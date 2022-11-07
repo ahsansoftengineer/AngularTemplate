@@ -29,16 +29,17 @@ const routes: Routes = [
       //       .then((m) => m.DmDashboardModule),
       // },
       {
+        path: 'dashboard',
+        loadChildren: () =>
+          import('./dashboard/dashboard.module').then((m) => m.DashboardModule),
+      },
+      {
         path: '',
         loadChildren: () =>
           import('./feature/feature.module').then((m) => m.FeatureModule),
       },
+      { path: '**', redirectTo: 'dashboard', pathMatch: 'full' },
     ],
-  },
-  {
-    path: '**',
-    redirectTo: '/error/404',
-    pathMatch: 'full',
   },
 ];
 @NgModule({

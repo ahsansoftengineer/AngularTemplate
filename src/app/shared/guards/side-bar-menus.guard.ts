@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { CanActivateChild, RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { ROUTES } from 'src/app/core/constant/vertical-menu-items';
+import { ROUTES } from 'src/app/core/constant/menu-items';
 import { URLz } from 'src/app/core/enums/url.enum';
 import { SideBarMenus } from 'src/app/core/interface/common/router-module';
 import { HTTPService } from 'src/app/core/service/http.service';

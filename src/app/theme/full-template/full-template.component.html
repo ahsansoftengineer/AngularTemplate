@@ -1,23 +1,5 @@
 
 <aam-headers></aam-headers>
-<mat-sidenav-container 
-  [hasBackdrop]="sideNav.Right.opened || (sideNav?.Left?.mode == 'over' && sideNav.Left.opened)">
-  <mat-sidenav 
-    [mode]="sideNav?.Left?.mode" 
-    [position]="sideNav?.Left?.position" 
-    [(opened)]="sideNav.Left.opened"
-    [disableClose]="sideNav.Left.disableClose">
-      <aam-left-side-nav></aam-left-side-nav>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div style="height: 88vh;">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-  <mat-sidenav 
-    [mode]="sideNav?.Right?.mode" 
-    [position]="sideNav?.Right?.position" 
-    [(opened)]="sideNav.Right.opened">
-    <aam-right-side-nav></aam-right-side-nav>
-  </mat-sidenav>  
-</mat-sidenav-container>
+<aam-left-side-nav>
+  <router-outlet></router-outlet>
+</aam-left-side-nav>

@@ -9,42 +9,32 @@ export const permission = [
   { name: ACTION.DELETE },
   { name: ACTION.EVERY },
 ];
-export const defaultProp: SideBarMenus = {
-  icon: 'mdi mdi-adjust',
+export const defaultChild: SideBarMenus = {
+  // icon: 'dashboard',
   class: '',
-  labelClass: 'side-badge badge badge-pill text-white badge-danger',
-  extralink: false,
-  permission,
+  permission: JSON.stringify(permission),
   submenu: [],
 };
 export const defaultParent: SideBarMenus = {
-  ...defaultProp,
+  ...defaultChild,
   permission: undefined,
   path: '',
   icon: 'icon-list',
   class: 'has-arrow',
 };
-export const UserSubPermission = [
-  {
-    path: 'allow_system',
-    permission,
-  },
-  {
-    path: 'user/allow_cash',
-    permission,
-  },
-];
-export function R(title: string, path: string) {
-  return {
-    path,
-    title,
-    ...defaultProp,
-  };
-}
-export function P(title: string, submenu: SideBarMenus[]) {
+// PARENT LIST
+export function P(title: string, icon: string, submenu: SideBarMenus[]) {
   return {
     title,
     ...defaultParent,
     submenu,
+  };
+}
+// CHILD LIST
+export function C(title: string, path: string) {
+  return {
+    path,
+    title,
+    ...defaultChild,
   };
 }
