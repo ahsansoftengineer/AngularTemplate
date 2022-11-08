@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SideNavService } from '../full-template/side-nav.service';
 
 @Component({
@@ -7,6 +7,12 @@ import { SideNavService } from '../full-template/side-nav.service';
   styleUrls: ['./headers.component.scss'],
 })
 export class HeadersComponent implements OnInit {
-  constructor(public sideNav: SideNavService) {}
-  ngOnInit(): void {}
+  isLight: boolean = false;
+  constructor(
+    public sideNav: SideNavService,
+    public cdr: ChangeDetectorRef
+    ) {}
+  ngOnInit(): void {
+    
+  }
 }

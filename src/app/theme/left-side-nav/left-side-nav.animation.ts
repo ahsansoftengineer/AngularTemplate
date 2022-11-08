@@ -3,11 +3,11 @@ import { animate, state, style, transition, trigger } from "@angular/animations"
 export const animations =  [
   trigger('openClose', [
     state('open', style({
-      width: '180px',
+      width: '240px',
       opacity: 1,
     })),
     state('closed', style({
-      width: '0px',
+      width: '60px',
       opacity: 0.8,
     })),
     transition('open => closed', [

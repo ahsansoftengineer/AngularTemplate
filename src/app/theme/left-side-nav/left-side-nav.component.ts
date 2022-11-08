@@ -8,7 +8,7 @@ import { animations } from './left-side-nav.animation';
   selector: 'aam-left-side-nav',
   templateUrl: './left-side-nav.component.html',
   styleUrls: ['./left-side-nav.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  // encapsulation: ViewEncapsulation.None,
   animations: animations
 })
 export class LeftSideNavComponent implements OnInit {
