@@ -8,10 +8,10 @@ export const ROUTEZ: SideBarMenus[] = [
     C('Edit', 'folder-share', '/feature1/edit'),
     C('Detail', 'email', '/feature1/detail'),  
   ]),
-  C('Feature 2', 'domain', '/feature2/list'),
+  C('Feature 2', 'domain', '/feature5/list'),
   C('Feature 3', 'folder-share', '/feature3/edit'),
   C('Feature 4', 'email', '/feature4/list'),
-  P('Deposit', 'money', '/feature4/list', [
-    C('Cash deposit bank', 'cash', '/feature4/list')
+  P('Deposit', 'money', '/feature2/edit', [
+    C('Cash deposit bank', 'cash', '/feature2/edit')
   ]),
 ];

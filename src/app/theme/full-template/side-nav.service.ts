@@ -6,7 +6,6 @@ import { SideBarMenus } from 'src/app/core/interface/common/router-module'
   providedIn: 'root'
 })
 export class SideNavService {
-  flatSideBarMenus: SideBarMenus[] = [];
   public Left: Partial<MatSidenav> = {
     mode: 'push',
     position: 'start',

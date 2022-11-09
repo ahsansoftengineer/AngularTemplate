@@ -5,7 +5,6 @@ import { FeatureEditComponent } from './feature-edit/feature-edit.component';
 import { FeatureListComponent } from './feature-list/feature-list.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'list', pathMatch: 'full' },
   {
     path: 'list',
     component: FeatureListComponent,
@@ -21,6 +20,7 @@ const routes: Routes = [
     component: FeatureDetailComponent,
     data: {},
   },
+  // { path: '', redirectTo: 'list', pathMatch: 'full' },
 
 ];
 

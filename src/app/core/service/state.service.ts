@@ -9,7 +9,8 @@ import { Permission, SideBarMenus } from '../interface/common/router-module';
 })
 export class StateService {
   // TRANSACTION
-  sideBarActive: string = '';
+  sideBarParentActive: number;
+  sideBarChildActive:string;
   sideBarMenus: SideBarMenus[];
   sideBarMenusFlat: SideBarMenus[] = [];
   permission: Permission[];
@@ -18,6 +19,7 @@ export class StateService {
   lng: string;
   constructor(public injector: Injector) {
     this.lng = 'en';
+    this.sideBarMenus = ROUTEZ
     ROUTEZ.forEach(x => {
       this.flatSideBarMenu(x);
     })

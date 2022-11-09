@@ -12,6 +12,16 @@ const routes: Routes = [
         loadChildren: () =>
           import('./feature1/feature1.module').then((m) => m.Feature1Module),
       },
+      {
+        path: 'feature2',
+        loadChildren: () =>
+          import('./feature1/feature1.module').then((m) => m.Feature1Module),
+      },
+      {
+        path: 'feature3',
+        loadChildren: () =>
+          import('./feature1/feature1.module').then((m) => m.Feature1Module),
+      },
     ],
   },
  

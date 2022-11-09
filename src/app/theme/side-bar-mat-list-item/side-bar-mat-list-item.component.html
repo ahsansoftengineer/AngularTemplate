@@ -1,14 +1,25 @@
-<mat-list-item *ngFor="let item of _ss?.sideBarMenusFlat" (click)="navHandler(item.link)">
-  <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
-  <span mat-line>{{item.title}}</span>
-  <span *ngIf="item?.submenu?.length && item.link !== _ss.sideBarActive">
-    <mat-icon mat-list-icon>keyboard_arrow_right</mat-icon>
-  </span>
-  <span *ngIf="item?.submenu?.length && item.link === _ss.sideBarActive">
+<mat-list-item (click)="navParentHandler(item?.link)" 
+[ngClass]="{'parent-active': this._ss.sideBarParentActive == item?.id}">
+  <mat-icon mat-list-icon>{{item?.icon}}</mat-icon>
+  <span mat-line>{{item?.title}}</span>
+  <span *ngIf="item?.submenu?.length && this._ss.sideBarParentActive == item?.id">
     <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
   </span>
-  <!-- This wont Work because it will bubble up the childs -->
-  <!-- <ng-container *ngFor="let it of item.submenu" >
-    <aam-side-bar-mat-list-item [item]="it"></aam-side-bar-mat-list-item>    
-  </ng-container> -->
+  <span *ngIf="item?.submenu?.length && this._ss.sideBarParentActive != item?.id">
+    <mat-icon mat-list-icon >keyboard_arrow_right</mat-icon>
+  </span>
+  
+  <!-- RECURSIVE EXAMPLE HERE
+    <ng-container *ngFor="let it of item.submenu" >
+      <aam-side-bar-mat-list-item [item]="it"></aam-side-bar-mat-list-item>    
+    </ng-container>
+  -->
 </mat-list-item>
+<ng-container  *ngIf="_ss.sideBarParentActive == item?.id">
+  <mat-list-item [@fadeInOnEnter] *ngFor="let it of this.item?.submenu"
+  [ngClass]="{'child-active': _ss.sideBarChildActive == it?.link}" 
+  (click)="navChildHandler(it.link)">
+  <mat-icon mat-list-icon>blur_circular</mat-icon>
+  <span mat-line>{{it.title}}</span>
+</mat-list-item>
+</ng-container>
