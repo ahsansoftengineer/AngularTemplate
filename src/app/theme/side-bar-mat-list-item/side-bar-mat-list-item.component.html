@@ -1,4 +1,4 @@
-<mat-list-item (click)="navHandler(item.link)">
+<mat-list-item *ngFor="let item of _ss?.sideBarMenusFlat" (click)="navHandler(item.link)">
   <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
   <span mat-line>{{item.title}}</span>
   <span *ngIf="item?.submenu?.length && item.link !== _ss.sideBarActive">
@@ -7,9 +7,8 @@
   <span *ngIf="item?.submenu?.length && item.link === _ss.sideBarActive">
     <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
   </span>
-</mat-list-item>
-<mat-list-item *ngFor="let it of this.item?.submenu" 
-  (click)="navHandler(item.link + it.link)">
-  <mat-icon mat-list-icon>blur_circular</mat-icon>
-  <span mat-line>{{it.title}}</span>
+  <!-- This wont Work because it will bubble up the childs -->
+  <!-- <ng-container *ngFor="let it of item.submenu" >
+    <aam-side-bar-mat-list-item [item]="it"></aam-side-bar-mat-list-item>    
+  </ng-container> -->
 </mat-list-item>

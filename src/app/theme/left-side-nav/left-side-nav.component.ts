@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { fadeInOnEnterAnimation } from 'angular-animations';
-import { ROUTES } from 'src/app/core/constant/menu-items';
 import { SideBarMenus } from 'src/app/core/interface/common/router-module';
 import { SideNavService } from '../full-template/side-nav.service';
 import { animations } from './left-side-nav.animation';
@@ -22,7 +21,6 @@ export class LeftSideNavComponent implements OnInit {
     public sideNav: SideNavService
   ) { }
   ngOnInit(): void {
-    this.list = ROUTES
     console.log(this.list);
-   }
+  }
 }

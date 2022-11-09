@@ -1,7 +1,7 @@
 import { SideBarMenus } from '../interface/common/router-module';
 import { P, C } from './menu-items-settings';
 
-export const ROUTES: SideBarMenus[] = [
+export const ROUTEZ: SideBarMenus[] = [
   C('Dashboard', 'dashboard', '/dashboard'),
   P('Feature 1', 'assignment', '/feature1/list', [
     C('List', 'domain', '/feature1/list'),
