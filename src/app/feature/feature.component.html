@@ -2,19 +2,23 @@
   <mat-grid-list cols="12" rowHeight="92vh">
     <mat-grid-tile [colspan]="12" rowHeight="100%">
       <mat-card class="dashboard-card">
-        <mat-card-header>
+        <mat-card-header class="form-header">
           <mat-card-title>
-            <h1>Dashboard</h1>
+            <h1>Dashboard 2</h1>
+            
+            <button mat-raised-button class="more-button">
+              <mat-icon>add</mat-icon> Add
+            </button>
           </mat-card-title>
         </mat-card-header>
-        <mat-card-content class="dashboard-card-content">
+        <mat-card-content>
           <div>Card Content Here</div>
           <router-outlet></router-outlet>
         </mat-card-content>
-        <mat-card-footer>
-          <mat-card-title>
-            <h3>This is Footer</h3>
-          </mat-card-title>
+        <mat-card-footer align="end" class="form-footer">
+          <button mat-raised-button type="button" color="warn">
+            <mat-icon>delete</mat-icon> Delete
+          </button>
         </mat-card-footer>
       </mat-card>
     </mat-grid-tile>

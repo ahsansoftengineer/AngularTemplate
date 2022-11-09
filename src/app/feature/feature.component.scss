@@ -1,6 +1,11 @@
 .grid-container {
   margin: 0px 2px 0px 2px;
 }
+.more-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
 
 .dashboard-card {
   position: absolute;
@@ -9,12 +14,15 @@
   right: 9px;
   bottom: 9px;
 }
-.dashboard-card-content {
-  text-align: center;
+.form-header{ 
+  background-color: rgba(0, 191, 191, 0.582);
+  // box-shadow: 0px 15px 10px -15px #111;  
 }
-
-.mat-card-footer{
-  left: 0px;
-  right: 0px;
-  bottom: 0px;
+.form-body{ 
+  background-color: rgba(242, 255, 0, 0.316);
+  // padding: 16px;
+}
+.form-footer{ 
+  // box-shadow: 10px 15px 0px -15px #111;  
+  background-color: rgba(0, 255, 191, 0.316);
 }

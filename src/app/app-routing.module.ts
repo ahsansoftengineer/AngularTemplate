@@ -22,7 +22,6 @@ const routes: Routes = [
       // PermissionGuard,
     ],
     children: [
-    
       {
         path: 'dashboard',
         loadChildren: () =>

@@ -1,31 +1,30 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { BaseServiceInjector } from 'src/app/core/class/base-service-injector';
 import { SideBarMenus } from 'src/app/core/interface/common/router-module';
-import { fadeInOnEnterAnimation, rotateInDownLeftAnimation, rotateInUpRightAnimation } from 'angular-animations';
+import { fadeInDownAnimation, fadeInDownOnEnterAnimation, fadeInOnEnterAnimation, fadeOutOnLeaveAnimation, fadeOutUpAnimation, fadeOutUpOnLeaveAnimation, rotateInDownLeftAnimation, rotateInUpRightAnimation, slideInLeftOnEnterAnimation, slideOutLeftOnLeaveAnimation, slideOutRightOnLeaveAnimation } from 'angular-animations';
 @Component({
   selector: 'aam-side-bar-mat-list-item',
   templateUrl: './side-bar-mat-list-item.component.html',
   styleUrls: ['./side-bar-mat-list-item.component.scss'],
   animations: [
     fadeInOnEnterAnimation(),
-    rotateInDownLeftAnimation(),
-    rotateInUpRightAnimation()
-    // slideInLeftOnEnterAnimation(),
-    // slideOutRightOnLeaveAnimation(),
-    // fadeInDownAnimation(),
-    // fadeOutUpAnimation()
+    fadeOutOnLeaveAnimation(),
+    slideInLeftOnEnterAnimation(),
+    slideOutLeftOnLeaveAnimation(),
+    fadeInDownOnEnterAnimation(),
+    fadeOutUpOnLeaveAnimation()
   ]
 })
 export class SideBarMatListItemComponent extends BaseServiceInjector implements OnInit {
   @Input() item: SideBarMenus
   activeRoute: boolean = false;
   ngOnInit(): void {
-    // this.setRoute(this.item?.link)
-    // if(this.item?.submenu){
-    //   this.item?.submenu?.forEach(x => {
-    //     this.setRoute(x?.link)
-    //   })
-    // }
+    if(!this._ss.sideBarParentActive && this.matchRoute(this.item.link)){
+      this.navParentHandler(this.item.link)
+    }
+    if(!this._ss.sideBarParentActive){
+      this.setRouteChild();
+    }
   }
   public navParentHandler(link: string){
     if(this.item.submenu){
@@ -36,15 +35,21 @@ export class SideBarMatListItemComponent extends BaseServiceInjector implements 
     this.navChildHandler(link)
   } 
   public navChildHandler(link: string){
-    console.log({link});
-    
     this._ss.sideBarChildActive = link
     this._router.navigate( [ link ])
   } 
-  setRoute(route: string){
-    if(route && this._router.url.indexOf(route) != -1){
-      // this._ss.sideBarMenuChild = route
+  setRouteChild(){
+    if(this.item?.submenu?.length){
+      this.item.submenu.forEach(x => {
+        if(this._router.url.indexOf(x.link) != -1){
+          this._ss.sideBarParentActive = this.item.id
+          this._ss.sideBarChildActive = x.link
+        }
+      })
     }
+  }
+  matchRoute(link: string){
+    return this._router.url.indexOf(link) != -1
   }
   setParent(){
    

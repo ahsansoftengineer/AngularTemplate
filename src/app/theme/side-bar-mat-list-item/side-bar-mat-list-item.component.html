@@ -2,10 +2,10 @@
 [ngClass]="{'parent-active': this._ss.sideBarParentActive == item?.id}">
   <mat-icon mat-list-icon>{{item?.icon}}</mat-icon>
   <span mat-line>{{item?.title}}</span>
-  <span *ngIf="item?.submenu?.length && this._ss.sideBarParentActive == item?.id">
+  <span *ngIf="this._ss.sideBarParentActive == item?.id && item?.submenu?.length">
     <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
   </span>
-  <span *ngIf="item?.submenu?.length && this._ss.sideBarParentActive != item?.id">
+  <span *ngIf="this._ss.sideBarParentActive != item?.id && item?.submenu?.length">
     <mat-icon mat-list-icon >keyboard_arrow_right</mat-icon>
   </span>
   
@@ -15,11 +15,12 @@
     </ng-container>
   -->
 </mat-list-item>
-<ng-container  *ngIf="_ss.sideBarParentActive == item?.id">
-  <mat-list-item [@fadeInOnEnter] *ngFor="let it of this.item?.submenu"
-  [ngClass]="{'child-active': _ss.sideBarChildActive == it?.link}" 
-  (click)="navChildHandler(it.link)">
-  <mat-icon mat-list-icon>blur_circular</mat-icon>
-  <span mat-line>{{it.title}}</span>
-</mat-list-item>
-</ng-container>
+<div [@slideOutLeftOnLeave] [@slideInLeftOnEnter]  
+  *ngIf="_ss.sideBarParentActive == item?.id">
+  <mat-list-item  *ngFor="let it of this.item?.submenu"
+    [ngClass]="{'child-active': _ss.sideBarChildActive == it?.link}" 
+    (click)="navChildHandler(it.link)">
+    <mat-icon mat-list-icon>blur_circular</mat-icon>
+    <span mat-line>{{it.title}}</span>
+  </mat-list-item>
+</div>
