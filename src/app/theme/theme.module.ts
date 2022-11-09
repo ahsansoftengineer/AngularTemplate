@@ -14,6 +14,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { AccountComponent } from './account/account.component';
 import { NotificationComponent } from './notification/notification.component';
+import { SideBarMatListItemComponent } from './side-bar-mat-list-item/side-bar-mat-list-item.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NotificationComponent } from './notification/notification.component';
     FullTemplateComponent,
     AccountComponent,
     NotificationComponent,
+    SideBarMatListItemComponent,
   ],
   imports: [AngularzModule, MatzModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule],
 })

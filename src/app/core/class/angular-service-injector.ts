@@ -8,6 +8,7 @@ import { TranslateService } from '@ngx-translate/core';
 import { ToastrService } from 'ngx-toastr';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { AppInjector } from '../static/AppInjector';
+import { LocalStorageService } from '../service/local-storage.service';
 
 // # 1 SOLID PRINCIPLE (Single Responsibility Principle)
 // 1. Single responsibility principle: a class should have one, and only one, reason to change;
@@ -24,6 +25,7 @@ export abstract class AngularServiceInjector {
   public _toastr: ToastrService;
   public _datePipe: DatePipe;
   public _snackBar: MatSnackBar;
+  public _storage: LocalStorageService
   constructor() {
     this._router = AppInjector.get(Router);
     this._activeRoute = AppInjector.get(ActivatedRoute);
@@ -35,5 +37,6 @@ export abstract class AngularServiceInjector {
     this._toastr = AppInjector.get(ToastrService);
     this._datePipe = AppInjector.get(DatePipe);
     this._snackBar = AppInjector.get(MatSnackBar);
+    this._storage = AppInjector.get(LocalStorageService);
   }
 }

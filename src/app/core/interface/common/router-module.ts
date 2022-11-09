@@ -8,7 +8,7 @@ export interface SideBarMenus {
   link?: string;
   external_link?: string;
   path?: string;
-  submenu?: SideBarMenus[];
+  submenu?: Partial<SideBarMenus[]>;
   permission?: string; // Permission[];
 }
 export interface Permission {

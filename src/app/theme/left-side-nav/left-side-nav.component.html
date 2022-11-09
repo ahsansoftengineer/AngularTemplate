@@ -1,26 +1,23 @@
 <mat-drawer-container [hasBackdrop]="sideNav.Right.opened" class="sidenav-container mat-typography">
   <!-- [@openClose]="sideNav.Left.opened ? 'open' : 'closed'" -->
-  <mat-drawer class="mat-drawer-left" [(opened)]="sideNav.Left.opened" [disableClose]="sideNav.Left.disableClose"
-    [position]="sideNav?.Left?.position" [mode]="sideNav?.Left?.mode">
+
+  <mat-drawer class="mat-drawer-left" 
+    [(opened)]="sideNav.Left.opened" 
+    [disableClose]="sideNav.Left.disableClose"
+    [position]="sideNav?.Left?.position" 
+    [mode]="sideNav?.Left?.mode">
     <mat-nav-list>
-      <mat-list-item *ngFor="let item of list" [routerLink]="item.link">
-        <mat-icon mat-list-icon>
-          {{item.icon}}
-        </mat-icon>
-        <span>
-          <h4 mat-line class="pt-2">{{item.title}}</h4>
-        </span>
-      </mat-list-item>
+      <aam-side-bar-mat-list-item *ngFor="let item of list" [item]="item" >
+      </aam-side-bar-mat-list-item>
       <mat-list-item class="mat-list-item-last">
         <mat-icon mat-list-icon>apps</mat-icon>
         <span>
           <h4 mat-line class="pt-2">More Infomation</h4>
         </span>
+        <mat-icon mat-list-icon>keyboard_arrow_right</mat-icon>
       </mat-list-item>
     </mat-nav-list>
-      
   </mat-drawer>
-
   <mat-drawer-content>
     <ng-content></ng-content>
     <!-- <aam-footers></aam-footers> -->

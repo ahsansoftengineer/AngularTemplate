@@ -2,12 +2,12 @@ import { ACTION } from '../enums/action.enum';
 import { SideBarMenus } from '../interface/common/router-module';
 
 export const permission = [
-  { name: ACTION.ADD },
-  { name: ACTION.EDIT },
-  { name: ACTION.VIEW },
-  { name: ACTION.STATUS },
-  { name: ACTION.DELETE },
-  { name: ACTION.EVERY },
+  ACTION.ADD,
+  ACTION.EDIT,
+  ACTION.VIEW,
+  ACTION.STATUS,
+  ACTION.DELETE,
+  ACTION.EVERY
 ];
 export const defaultChild: SideBarMenus = {
   // icon: 'dashboard',
@@ -23,10 +23,13 @@ export const defaultParent: SideBarMenus = {
   // class: 'has-arrow',
 };
 // PARENT LIST
-export function P(title: string, icon: string, submenu: SideBarMenus[]) {
+let id = 1
+export function P(title: string, icon: string, link: string,  submenu: SideBarMenus[]) {
   return {
+    id:id++,
     title,
     icon,
+    link, // Equal to First Child
     ...defaultParent,
     submenu,
   };
@@ -34,6 +37,7 @@ export function P(title: string, icon: string, submenu: SideBarMenus[]) {
 // CHILD LIST
 export function C(title: string, icon: string, link: string) {
   return {
+    id:id++,
     link,
     title,
     icon,

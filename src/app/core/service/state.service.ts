@@ -8,6 +8,7 @@ import { Permission, SideBarMenus } from '../interface/common/router-module';
 })
 export class StateService {
   // TRANSACTION
+  sideBarActive: string = '';
   sideBarMenus: SideBarMenus[];
   permission: Permission[];
   transBatch = true;

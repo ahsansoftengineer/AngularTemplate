@@ -1,0 +1,15 @@
+<mat-list-item (click)="navHandler(item.link)">
+  <mat-icon mat-list-icon>{{item.icon}}</mat-icon>
+  <span mat-line>{{item.title}}</span>
+  <span *ngIf="item?.submenu?.length && item.link !== _ss.sideBarActive">
+    <mat-icon mat-list-icon>keyboard_arrow_right</mat-icon>
+  </span>
+  <span *ngIf="item?.submenu?.length && item.link === _ss.sideBarActive">
+    <mat-icon mat-list-icon>keyboard_arrow_down</mat-icon>
+  </span>
+</mat-list-item>
+<mat-list-item *ngFor="let it of this.item?.submenu" 
+  (click)="navHandler(item.link + it.link)">
+  <mat-icon mat-list-icon>blur_circular</mat-icon>
+  <span mat-line>{{it.title}}</span>
+</mat-list-item>

@@ -1,23 +1,31 @@
 <mat-toolbar color="primary">
   <mat-toolbar-row>
     <button mat-icon-button type="button">
-      <mat-icon (click)="(sideNav.Left.opened = !sideNav?.Left?.opened); this.cdr.detectChanges()">menu</mat-icon>
+      <mat-icon (click)="(sideNav.Left.opened = !sideNav?.Left?.opened)">menu</mat-icon>
     </button>
     <h1>Angular Mat Template</h1>
     <span class="menu-spacer"></span>
-    <div>
+    <!-- <div>
       <a mat-button [routerLink]="'/accounts'"> Accounts </a>
-    </div>
+    </div> -->
     <span class="example-spacer"></span>
     <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/ -->
-    <button mat-icon-button  (click)="isLight = !isLight" type='button'>
-      <mat-icon [matTooltip]="isLight ? 'Light Mode':'Dark Mode'">{{isLight ? 'star':'star_border'}}
-      </mat-icon>
+    <button mat-icon-button 
+      *ngIf="isLight" 
+      [@fadeInOnEnter] 
+      (click)="isLight = !isLight" type='button'>
+      <mat-icon matTooltip="Light Mode">brightness_high</mat-icon>
+    </button>
+    <button mat-icon-button 
+      *ngIf="!isLight" 
+      [@fadeInOnEnter] 
+      (click)="isLight = !isLight" type='button'>
+      <mat-icon matTooltip="Dark Mode">brightness_low</mat-icon>
     </button>
     <aam-notification></aam-notification>
     <aam-account></aam-account>
     <button mat-icon-button (click)="sideNav.Right.opened = !sideNav?.Right?.opened" type='button'>
-      <mat-icon>first_page</mat-icon>
+      <mat-icon>tune</mat-icon>
     </button>
   </mat-toolbar-row>
   <!-- <mat-toolbar-row>
