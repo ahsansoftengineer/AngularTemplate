@@ -9,7 +9,6 @@
     <mat-nav-list>
       <aam-side-bar-mat-list-item *ngFor="let item of _ss.sideBarMenus" [item]="item">
       </aam-side-bar-mat-list-item>
-      <mat-list-item style="visibility: hidden;"></mat-list-item>
       <mat-list-item class="mat-list-item-last">
         <mat-icon mat-list-icon>apps</mat-icon>
         <span mat-line>More Infomation</span>
@@ -21,7 +20,12 @@
   </mat-drawer>
   <!-- CENTER CONTENT AREA -->
   <mat-drawer-content>
-    <aam-sub-header></aam-sub-header>
+    <mat-grid-list rowHeight="50px"  
+      style="padding-left: 10px; padding-right:10px; background-color: rgba(83, 139, 0, 0.503);
+      margin-bottom: 5px;
+      ">
+      <aam-sub-header></aam-sub-header>
+    </mat-grid-list>
     <mat-grid-list cols="12" style="padding-left: 10px; padding-right:10px">
       <ng-content></ng-content>
     </mat-grid-list>
