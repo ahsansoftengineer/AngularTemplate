@@ -6,11 +6,14 @@ import { Injectable } from '@angular/core';
 export class FeatureService {
   public header: string ='No Header Set';
   public headerButtons: string ='No Header Set';
-  constructor() { }
+  constructor() { 
+    console.log('app start');
+    
+  }
 }
 export interface FeatureButton {
   icon: string;
-  action: () => void;
+  action: () => void; 
   text: string;
 }
 export interface FeatureSubmitButton {
