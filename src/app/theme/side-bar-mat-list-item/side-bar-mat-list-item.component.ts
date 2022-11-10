@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
 import { BaseServiceInjector } from 'src/app/core/class/base-service-injector';
 import { SideBarMenus } from 'src/app/core/interface/common/router-module';
 import { fadeInDownAnimation, fadeInDownOnEnterAnimation, fadeInOnEnterAnimation, fadeOutOnLeaveAnimation, fadeOutUpAnimation, fadeOutUpOnLeaveAnimation, rotateInDownLeftAnimation, rotateInUpRightAnimation, slideInLeftOnEnterAnimation, slideOutLeftOnLeaveAnimation, slideOutRightOnLeaveAnimation } from 'angular-animations';

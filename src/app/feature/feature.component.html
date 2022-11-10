@@ -1,32 +1,16 @@
-<div class="d-flex flex-column bg-info p-3">
-  <div class="p-2 bg-primary">Flex item 1</div>
-  <div class="p-2 bg-primary">Flex item 2</div>
-  <div class="p-2 bg-primary">Flex item 3</div>
-</div>
-
-
-<!-- <div class="grid-container">
-  <mat-grid-list cols="12" rowHeight="92vh">
-    <mat-grid-tile [colspan]="12" rowHeight="100%">
-      <mat-card class="dashboard-card">
-        <mat-card-header class="form-header">
-          <mat-card-title>
-            <h1>Dashboard 2</h1>
-            <button mat-raised-button class="more-button">
-              <mat-icon>add</mat-icon> Add
-            </button>
-          </mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <div>Card Content Here</div>
-          <router-outlet></router-outlet>
-        </mat-card-content>
-        <mat-card-footer align="end" class="form-footer">
-          <button mat-raised-button type="button" color="warn">
-            <mat-icon>delete</mat-icon> Delete
-          </button>
-        </mat-card-footer>
-      </mat-card>
+<mat-card>
+  <mat-grid-list cols="5" rowHeight="55px">
+    <mat-grid-tile colspan="3" class="flex--start">
+      <h1 class="p-0">Actions Buttons</h1>
+    </mat-grid-tile>
+    <mat-grid-tile colspan="2" class="flex--end">
+      <button mat-raised-button type="button" color="primary">
+        <mat-icon>local_hospital</mat-icon> Add
+      </button>
     </mat-grid-tile>
   </mat-grid-list>
-</div> -->
+  <mat-grid-list cols="5" rowHeight="450px">
+    <router-outlet></router-outlet>
+  </mat-grid-list>
+  <aam-form-action></aam-form-action>
+</mat-card>

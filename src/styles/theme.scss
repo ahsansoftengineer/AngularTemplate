@@ -1,0 +1,11 @@
+.flex--start ::ng-deep {
+  .mat-grid-tile-content{
+    justify-content: flex-start ;
+  }
+}
+.flex--end ::ng-deep {
+  .mat-grid-tile-content{
+    justify-content: flex-end;
+    padding-right:10px ;
+  }
+}

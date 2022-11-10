@@ -1,6 +1,11 @@
+@import "/src/styles/theme";
+
 .mat-drawer-container {
-  height: 92vh;
+  height: 91%;
   background-color: rgb(183, 183, 183);
+}
+.mat-drawer-content{
+  height: 95%;
 }
 .mat-drawer-left{
   width: 220px;
@@ -21,3 +26,6 @@
 .mat-list-base .mat-list-item .mat-list-item-content{
   background-color: thistle;
 }
+
+
+

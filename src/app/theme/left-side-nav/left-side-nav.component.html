@@ -1,20 +1,15 @@
-<mat-drawer-container [hasBackdrop]="sideNav.Right.opened" class="sidenav-container mat-typography">
+<mat-drawer-container [hasBackdrop]="sideNav.Right.opened" class="sidenav-container">
   <!-- [@openClose]="sideNav.Left.opened ? 'open' : 'closed'" -->
-
+  <!-- LEFT SIDE BAR -->
   <mat-drawer class="mat-drawer-left" 
     [(opened)]="sideNav.Left.opened" 
     [disableClose]="sideNav.Left.disableClose"
     [position]="sideNav?.Left?.position" 
     [mode]="sideNav?.Left?.mode">
     <mat-nav-list>
-      <aam-side-bar-mat-list-item *ngFor="let item of _ss.sideBarMenus" [item]="item"></aam-side-bar-mat-list-item>
-      <mat-list-item style="visibility: hidden;">
-        <mat-icon mat-list-icon></mat-icon>
-        <span mat-line></span>
-        <span>
-          <mat-icon mat-list-icon></mat-icon>
-        </span>
-      </mat-list-item>
+      <aam-side-bar-mat-list-item *ngFor="let item of _ss.sideBarMenus" [item]="item">
+      </aam-side-bar-mat-list-item>
+      <mat-list-item style="visibility: hidden;"></mat-list-item>
       <mat-list-item class="mat-list-item-last">
         <mat-icon mat-list-icon>apps</mat-icon>
         <span mat-line>More Infomation</span>
@@ -24,11 +19,19 @@
       </mat-list-item>
     </mat-nav-list>
   </mat-drawer>
+  <!-- CENTER CONTENT AREA -->
   <mat-drawer-content>
-    <ng-content></ng-content>
+    <aam-sub-header></aam-sub-header>
+    <mat-grid-list cols="12" style="padding-left: 10px; padding-right:10px">
+      <ng-content></ng-content>
+    </mat-grid-list>
     <!-- <aam-footers></aam-footers> -->
   </mat-drawer-content>
-  <mat-drawer class="mat-drawer-right" [mode]="sideNav?.Right?.mode" [position]="sideNav?.Right?.position"
+  <!-- RIGHT SIDE BAR -->
+  <mat-drawer 
+    class="mat-drawer-right" 
+    [mode]="sideNav?.Right?.mode" 
+    [position]="sideNav?.Right?.position"
     [(opened)]="sideNav.Right.opened">
     <aam-right-side-nav></aam-right-side-nav>
   </mat-drawer>
