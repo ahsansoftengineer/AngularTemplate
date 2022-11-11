@@ -8,6 +8,12 @@
     justify-content: flex-end;
   }
 }
+.flex--start--top ::ng-deep {
+  .mat-grid-tile-content{
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
 .parent-active{
   background-color:  rgb(185, 185, 185);
 }

@@ -9,7 +9,7 @@ import { SideNavService } from '../full-template/side-nav.service';
   encapsulation: ViewEncapsulation.None,
 })
 export class LeftSideNavComponent extends BaseServiceInjector implements OnInit {
-  constructor(public sideNav: SideNavService) {
+  constructor() {
     super()
    }
   ngOnInit(): void {}

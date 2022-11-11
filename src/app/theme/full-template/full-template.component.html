@@ -1,8 +1,10 @@
 <aam-headers></aam-headers>
-<mat-sidenav-container [hasBackdrop]="sideNav.Right.opened" >
+<mat-sidenav-container 
+[hasBackdrop]="((sideNav.Left.opened) && !this.sideNav.Left.disableClose) || sideNav.Right.opened" >
   <mat-sidenav 
     [mode]="sideNav?.Left?.mode" 
     [(opened)]="sideNav.Left.opened" 
+    [disableClose]="sideNav.Left.disableClose"
     [position]="sideNav?.Left?.position"
     [fixedInViewport]="true" 
     [fixedTopGap]="60">
