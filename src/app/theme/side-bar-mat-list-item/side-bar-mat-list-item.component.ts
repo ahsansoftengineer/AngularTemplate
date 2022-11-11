@@ -1,7 +1,7 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { BaseServiceInjector } from 'src/app/core/class/base-service-injector';
 import { SideBarMenus } from 'src/app/core/interface/common/router-module';
-import { fadeInDownAnimation, fadeInDownOnEnterAnimation, fadeInOnEnterAnimation, fadeOutOnLeaveAnimation, fadeOutUpAnimation, fadeOutUpOnLeaveAnimation, rotateInDownLeftAnimation, rotateInUpRightAnimation, slideInLeftOnEnterAnimation, slideOutLeftOnLeaveAnimation, slideOutRightOnLeaveAnimation } from 'angular-animations';
+import {  fadeInDownOnEnterAnimation, fadeInOnEnterAnimation, fadeOutOnLeaveAnimation,  fadeOutUpOnLeaveAnimation, slideInLeftOnEnterAnimation, slideOutLeftOnLeaveAnimation } from 'angular-animations';
 @Component({
   selector: 'aam-side-bar-mat-list-item',
   templateUrl: './side-bar-mat-list-item.component.html',

@@ -5,7 +5,7 @@
     [(opened)]="sideNav.Left.opened" 
     [position]="sideNav?.Left?.position"
     [fixedInViewport]="true" 
-    [fixedTopGap]>
+    [fixedTopGap]="60">
       <aam-left-side-nav>
       </aam-left-side-nav>
   </mat-sidenav>
@@ -17,7 +17,7 @@
     [(opened)]="sideNav.Right.opened" 
     [position]="sideNav?.Right?.position" 
     [fixedInViewport]="true" 
-    [scrollLeft]="false">
+    [fixedTopGap]="60">
     <mat-list>
       <a *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" mat-list-item>
         <mat-icon>calendar_today</mat-icon> Calendar {{i}}

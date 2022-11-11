@@ -55,7 +55,8 @@ $my-custom-theme: mat-dark-theme($my-custom-primary, $my-custom-accent);
 
 .mat-sidenav {
   background-color: #F2F2F2;
-  width: 280px;
+  width: 230px !important;
+
 }
 
 .header {
@@ -186,7 +187,6 @@ mat-grid-tile {
 .my-alternate-theme button {
   margin-right: 10px;
 }
-
 @media (max-width:1024px) {
   .inner-wrapper mat-card {
     width: 100%;
@@ -200,13 +200,8 @@ mat-grid-tile {
     display: block;
     padding-bottom: 10px;
   }
-
-  .mat-sidenav {
-    width: 230px;
-  }
-
   .mat-nav-list .mat-list-item {
-    font-size: 14px;
+    font-size: 16px;
   }
 }
 
