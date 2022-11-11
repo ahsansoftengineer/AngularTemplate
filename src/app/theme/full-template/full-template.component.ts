@@ -2,6 +2,7 @@ import { Directionality } from '@angular/cdk/bidi';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
+import { StateService } from 'src/app/core/service/state.service';
 import { SideNavService } from './side-nav.service';
 
 @Component({
@@ -13,7 +14,8 @@ export class FullTemplateComponent implements OnInit, OnDestroy {
   constructor(
     public bpo: BreakpointObserver, 
     public sideNav: SideNavService,
-    public dir: Directionality
+    public dir: Directionality,
+    public _ss: StateService
     ) {
 
       // this.isRtl = dir.value === 'rtl';

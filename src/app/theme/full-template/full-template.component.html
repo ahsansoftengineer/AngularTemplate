@@ -1,5 +1,27 @@
-
 <aam-headers></aam-headers>
-<aam-left-side-nav>
-  <router-outlet></router-outlet>
-</aam-left-side-nav>
+<mat-sidenav-container [hasBackdrop]="sideNav.Right.opened" >
+  <mat-sidenav 
+    [mode]="sideNav?.Left?.mode" 
+    [(opened)]="sideNav.Left.opened" 
+    [position]="sideNav?.Left?.position"
+    [fixedInViewport]="true" 
+    [fixedTopGap]>
+      <aam-left-side-nav>
+      </aam-left-side-nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <aam-theme-content></aam-theme-content>
+  </mat-sidenav-content>
+  <mat-sidenav 
+    [mode]="sideNav?.Right?.mode"
+    [(opened)]="sideNav.Right.opened" 
+    [position]="sideNav?.Right?.position" 
+    [fixedInViewport]="true" 
+    [scrollLeft]="false">
+    <mat-list>
+      <a *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" mat-list-item>
+        <mat-icon>calendar_today</mat-icon> Calendar {{i}}
+      </a>
+    </mat-list>
+  </mat-sidenav>
+</mat-sidenav-container>

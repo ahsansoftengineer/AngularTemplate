@@ -1,20 +1,5 @@
-@import "/src/styles/theme.scss";
-.grid-container {
-  margin: 0px 2px 0px 2px;
-}
-.more-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-}
+@import '/src/styles/theme.customize.scss';
 
-.dashboard-card {
-  position: absolute;
-  top: 9px;
-  left: 9px;
-  right: 9px;
-  bottom: 9px;
-}
 .form-header{ 
   background-color: rgba(0, 191, 191, 0.582);
   // box-shadow: 0px 15px 10px -15px #111;  

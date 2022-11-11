@@ -1,1 +1,7 @@
-Right Side Nav
+<mat-nav-list>
+  <aam-side-bar-mat-list-item *ngFor="let item of _ss.sideBarMenus" [item]="item">
+  </aam-side-bar-mat-list-item>
+  <a *ngFor="let i of [1,2,3,4,5,6,7,8,9,10,11,12,13,14]" mat-list-item>
+    <mat-icon>calendar_today</mat-icon> Calendar
+  </a>
+</mat-nav-list>

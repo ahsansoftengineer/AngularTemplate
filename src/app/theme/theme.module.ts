@@ -16,6 +16,7 @@ import { AccountComponent } from './account/account.component';
 import { NotificationComponent } from './notification/notification.component';
 import { SideBarMatListItemComponent } from './side-bar-mat-list-item/side-bar-mat-list-item.component';
 import { SubHeaderComponent } from './sub-header/sub-header.component';
+import { ThemeContentComponent } from './theme-content/theme-content.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { SubHeaderComponent } from './sub-header/sub-header.component';
     NotificationComponent,
     SideBarMatListItemComponent,
     SubHeaderComponent,
+    ThemeContentComponent,
   ],
   imports: [AngularzModule, MatzModule, LayoutModule, MatToolbarModule, MatButtonModule, MatSidenavModule, MatIconModule, MatListModule],
 })
