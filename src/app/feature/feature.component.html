@@ -1,20 +1,22 @@
-<mat-grid-list cols="5" rowHeight="50px">
-  <mat-grid-tile colspan="4" class="flex--start">
+<mat-grid-list cols="12" rowHeight="50px">
+  <mat-grid-tile colspan="8" class="flex--start">
     <section>
-      <h1 class="p-0">Actions Buttons</h1>
+      <h1 style="margin-left: 5px;">Actions Buttons</h1>
     </section>
   </mat-grid-tile>
-  <mat-grid-tile colspan="1" class="flex--end">
-    <button mat-raised-button type="button" color="primary">
+  <mat-grid-tile colspan="4" class="flex--end">
+    <button mat-raised-button type="button" color="primary" style="margin-right: 5px;">
       <mat-icon>local_hospital</mat-icon> Add
     </button>
   </mat-grid-tile>
 </mat-grid-list>
-<mat-card>
-  <mat-grid-list cols="5" rowHeight="470px">
-    <section>
-      <router-outlet></router-outlet>
-    </section>
-  </mat-grid-list>
-  <aam-form-action></aam-form-action>
-</mat-card>
+<mat-grid-list cols="1" rowHeight="570px">
+  <mat-grid-tile colspan="1">
+    <router-outlet></router-outlet>
+  </mat-grid-tile>
+</mat-grid-list>
+<mat-grid-list cols="1" rowHeight="50px">
+  <mat-grid-tile colspan="1" class="flex--end">
+    <aam-form-action></aam-form-action>
+  </mat-grid-tile>
+</mat-grid-list>

@@ -11,6 +11,7 @@ import { ComponentModule } from './component/component.module';
 const CommonModules = [
   CommonModule,
   AngularzModule,
+  
   MatzModule,
   NGX_NGB_Other_Module,
   PipesModule,

@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'aam-form-action',
   templateUrl: './form-action.component.html',
   styleUrls: ['./form-action.component.scss'],
-  host: { class: 'p-0 m-0' },
+  encapsulation: ViewEncapsulation.None
 })
 export class FormActionComponent implements OnInit {
 
