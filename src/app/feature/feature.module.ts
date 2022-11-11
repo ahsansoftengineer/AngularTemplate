@@ -1,14 +1,20 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
 
 import { FeatureRoutingModule } from './feature-routing.module';
-
+import { FeatureComponent } from './feature.component';
+import { AngularzModule } from '../shared/modules/angularz.module';
+import { MatzModule } from '../shared/modules/matz.module';
+import { UtilsModule } from '../shared/component/utils/utils.module';
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    FeatureComponent
+  ],
   imports: [
-    CommonModule,
-    FeatureRoutingModule
-  ]
+    FeatureRoutingModule,
+    AngularzModule,
+    MatzModule,
+    UtilsModule
+  ],
 })
-export class FeatureModule { }
+export class FeatureModule {}

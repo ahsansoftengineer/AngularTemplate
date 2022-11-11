@@ -5,7 +5,7 @@ import {
   HttpRequest,
   HttpHandler,
   HttpEvent,
-  HttpInterceptor
+  HttpInterceptor,
 } from '@angular/common/http';
 import { Observable, Observer } from 'rxjs';
 import { StateService } from 'src/app/core/service/state.service';
@@ -14,7 +14,7 @@ import { StateService } from 'src/app/core/service/state.service';
 export class LoaderInterceptor implements HttpInterceptor {
   private requests: HttpRequest<any>[] = [];
 
-  constructor(private _ss: StateService) { }
+  constructor(private _ss: StateService) {}
 
   removeRequest(req: HttpRequest<any>) {
     const i = this.requests.indexOf(req);
@@ -24,7 +24,10 @@ export class LoaderInterceptor implements HttpInterceptor {
     this._ss.isLoading.next(this.requests.length > 0);
   }
 
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+  intercept(
+    req: HttpRequest<any>,
+    next: HttpHandler
+  ): Observable<HttpEvent<any>> {
     this.requests.push(req);
     this._ss.isLoading.next(true);
     return new Observable((observer: Observer<any>) => {
@@ -42,7 +45,7 @@ export class LoaderInterceptor implements HttpInterceptor {
         complete: () => {
           this.removeRequest(req);
           observer.complete();
-        }
+        },
       });
       // remove request from queue when cancelled
       return () => {

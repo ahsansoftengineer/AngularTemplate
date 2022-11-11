@@ -10,11 +10,10 @@ const routes: Routes = [
   { path: 'sign-up', component: SignUpComponent },
   { path: 'forget-password', component: ForgetPasswordComponent },
   { path: '**', component: SignInComponent },
-
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AuthRoutingModule { }
+export class AuthRoutingModule {}

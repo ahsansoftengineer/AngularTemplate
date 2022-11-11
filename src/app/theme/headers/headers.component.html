@@ -1,1 +1,34 @@
-<p>headers works!</p>
+<mat-toolbar class="header">
+  <mat-toolbar-row>
+    <button mat-icon-button type="button">
+      <mat-icon (click)="(sideNav.Left.opened = !sideNav?.Left?.opened)">menu</mat-icon>
+    </button>
+    <h1>NG Mat</h1>
+    <span class="menu-spacer"></span>
+    <!-- <div>
+      <a mat-button [routerLink]="'/accounts'"> Accounts </a>
+    </div> -->
+    <span class="example-spacer"></span>
+    <!-- https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/ -->
+    <button mat-icon-button 
+      *ngIf="isLight" 
+      [@fadeInOnEnter] 
+      (click)="isLight = !isLight" type='button'>
+      <mat-icon matTooltip="Light Mode">brightness_high</mat-icon>
+    </button>
+    <button mat-icon-button 
+      *ngIf="!isLight" 
+      [@fadeInOnEnter] 
+      (click)="isLight = !isLight" type='button'>
+      <mat-icon matTooltip="Dark Mode">brightness_low</mat-icon>
+    </button>
+    <aam-notification></aam-notification>
+    <aam-account></aam-account>
+    <button mat-icon-button (click)="sideNav.Right.opened = !sideNav?.Right?.opened" type='button'>
+      <mat-icon>tune</mat-icon>
+    </button>
+  </mat-toolbar-row>
+  <!-- <mat-toolbar-row>
+      <span style="font-size: 12px;">SimpleCRM helps you easily manage your contacts</span>
+    </mat-toolbar-row> -->
+</mat-toolbar>

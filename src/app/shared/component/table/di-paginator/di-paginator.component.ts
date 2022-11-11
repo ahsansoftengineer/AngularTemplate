@@ -5,7 +5,7 @@ import { DI_Table } from 'src/app/core/interface/common/di-table';
 @Component({
   selector: 'di-paginator',
   templateUrl: './di-paginator.component.html',
-  styleUrls: ['./di-paginator.component.css']
+  styleUrls: ['./di-paginator.component.css'],
 })
 export class DiPaginatorComponent {
   @Input() tbl: DI_Table;
@@ -15,7 +15,7 @@ export class DiPaginatorComponent {
     this.tbl.length = event.length;
     this.tbl.size = event.pageSize;
     this.tbl.prevIndex = event.previousPageIndex;
-    this.paginateEvents.emit(this.tbl)
+    this.paginateEvents.emit(this.tbl);
     return event;
   }
 }

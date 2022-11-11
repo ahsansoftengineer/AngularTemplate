@@ -3,18 +3,22 @@ import { FormGroup } from '@angular/forms';
 import { SelectOption } from '../../interface/common/select';
 import { ValidatorService } from '../../service/base.validator.service';
 import { FormService } from '../../service/form.service';
+import { AppInjector } from '../../static/AppInjector';
 
 @Injectable()
 export class DonorInfoForm {
-  _fs: FormService
+  _fs: FormService;
   _vs: ValidatorService;
-  constructor(injector: Injector) {
-    this._fs = injector.get(FormService)
-    this._vs = injector.get(ValidatorService);
+  constructor() {
+    this._fs = AppInjector.get(FormService);
+    this._vs = AppInjector.get(ValidatorService);
   }
   initForm(): FormGroup {
     return this._fs._fb.group({
-      name: ['', this._vs._val('Donor Name', { minChar: 3, maxChar: 100, alpha: 1 })],
+      name: [
+        '',
+        this._vs._val('Donor Name', { minChar: 3, maxChar: 100, alpha: 1 }),
+      ],
       mobile: ['', this._vs._val('Mobile No', { minChar: 11, maxChar: 15 })],
       donor_type_id: ['', this._vs._vals('Donor Type')],
       organisation_id: ['', this._vs._vals('Organization')],

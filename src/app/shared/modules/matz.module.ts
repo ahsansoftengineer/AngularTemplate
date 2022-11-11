@@ -50,7 +50,7 @@ const modulez = [
   MatExpansionModule,
   MatFormFieldModule,
   MatGridListModule,
-  MatIconModule,
+  MatIconModule, // https://www.angularjswiki.com/angular/angular-material-icons-list-mat-icon-list/
   MatInputModule,
   MatListModule,
   MatMenuModule,
@@ -70,12 +70,9 @@ const modulez = [
   MatToolbarModule,
   MatTooltipModule,
   MatTreeModule,
-]
+];
 @NgModule({
-  imports: [
-    AngularzModule,
-    ...modulez
-  ],
-  exports: modulez
+  imports: [AngularzModule, ...modulez],
+  exports: modulez,
 })
-export class MatzModule { }
+export class MatzModule {}

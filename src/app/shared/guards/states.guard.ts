@@ -5,7 +5,7 @@ import { CookieService } from 'ngx-cookie-service';
 import { Observable, of, tap } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { MatDialog } from '@angular/material/dialog';
-import { debounceTime } from "rxjs/operators";
+import { debounceTime } from 'rxjs/operators';
 import { HTTPService } from 'src/app/core/service/http.service';
 import { StateService } from 'src/app/core/service/state.service';
 import { URLz } from 'src/app/core/enums/url.enum';
@@ -13,7 +13,7 @@ import { Custom } from 'src/app/core/static/custom';
 @Injectable({
   providedIn: 'root',
 })
-export class StatesGuard  implements CanActivateChild {
+export class StatesGuard implements CanActivateChild {
   constructor(
     private _http: HTTPService,
     private _ss: StateService,
@@ -52,34 +52,34 @@ export class StatesGuard  implements CanActivateChild {
           else return of(false);
         })
       );
-    }
-    else{
+    } else {
       // 2.0
       this.savingHierarchyDefault();
       // 1.1 Incase Hierarchy of Server already Saved
       // return of((this._ss.hierarchy = data));
-      return of(true)
+      return of(true);
     }
   }
   public targetData;
   openTospopup() {
-    if (localStorage["tosPopupData"] == undefined) {
-      this._http.get({ endpoint: URLz.NO_SET })
-      .pipe(debounceTime(500))
+    if (localStorage['tosPopupData'] == undefined) {
+      this._http
+        .get({ endpoint: URLz.NO_SET })
+        .pipe(debounceTime(500))
         .subscribe((res) => {
           this.targetData = res?.data?.row;
           if (this.targetData?.target != 0 && this.targetData?.target != null) {
             const config: MatDialogConfig = {
-              panelClass: "dialog-responsive",
-              data: { source: this.targetData }
-            }
+              panelClass: 'dialog-responsive',
+              data: { source: this.targetData },
+            };
             // const dialogRef = this._dialog.open(
             //   MonthlyTargetComponent, config
             // );
             // dialogRef.afterClosed().subscribe();
           }
-          localStorage["tosPopupData"] = false;
-        })
+          localStorage['tosPopupData'] = false;
+        });
     }
   }
   // 2.1 Default Selected Hiearachy Set

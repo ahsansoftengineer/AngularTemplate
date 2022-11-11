@@ -1,12 +1,12 @@
 :host {
-  background-color: #FF69B4;
+  background-color: #ff69b4;
   position: relative;
   overflow: hidden;
   margin: 0 0 6px;
   padding: 10px 10px 10px 10px;
   width: 300px;
   border-radius: 3px 3px 3px 3px;
-  color: #FFFFFF;
+  color: #ffffff;
   pointer-events: all;
   cursor: pointer;
 }

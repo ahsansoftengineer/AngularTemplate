@@ -7,39 +7,29 @@ import { UnAuthorizedComponent } from './un-authorized/un-authorized.component';
 
 const routes: Routes = [
   {
-    path: "404",
+    path: '404',
     component: NotFoundComponent,
 
     data: {
-      title: "Not Found",
-      permission: [
-        ACTION.EVERY
-      ],
-      urls: [
-        { title: "Error" },
-        { title: "Not Found" },
-      ]
-    }
+      title: 'Not Found',
+      permission: [ACTION.EVERY],
+      urls: [{ title: 'Error' }, { title: 'Not Found' }],
+    },
   },
   {
-    path: "unauthorized",
+    path: 'unauthorized',
     component: UnAuthorizedComponent,
 
     data: {
-      title: "Un Authorized",
-      permission: [
-        ACTION.EVERY
-      ],
-      urls: [
-        { title: "Error" },
-        { title: "UnAuthorized" },
-      ]
-    }
+      title: 'Un Authorized',
+      permission: [ACTION.EVERY],
+      urls: [{ title: 'Error' }, { title: 'UnAuthorized' }],
+    },
   },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class ErrorXRoutingModule { }
+export class ErrorXRoutingModule {}

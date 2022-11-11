@@ -1,0 +1,14 @@
+@import '/src/styles/theme.customize.scss';
+
+.form-header{ 
+  background-color: rgba(0, 191, 191, 0.582);
+  // box-shadow: 0px 15px 10px -15px #111;  
+}
+.form-body{ 
+  background-color: rgba(242, 255, 0, 0.316);
+  // padding: 16px;
+}
+.form-footer{ 
+  // box-shadow: 10px 15px 0px -15px #111;  
+  background-color: rgba(0, 255, 191, 0.316);
+}

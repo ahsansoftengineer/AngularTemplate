@@ -2,24 +2,23 @@ import { Injectable } from '@angular/core';
 import { CanActivateChild, RouterModule } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { BehaviorSubject, Observable, of, tap } from 'rxjs';
-import { ROUTES } from 'src/app/core/constant/vertical-menu-items';
+import { ROUTEZ } from 'src/app/core/constant/menu-items';
 import { URLz } from 'src/app/core/enums/url.enum';
 import { SideBarMenus } from 'src/app/core/interface/common/router-module';
 import { HTTPService } from 'src/app/core/service/http.service';
 import { StateService } from 'src/app/core/service/state.service';
 import { Custom } from 'src/app/core/static/custom';
 
-
 @Injectable({
   providedIn: 'root',
 })
 export class SideBarMenusGuard implements CanActivateChild {
-  items = new BehaviorSubject<RouterModule[]>(ROUTES);
+  items = new BehaviorSubject<RouterModule[]>(ROUTEZ);
   constructor(
     private _http: HTTPService,
     private _ss: StateService,
     private cookie: CookieService
-  ) {}
+  ) { }
   canActivateChild(): boolean | Observable<any> {
     // # DEV
     // return this.items.pipe(
@@ -79,16 +78,16 @@ export class SideBarMenusGuard implements CanActivateChild {
   public flatten(arr: SideBarMenus[]) {
     arr?.forEach((itm) => {
       if (itm?.submenu?.length > 0) this.flatten(itm.submenu);
-      itm?.permission?.forEach((tm) => {
-        if (tm?.subPermission) this.flatten(tm?.subPermission);
-      });
-      if(itm.path){
-        this.transformedArray.push({
-          title: itm.title,
-          path: itm.path,
-          permission: itm.permission,
-        });
-      }
+      // itm?.permission?.forEach((tm) => {
+      //   if (tm?.subPermission) this.flatten(tm?.subPermission);
+      // });
+      // if (itm.path) {
+      //   this.transformedArray.push({
+      //     title: itm.title,
+      //     path: itm.path,
+      //     permission: itm.permission,
+      //   });
+      // }
     });
   }
 }

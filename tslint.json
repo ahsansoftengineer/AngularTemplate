@@ -1,8 +1,6 @@
 {
   "extends": "tslint:recommended",
-  "rulesDirectory": [
-    "codelyzer"
-  ],
+  "rulesDirectory": ["codelyzer"],
   "rules": {
     "array-type": false,
     "arrow-return-shorthand": true,
@@ -11,16 +9,10 @@
       "severity": "warn"
     },
     "eofline": true,
-    "import-blacklist": [
-      true,
-      "rxjs/Rx"
-    ],
+    "import-blacklist": [true, "rxjs/Rx"],
     "indent": [false, "tabs", 2],
     "max-classes-per-file": false,
-    "max-line-length": [
-      true,
-      140
-    ],
+    "max-line-length": [true, 140],
     "member-ordering": [
       false,
       {
@@ -32,14 +24,7 @@
         ]
       }
     ],
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-empty": false,
 
     "no-non-null-assertion": true,
@@ -48,10 +33,7 @@
     "no-var-keyword": false,
     "comment-format": false,
     "jsdoc-format": false,
-    "object-literal-key-quotes": [
-      true,
-      "as-needed"
-    ],
+    "object-literal-key-quotes": [true, "as-needed"],
     "quotemark": [false, "double", "jsx-double"],
     "semicolon": false,
     "space-before-function-paren": {
@@ -63,19 +45,12 @@
         "named": "never"
       }
     },
-    "typedef": [
-      false,
-      "call-signature"
-    ],
+    "typedef": [false, "call-signature"],
     "typedef-whitespace": [false],
     "variable-name": {
-      "options": [
-        "ban-keywords",
-        "check-format",
-        "allow-leading-underscore"
-      ]
+      "options": ["ban-keywords", "check-format", "allow-leading-underscore"]
     },
-    "whitespace":  [false],
+    "whitespace": [false],
     "no-trailing-whitespace": false,
     "component-class-suffix": true,
     "contextual-lifecycle": true,
@@ -93,16 +68,7 @@
     "use-lifecycle-interface": true,
     "use-pipe-transform-interface": true,
     "triple-equals": false,
-    "directive-selector": [
-      true,
-      "attribute",
-      "camelCase"
-    ],
-    "component-selector": [
-      true,
-      "element",
-      "di",
-      "kebab-case"
-    ]
+    "directive-selector": [true, "attribute", "camelCase"],
+    "component-selector": [true, "element", "di", "kebab-case"]
   }
 }

@@ -8,9 +8,8 @@ describe('LeftSideNavComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LeftSideNavComponent ]
-    })
-    .compileComponents();
+      declarations: [LeftSideNavComponent],
+    }).compileComponents();
 
     fixture = TestBed.createComponent(LeftSideNavComponent);
     component = fixture.componentInstance;

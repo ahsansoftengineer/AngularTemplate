@@ -1,0 +1,17 @@
+<button mat-icon-button [matMenuTriggerFor]="menu" type="button">
+  <mat-icon>person</mat-icon>
+</button>
+<mat-menu #menu="matMenu" type="button">
+  <button mat-menu-item>
+    <mat-icon>dialpad</mat-icon>
+    <span>Redial</span>
+  </button>
+  <button mat-menu-item type="button">
+    <mat-icon>voicemail</mat-icon>
+    <span>Check voice mail</span>
+  </button>
+  <button mat-menu-item type="button">
+    <mat-icon>notifications_off</mat-icon>
+    <span>Disable alerts</span>
+  </button>
+</mat-menu>

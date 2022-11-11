@@ -6,16 +6,8 @@ import { SignInComponent } from './sign-in/sign-in.component';
 import { SignUpComponent } from './sign-up/sign-up.component';
 import { ForgetPasswordComponent } from './forget-password/forget-password.component';
 
-
 @NgModule({
-  declarations: [
-    SignInComponent,
-    SignUpComponent,
-    ForgetPasswordComponent
-  ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule
-  ]
+  declarations: [SignInComponent, SignUpComponent, ForgetPasswordComponent],
+  imports: [CommonModule, AuthRoutingModule],
 })
-export class AuthModule { }
+export class AuthModule {}

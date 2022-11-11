@@ -1,10 +1,15 @@
-<mat-form-field appearance="outline" class="col-md-12 my-1"
-[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
-  <mat-label>{{ lbl | translate}}</mat-label>
-  <input matInput currencyMask  [formControl]="control" 
- [required]='req'
-  [options]="mergeOptions(options)" 
- 
- />
-  <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+<mat-form-field
+  appearance="outline"
+  class="col-md-12 my-1"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+>
+  <mat-label>{{ lbl | translate }}</mat-label>
+  <input
+    matInput
+    currencyMask
+    [formControl]="control"
+    [required]="req"
+    [options]="mergeOptions(options)"
+  />
+  <mat-error *ngIf="control?.touched">{{ errMsg }}</mat-error>
 </mat-form-field>

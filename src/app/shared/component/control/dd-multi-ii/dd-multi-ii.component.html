@@ -1,11 +1,17 @@
-<mat-form-field appearance="outline" *ngIf="control && !hide" class="col-md-12 my-1"
-[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
-  <mat-label>{{ lbl | translate}}</mat-label>
-  <mat-select [formControl]="control"  [required]='req' multiple>
+<mat-form-field
+  appearance="outline"
+  *ngIf="control && !hide"
+  class="col-md-12 my-1"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+>
+  <mat-label>{{ lbl | translate }}</mat-label>
+  <mat-select [formControl]="control" [required]="req" multiple>
     <mat-option
-      *ngFor="let item of list" [value]="item.id"
-      (onSelectionChange)='changeEvent(item, $event)'
-    >{{ renderRow(item) }}</mat-option>
+      *ngFor="let item of list"
+      [value]="item.id"
+      (onSelectionChange)="changeEvent(item, $event)"
+      >{{ renderRow(item) }}</mat-option
+    >
   </mat-select>
-  <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+  <mat-error *ngIf="control?.touched">{{ errMsg }}</mat-error>
 </mat-form-field>

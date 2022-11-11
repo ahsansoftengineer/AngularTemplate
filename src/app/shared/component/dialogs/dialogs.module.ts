@@ -16,18 +16,14 @@ const Dialogs = [
   NgxToastrErrorComponent,
 ];
 @NgModule({
-  declarations: [
-    Dialogs,
-  ],
+  declarations: [Dialogs],
   imports: [
     AngularzModule,
     MatzModule,
     NGX_NGB_Other_Module,
     ControlModule,
-    TableModule
+    TableModule,
   ],
-  exports:[
-    Dialogs,
-  ]
+  exports: [Dialogs],
 })
-export class DialogsModule { }
+export class DialogsModule {}

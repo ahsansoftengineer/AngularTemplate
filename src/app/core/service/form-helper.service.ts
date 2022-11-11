@@ -2,13 +2,16 @@ import { Injectable, Injector } from '@angular/core';
 import { FormArray, FormControl, FormGroup } from '@angular/forms';
 import { ValidatorService } from './base.validator.service';
 import { FormService } from './form.service';
-import { MatSnackBarHorizontalPosition, MatSnackBarVerticalPosition } from '@angular/material/snack-bar';
+import {
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition,
+} from '@angular/material/snack-bar';
 import { Custom } from '../static/custom';
 import { AngularServiceInjector } from '../class/angular-service-injector';
+import { AppInjector } from '../static/AppInjector';
 @Injectable({
   providedIn: 'root',
 })
-
 export class FormHelperService extends AngularServiceInjector {
   _fs: FormService;
   _vs: ValidatorService;
@@ -16,19 +19,17 @@ export class FormHelperService extends AngularServiceInjector {
   _prepath: string;
 
   date: Date;
-  constructor(
-    public override injector: Injector,
-  ) {
+  constructor() {
     // Service Injection
-    super(injector)
-    this._fs = injector.get(FormService);
-    this._vs = injector.get(ValidatorService);
+    super();
+    this._fs = AppInjector.get(FormService);
+    this._vs = AppInjector.get(ValidatorService);
   }
 
   // GET CURRENT DATE AND TIME
   _getCurrentdatenadTime() {
     this.date = new Date();
-    return this._datePipe.transform((new Date), 'dd-MMM-yyyy h:mm a');
+    return this._datePipe.transform(new Date(), 'dd-MMM-yyyy h:mm a');
   }
 
   // DATE CONVERTER
@@ -43,7 +44,10 @@ export class FormHelperService extends AngularServiceInjector {
 
   _LastSixMonthDate(lastMonths) {
     this.date = new Date();
-    return this._datePipe.transform(this.date.setMonth(this.date.getMonth() - lastMonths, 1), 'yyyy-MM-dd');
+    return this._datePipe.transform(
+      this.date.setMonth(this.date.getMonth() - lastMonths, 1),
+      'yyyy-MM-dd'
+    );
   }
 
   // DATE WITH MONTH
@@ -100,36 +104,28 @@ export class FormHelperService extends AngularServiceInjector {
   }
 
   // CHECK FILED EXIST
-  _has(
-    fieldName: string,
-    fg: FormGroup = this._fs._form) {
-    return fg?.contains(fieldName)
+  _has(fieldName: string, fg: FormGroup = this._fs._form) {
+    return fg?.contains(fieldName);
   }
 
-  _hasVal(
-    fieldName: string,
-    fg: FormGroup = this._fs._form) {
-    return Custom.emptyCheck(this._getVal(fieldName, fg))
+  _hasVal(fieldName: string, fg: FormGroup = this._fs._form) {
+    return Custom.emptyCheck(this._getVal(fieldName, fg));
   }
 
-  _hasGroup(
-    groupName: string,
-    fieldName: string,
-  ) {
-    const group = this._fs._form?.get(groupName) as FormGroup
-    return group?.contains(fieldName)
+  _hasGroup(groupName: string, fieldName: string) {
+    const group = this._fs._form?.get(groupName) as FormGroup;
+    return group?.contains(fieldName);
   }
 
   _getVal(control: string, group: FormGroup = this._fs._form) {
-    return group?.get(control)?.value
+    return group?.get(control)?.value;
   }
 
   _checkBoxChecked(val, fieldname) {
     const selectedArray: FormArray = this._fs._form.get(fieldname) as FormArray;
     if (val.target.checked) {
       selectedArray.push(new FormControl(val.target.value));
-    }
-    else {
+    } else {
       let i = 0;
       selectedArray.controls.forEach((ctrl: FormControl) => {
         if (ctrl.value == val.target.value) {
@@ -140,26 +136,22 @@ export class FormHelperService extends AngularServiceInjector {
       });
     }
     console.log(selectedArray);
-
   }
 
   _disableBtn(fieldname) {
     const formArr: FormArray = this._fs._form.get(fieldname) as FormArray;
-    return (formArr?.value?.length > 0);
+    return formArr?.value?.length > 0;
   }
 
   _getURLParam(queryParam: string) {
-    return this._activeRoute.snapshot.paramMap.get(queryParam)
+    return this._activeRoute.snapshot.paramMap.get(queryParam);
   }
 
-  _disable(
-    fieldName: string,
-    fg: FormGroup = this._fs._form) {
-    return fg?.get(fieldName)?.disabled
+  _disable(fieldName: string, fg: FormGroup = this._fs._form) {
+    return fg?.get(fieldName)?.disabled;
   }
   _hasRoute(_path) {
     const _url = window.location.pathname;
     return _url.includes(_path);
   }
-
 }

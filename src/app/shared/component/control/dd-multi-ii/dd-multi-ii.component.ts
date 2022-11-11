@@ -9,20 +9,24 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
   styleUrls: ['./dd-multi-ii.component.css'],
   host: { class: CONTROL_HOST_CSS_CLASS },
 })
-export class DdMultiIiComponent extends BaseControlDDComponent implements OnInit {
+export class DdMultiIiComponent
+  extends BaseControlDDComponent
+  implements OnInit
+{
   override changeEvent(itm, event) {
-    super.changeEvent(itm, event)
+    super.changeEvent(itm, event);
     if (event?.event?.isUserInput) {
-      if(this.control instanceof FormArray){
+      if (this.control instanceof FormArray) {
         if (event.event.source.selected) {
           this.control?.push(new FormControl(event.event.source.value));
         } else {
           this.control.removeAt(
-            this.control?.value?.findIndex((Id) => Id === event.event.source.value)
+            this.control?.value?.findIndex(
+              (Id) => Id === event.event.source.value
+            )
           );
         }
       }
-
     }
   }
 }

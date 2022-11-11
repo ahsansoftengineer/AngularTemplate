@@ -1,12 +1,14 @@
-import { Component, OnDestroy } from "@angular/core";
-import Swal from "sweetalert2";
-import { HttpServiceParam } from "../interface/common/http-service-param";
-import { Custom } from "../static/custom";
-import { BaseServiceInjector } from "./base-service-injector";
+import { Component, OnDestroy } from '@angular/core';
+import Swal from 'sweetalert2';
+import { HttpServiceParam } from '../interface/common/http-service-param';
+import { Custom } from '../static/custom';
+import { BaseServiceInjector } from './base-service-injector';
 
-
-@Component({template: ''})
-export abstract class BaseJoinAction extends BaseServiceInjector implements OnDestroy   {
+@Component({ template: '' })
+export abstract class BaseJoinAction
+  extends BaseServiceInjector
+  implements OnDestroy
+{
   resetProperties() {
     this._fhs._activeRoute = this._activeRoute;
     this._fb = this._fs._fb;
@@ -17,11 +19,11 @@ export abstract class BaseJoinAction extends BaseServiceInjector implements OnDe
   mergeParam(providedParameters: HttpServiceParam): HttpServiceParam {
     return { ...this.param, ...providedParameters };
   }
-  routerStrategy(){
+  routerStrategy() {
     //   this._router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
     //     this._router.navigate([this._location.path() ]);
     // });
-    this._router.routeReuseStrategy.shouldReuseRoute = () =>  false;
+    this._router.routeReuseStrategy.shouldReuseRoute = () => false;
     // const subs = this._router.events.subscribe((event) => {
     //   if (event instanceof NavigationEnd) {
     //     // Trick the Router into believing it's last link wasn't previously loaded
@@ -33,12 +35,12 @@ export abstract class BaseJoinAction extends BaseServiceInjector implements OnDe
     // });
     // this.subscriptionArray.push(subs)
   }
-  ngOnDestroy():  void {
+  ngOnDestroy(): void {
     this._vs._submitted = false;
     this._vs.showWarning = false;
-    this.subscriptionArray.forEach(subs => {
+    this.subscriptionArray.forEach((subs) => {
       subs?.unsubscribe();
-    })
+    });
     Swal.close();
     this._vs._toastr.clear();
   }

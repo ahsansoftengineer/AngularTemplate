@@ -1,45 +1,63 @@
-<mat-form-field appearance="outline" *ngIf="control" class="col-md-12 my-1"
-[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }">
-  <mat-label>{{ lbl | translate}}</mat-label>
-  <mat-select [formControl]="control" [disabled]="disabled" [required]='req' msInfiniteScroll
-    (infiniteScroll)="getNextBatch()">
+<mat-form-field
+  appearance="outline"
+  *ngIf="control"
+  class="col-md-12 my-1"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+>
+  <mat-label>{{ lbl | translate }}</mat-label>
+  <mat-select
+    [formControl]="control"
+    [disabled]="disabled"
+    [required]="req"
+    msInfiniteScroll
+    (infiniteScroll)="getNextBatch()"
+  >
     <mat-option>
       <ngx-mat-select-search
-        [noEntriesFoundLabel]="'No ' + lbl +' Found'"
+        [noEntriesFoundLabel]="'No ' + lbl + ' Found'"
         [placeholderLabel]="'Find ' + lbl"
         [formControl]="searchControl"
-        [searching]='searching'
-        [disableScrollToActiveOnOptionsChanged]='true'>
+        [searching]="searching"
+        [disableScrollToActiveOnOptionsChanged]="true"
+      >
         <mat-icon ngxMatSelectSearchClear>cancel</mat-icon>
       </ngx-mat-select-search>
     </mat-option>
     <!-- Not Required Case -->
-    <mat-option *ngIf="!req && control?.value" [value]="null"
-      (onSelectionChange)='changeEvent(null, $event)'
+    <mat-option
+      *ngIf="!req && control?.value"
+      [value]="null"
+      (onSelectionChange)="changeEvent(null, $event)"
       [disabled]="!control.value"
-    >Please select</mat-option>
+      >Please select</mat-option
+    >
     <!-- notIteminList && !hasIteminTemp() &&  -->
     <mat-option
       *ngIf="control?.value == preobj?.id"
       [disabled]="control.value == preobj?.id"
       [value]="preobj?.id"
-    >{{ renderRow(preobj) }}</mat-option>
+      >{{ renderRow(preobj) }}</mat-option
+    >
     <!-- Edit / Copy Case / Pre Object -->
-    <ng-container *ngIf="!hasIteminTemp() && !notIteminList && this.control.value">
+    <ng-container
+      *ngIf="!hasIteminTemp() && !notIteminList && this.control.value"
+    >
       <mat-option
-      (onSelectionChange)='changeEvent(item, $event)'
-      [disabled]="control.value == item?.id"
-      [value]="item?.id"
-      *ngFor="let item of list"
-    >{{ renderRow(item) }}</mat-option>
+        (onSelectionChange)="changeEvent(item, $event)"
+        [disabled]="control.value == item?.id"
+        [value]="item?.id"
+        *ngFor="let item of list"
+        >{{ renderRow(item) }}</mat-option
+      >
     </ng-container>
     <!-- Auto Complete Searching -->
     <mat-option
-      (onSelectionChange)='changeEvent(item, $event)'
-      [disabled]="control.value == item.id" [value]="item.id"
+      (onSelectionChange)="changeEvent(item, $event)"
+      [disabled]="control.value == item.id"
+      [value]="item.id"
       *ngFor="let item of temp"
-    >{{ renderRow(item) }}
+      >{{ renderRow(item) }}
     </mat-option>
   </mat-select>
-  <mat-error *ngIf="control?.touched" >{{ errMsg }}</mat-error>
+  <mat-error *ngIf="control?.touched">{{ errMsg }}</mat-error>
 </mat-form-field>

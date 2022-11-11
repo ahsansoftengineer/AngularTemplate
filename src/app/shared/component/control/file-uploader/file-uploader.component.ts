@@ -1,20 +1,34 @@
-import { Component, EventEmitter, Injector, Input, OnInit, Output } from '@angular/core';
+import {
+  Component,
+  EventEmitter,
+  Injector,
+  Input,
+  OnInit,
+  Output,
+} from '@angular/core';
 import { DIFiles } from 'src/app/core/interface/common/di-files';
 import { BaseControlComponent } from '../base-control-z.component';
 
 @Component({
   selector: 'di-file-uploader',
   templateUrl: './file-uploader.component.html',
-  styleUrls: ['./file-uploader.component.css']
+  styleUrls: ['./file-uploader.component.css'],
 })
-export class FileUploaderComponent extends BaseControlComponent implements OnInit{
-  @Input() fileObj : DIFiles;
+export class FileUploaderComponent
+  extends BaseControlComponent
+  implements OnInit
+{
+  @Input() fileObj: DIFiles;
   @Input() imgURL;
-  @Output() fileUploaded = new EventEmitter<{ object: DIFiles, outerEvent, innerEvent }>();
+  @Output() fileUploaded = new EventEmitter<{
+    object: DIFiles;
+    outerEvent;
+    innerEvent;
+  }>();
   @Input('submitted') _submitted;
 
-  constructor(injector: Injector) {
-    super(injector);
+  constructor() {
+    super();
   }
 
   override ngOnInit(): void {
@@ -24,8 +38,8 @@ export class FileUploaderComponent extends BaseControlComponent implements OnIni
   readUrl(event: any) {
     if (event.target.files.length === 0) {
       this.fileObj.link = '';
-      this.fileObj.error = 'req'
-      this.fileObj.uploadedFileName = undefined
+      this.fileObj.error = 'req';
+      this.fileObj.uploadedFileName = undefined;
       return;
     }
     const file: File = event.target.files[0];
@@ -35,66 +49,70 @@ export class FileUploaderComponent extends BaseControlComponent implements OnIni
     if (this.fileObj.fileExtens.indexOf(ext.toLowerCase()) < 1) {
       this.fileObj.error = 'type';
       this.fileObj.link = '';
-      this.fileObj.uploadedFileName = undefined
+      this.fileObj.uploadedFileName = undefined;
     }
     if (file.size > this.fileObj.size) {
       this.fileObj.error = 'size';
       this.fileObj.link = '';
-      this.fileObj.uploadedFileName = undefined
+      this.fileObj.uploadedFileName = undefined;
     }
     if (this.fileObj.error == '') {
       this.fileObj.size = file.size;
       const reader = new FileReader();
       reader.readAsDataURL(file);
-      this.fileUploaded.emit(event)
+      this.fileUploaded.emit(event);
       reader.onload = () => {
         this.fileObj.link = this.fileObj.defaultImage;
         this.fileObj.file = event.srcElement.files[0];
         this.fileObj.uploadedFileName = event.srcElement.files[0].name;
-
       };
     }
   }
 
-  ImageLink(){
-    if(this.fileObj.link == this.fileObj.defaultImage){
-      return  'assets/images/' + this.fileObj.defaultImage;
-    }
-    else return 'assets/images/gif/upload.gif'
+  ImageLink() {
+    if (this.fileObj.link == this.fileObj.defaultImage) {
+      return 'assets/images/' + this.fileObj.defaultImage;
+    } else return 'assets/images/gif/upload.gif';
   }
 
-  markTouched(){
+  markTouched() {
     this._submitted = true;
   }
 
   _error_file(file: DIFiles): string {
     if (file.error === 'type') return file.fileExtensMsg;
-    else if (file.error === 'size')   {
-      if(this._translate.currentLang === 'en'){
+    else if (file.error === 'size') {
+      if (this._translate.currentLang === 'en') {
         return `${file.lbl} size is greater than ${file.sizeMsg}`;
-      }else if(this._translate.currentLang === 'ur'){
-        return  ' '.concat(
+      } else if (this._translate.currentLang === 'ur') {
+        return ' '.concat(
           this._translate?.instant(file?.lbl),
-          ' ', 'کا سائز', file.sizeMsg, 'سے بڑا ہے' )
-
+          ' ',
+          'کا سائز',
+          file.sizeMsg,
+          'سے بڑا ہے'
+        );
       }
       return 'File Size is Greater than 2MB';
-    }
-    else if (file.error === 'req') {
-      return this.getMessage(file.lbl)
-    }
-    else if (file.error !== '' && this._submitted) return file.error
+    } else if (file.error === 'req') {
+      return this.getMessage(file.lbl);
+    } else if (file.error !== '' && this._submitted) return file.error;
     else if ((!file.link || file.link == '') && this._submitted) {
-      return this.getMessage(file.lbl)
+      return this.getMessage(file.lbl);
     }
     return '';
   }
-  getMessage(lbl) : string{
-    if(this._translate.currentLang === 'en'){
+  getMessage(lbl): string {
+    if (this._translate.currentLang === 'en') {
       return 'Please select ' + lbl;
-    }else if(this._translate.currentLang === 'ur'){
-      return  ' براہ کرم'.concat(' ', this._translate?.instant(lbl), ' ', 'منتخب کریں۔')
+    } else if (this._translate.currentLang === 'ur') {
+      return ' براہ کرم'.concat(
+        ' ',
+        this._translate?.instant(lbl),
+        ' ',
+        'منتخب کریں۔'
+      );
     }
-    return ''
+    return '';
   }
 }

@@ -8,6 +8,7 @@ import { AngularzModule } from './shared/modules/angularz.module';
 import { RootzModule } from './shared/modules/rootz.module';
 import { UtilsModule } from './shared/component/utils/utils.module';
 import { AppInjector } from './core/static/AppInjector';
+import { ThemeModule } from './theme/theme.module';
 
 @NgModule({
   declarations: [
@@ -24,11 +25,11 @@ import { AppInjector } from './core/static/AppInjector';
     RootzModule,
     SharedModule,
     AppRoutingModule,
-    UtilsModule
+    UtilsModule,
+    ThemeModule
   ],
-  providers: [
-  ],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [AppComponent],
 })
 export class AppModule {
   constructor(injector: Injector) {

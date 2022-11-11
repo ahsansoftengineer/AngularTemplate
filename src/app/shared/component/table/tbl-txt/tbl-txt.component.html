@@ -1,3 +1,9 @@
-<input [formControl]="control" [type]="type" [placeholder]="lbl | translate" class="search"
-[ngClass]="{'eng__font': _lang === 'en', 'urdu__font' : _lang === 'ur' }"
-(keydown)="_stop($event)" (click)="_stop($event)" >
+<input
+  [formControl]="control"
+  [type]="type"
+  [placeholder]="lbl | translate"
+  class="search"
+  [ngClass]="{ eng__font: _lang === 'en', urdu__font: _lang === 'ur' }"
+  (keydown)="_stop($event)"
+  (click)="_stop($event)"
+/>

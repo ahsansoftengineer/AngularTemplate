@@ -8,7 +8,6 @@ import { CONTROL_HOST_CSS_CLASS } from '../base-control-z.component';
   styleUrls: ['./dd-multi.component.css'],
   host: { class: CONTROL_HOST_CSS_CLASS },
 })
-export class DdMultiComponent extends BaseControlDDComponent implements OnInit {
-
-
-}
+export class DdMultiComponent
+  extends BaseControlDDComponent
+  implements OnInit {}

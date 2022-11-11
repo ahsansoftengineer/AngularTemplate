@@ -1,11 +1,11 @@
-import { HttpErrorResponse } from "@angular/common/http";
-import { Observable } from "rxjs";
-import { HttpServiceParam } from "./http-service-param";
+import { HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpServiceParam } from './http-service-param';
 
 export interface PartialSubmit {
   /**
-    * @see {@link HttpServiceParam}
-  */
+   * @see {@link HttpServiceParam}
+   */
   _activeId?: string;
   defaultHttpParam?: HttpServiceParam;
   param?: HttpServiceParam;
@@ -16,11 +16,11 @@ export interface PartialSubmit {
   confirmation?: (ps: PartialSubmit) => void;
   confirmationAction?: (ps: PartialSubmit) => void;
   confirmationDeny?: (ps: PartialSubmit) => void;
-  modifyCondition?:  (ps: PartialSubmit) => boolean;
+  modifyCondition?: (ps: PartialSubmit) => boolean;
   update?: (ps: PartialSubmit) => Observable<any>;
   create?: (ps: PartialSubmit) => Observable<any>;
   httpCall?: (ps: PartialSubmit) => void;
-  modify?: Observable<any>
+  modify?: Observable<any>;
   next?: (ps: PartialSubmit, res: any) => void;
   error?: (ps: PartialSubmit, error: HttpErrorResponse) => void;
   complete?: (ps: PartialSubmit) => void;

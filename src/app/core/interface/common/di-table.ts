@@ -1,9 +1,9 @@
-import { FormArray, FormGroup } from "@angular/forms";
-import { MatTableDataSource } from "@angular/material/table";
-import { URLz } from "../../enums/url.enum";
+import { FormArray, FormGroup } from '@angular/forms';
+import { MatTableDataSource } from '@angular/material/table';
+import { URLz } from '../../enums/url.enum';
 
 export interface DI_Table {
-  tableName: string
+  tableName: string;
   columns: string[];
   url: string;
   endpoint: URLz;
