@@ -1,5 +1,6 @@
+import { isPlatformBrowser } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Component, Inject, Injector } from '@angular/core';
+import { Component, Inject, Injector, PLATFORM_ID } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { BaseForm } from 'src/app/core/class/base.form';
 import { URLz } from 'src/app/core/enums/url.enum';
@@ -16,8 +17,8 @@ export class TransactionDialogComponent extends BaseForm {
   url = window.location.href;
   constructor(
     public dialogRef: MatDialogRef<TransactionDialogComponent>,
-    @Inject(MAT_DIALOG_DATA)
-    public data: any,
+    @Inject(PLATFORM_ID) private platformId,
+    @Inject(MAT_DIALOG_DATA) public data: any,
     injector: Injector
   ) {
     super();
@@ -25,7 +26,7 @@ export class TransactionDialogComponent extends BaseForm {
   }
   _close(): void {
     const hierarchy = this._fs._form.get('hierarchy').value;
-    if (isList) {
+    if (isPlatformBrowser(this.platformId) && window?.location?.href?.indexOf('add') == -1) {
       this.dialogRef.close();
     } else {
       this._http
@@ -98,7 +99,6 @@ export class TransactionDialogComponent extends BaseForm {
   applyClass = { 'col-lg-3': false, 'col-md-4': false, 'col-md-12': true };
   applyDate = { 'col-lg-3': false, 'col-md-4': false, 'col-md-6': true };
 }
-const isList = window.location.href.indexOf('add') == -1;
 interface OU_PREFIX {
   days_limit: number;
   currency_id: string;

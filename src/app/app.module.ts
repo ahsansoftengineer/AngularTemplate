@@ -19,7 +19,7 @@ import { ThemeModule } from './theme/theme.module';
     // VerticalSidebarComponent,
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     BrowserAnimationsModule,
     AngularzModule,
     RootzModule,
