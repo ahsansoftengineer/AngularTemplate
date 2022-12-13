@@ -16,6 +16,8 @@ const routes: Routes = [
     path: '',
     component: FullTemplateComponent,
     canActivateChild: [
+
+      
       // StatesGuard,
       // SideBarMenusGuard,
       // DisregardGuard, // USE UNTIL ANGULAR DOESN'T PROVIDE CanDeActivateChild GUARD
