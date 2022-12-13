@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { isPlatformBrowser, Location } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, Injector, PLATFORM_ID } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -19,6 +19,7 @@ export class TransactionDialogComponent extends BaseForm {
     public dialogRef: MatDialogRef<TransactionDialogComponent>,
     @Inject(PLATFORM_ID) private platformId,
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public location: Location,
     injector: Injector
   ) {
     super();
@@ -26,7 +27,8 @@ export class TransactionDialogComponent extends BaseForm {
   }
   _close(): void {
     const hierarchy = this._fs._form.get('hierarchy').value;
-    if (isPlatformBrowser(this.platformId) && window?.location?.href?.indexOf('add') == -1) {
+    // if (isPlatformBrowser(this.platformId) && window?.location?.href?.indexOf('add') == -1) {
+      if (this?.location.path().indexOf('add') == -1) {
       this.dialogRef.close();
     } else {
       this._http

@@ -10,6 +10,8 @@
 4. will update following files
 > angular.json, package.json, main.ts, app-routing.module.ts, app.module.ts
 5. Note: Any Code that target window, document, API will be caused error on backend
+6. Deploye on Server ???
+7. 
 
 ```java
 import { isPlatformBrowser } from '@angular/common';
