@@ -8,14 +8,13 @@
   ...
 
 }
+```
 3. Copy Paste build file from dist folder to the newly created repo and then push it
 4. On Github Your Repository > Settings > Pages
 - Set Branch to "main"
 - Folder to "root"
 - and then Save it > After few seconds you will see
 - [Your site is live at](https://ahsansoftengineer.github.io/angular-template/)
-
-```
 # [ANGULAR ARCHETECTURE](#)
 
 ## [ANGULAR BEST PRACTICIES](#)
