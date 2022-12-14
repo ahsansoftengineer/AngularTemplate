@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { CookieService } from 'ngx-cookie-service';
 import { CanonicalService } from 'src/app/core/service/canonical.service';
 
 @Component({
@@ -8,16 +9,19 @@ import { CanonicalService } from 'src/app/core/service/canonical.service';
   styleUrls: ['./feature-list.component.scss'],
 })
 export class FeatureListComponent implements OnInit {
+  public cookieValue: string
   constructor(
     private metaTagService: Meta, 
     private MetaTitle: Title,
-    private canonicalService: CanonicalService
+    private canonicalService: CanonicalService,
+    private cookieService: CookieService
 
     
   ) {}
-
-  ngOnInit(): void {
     
+  ngOnInit(): void {
+    this.cookieService.set('Test', 'Hello World');
+    this.cookieValue = this.cookieService.get('Test');
   }
   setMetaTag(){
     this.MetaTitle.setTitle("Feature 1 List");

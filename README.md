@@ -4,28 +4,23 @@
 
 ### It Required Only 2 Steps
 1. ng add @nguniversal/express-engine
-2. npm run dev:ssr
-3. will create following 
+2. npm install ngx-cookie-service-ssr@14 --save
+3. [ngx cookie service](https://www.npmjs.com/package/ngx-cookie-service)
+4. npm run dev:ssr
+5. will create following 
 > server.ts, tsconfig.server.json, main.server.ts
-4. will update following files
+6. will update following files
 > angular.json, package.json, main.ts, app-routing.module.ts, app.module.ts
-5. Note: Any Code that target window, document, API will be caused error on backend
-6. Deploye on Server ???
-7. 
+7. Note: Any Code that target window, document, API will be caused error on backend
+8. Deploye on Server ???
 
 ```java
 import { isPlatformBrowser } from '@angular/common';
-import { HttpErrorResponse } from '@angular/common/http';
 import { Component, Inject, Injector, PLATFORM_ID } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { BaseForm } from 'src/app/core/class/base.form';
-import { URLz } from 'src/app/core/enums/url.enum';
 
 @Component({
   selector: 'app-transaction-dialog',
-  templateUrl: './transaction-dialog.component.html',
-  styleUrls: ['./transaction-dialog.component.css'],
-  host: { class: 'col-lg-6 col-sm-12 p-0' },
 })
 export class TransactionDialogComponent {
   systemSubscription: any;

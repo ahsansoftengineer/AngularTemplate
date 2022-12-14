@@ -35,6 +35,7 @@
     "express": "^4.15.2",
     "ng-mat-select-infinite-scroll": "^4.0.0",
     "ngx-cookie-service": "^14.0.1",
+    "ngx-cookie-service-ssr": "^14.0.1",
     "ngx-currency": "^2.5.3",
     "ngx-mat-intl-tel-input": "^5.0.0",
     "ngx-mat-select-search": "^4.2.1",
