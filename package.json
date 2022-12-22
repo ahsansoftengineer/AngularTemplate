@@ -33,6 +33,7 @@
     "angular-animations": "^0.11.0",
     "bootstrap": "^5.2.2",
     "express": "^4.15.2",
+    "firebase": "^9.15.0",
     "ng-mat-select-infinite-scroll": "^4.0.0",
     "ngx-cookie-service": "^14.0.1",
     "ngx-cookie-service-ssr": "^14.0.1",
