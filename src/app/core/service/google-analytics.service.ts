@@ -7,7 +7,7 @@ import { getAnalytics, logEvent } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-// --zz-- remove it
+// remove it --zz--
 const firebaseConfig = {
   apiKey: "AIzaSyB-5CMFovk-zz-U7bPtjcyri-KV1K-FueNgqck",
   authDomain: "starbazaar-b7-zz-7fb.firebaseapp.com",
