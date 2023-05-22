@@ -3,6 +3,7 @@
 ## [ANGULAR UNIVERSAL WITH NODE EXPRESS](#)
 
 ### It Required Only 2 Steps
+0. npm config set fetch-retry-maxtimeout 120000
 1. ng add @nguniversal/express-engine
 2. npm install ngx-cookie-service-ssr@14 --save
 3. [ngx cookie service](https://www.npmjs.com/package/ngx-cookie-service)
