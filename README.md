@@ -8,6 +8,19 @@
   ...
 
 }
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "di-donation": {
+      "root": "test", <=
+      "sourceRoot": "src",
+      "projectType": "application",
+      "prefix": "app",
+    }
+  }
+}
 ```
 3. Copy Paste build file from dist folder to the newly created repo and then push it
 4. On Github Your Repository > Settings > Pages
