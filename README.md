@@ -2,19 +2,21 @@
 1. Build your Angular App using npm run build
 2. Create a GitHub Repository that meets the name of package.json file
 ```json
+// package.json
 {
   "name": "angular-template",
   "version": "0.0.0",
   ...
 
 }
+// angular.json
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "di-donation": {
-      "root": "test", <=
+      "root": "angular-template", <=
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
